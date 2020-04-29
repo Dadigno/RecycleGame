@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace RecycleGame
+namespace Gioco_generico
 {
     public partial class Game1
     {
-        
         public enum areas {WALKABLE, OBSTACLE, STREET}
         public struct layer
         {
@@ -34,8 +32,7 @@ namespace RecycleGame
         };
         public void loadTMX(string path, List<layer> layers)
         {
-            Stream input = Game1.Activity.Assets.Open(path);
-            var xml = XDocument.Load(input);
+            var xml = XDocument.Load(path);
 
             int order = 0;
 

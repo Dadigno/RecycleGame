@@ -6,20 +6,19 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using RecycleGame.States;
-using static RecycleGame.Game1;
+using Gioco_generico.States;
+using static Gioco_generico.Game1;
 
-namespace RecycleGame
+namespace Gioco_generico
 {
     public static class ConstVar
     {
         public static SpriteBatch sb;
 
         //game
-        //public static Vector2 displayDim = new Vector2(1600, 900);
-        public static Vector2 displayDim;
-        //public static double ratioVideo = displayDim.X / displayDim.Y;
-        public static Vector2 gameArea;
+        public static Vector2 displayDim = new Vector2(1920, 1080);
+        public static double ratioVideo = displayDim.X / displayDim.Y;
+        public static Vector2 gameArea = new Vector2(displayDim.X / 3, displayDim.Y / 3);
 
         
         //public static Vector2 mapDim = new Vector2(2526, 2526);
@@ -51,6 +50,8 @@ namespace RecycleGame
         //States
         public static MainState main;
         public static MenuState menu;
+        public static InsideState house;
+        public static ChooseBucket chooseBucket;
 
         public static List<layer> layers = new List<layer>();
         public static List<layer> layersInside = new List<layer>();

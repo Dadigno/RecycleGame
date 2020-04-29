@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 
-namespace RecycleGame
+namespace Gioco_generico
 {
     public class Banner : Component
     {
@@ -17,7 +17,6 @@ namespace RecycleGame
         protected Color colourTex = Color.White;
         protected Texture2D texture;
         protected Vector2 displayPos;
-        protected Vector2 origin;
         protected Rectangle rect;
         public bool isVisible = false;
         private float timer;
@@ -29,8 +28,7 @@ namespace RecycleGame
             this.font = _content.Load<SpriteFont>(font);
             PenColour = Color.Black;
             displayPos = initDisplayPos;
-            rect = new Rectangle((int)initDisplayPos.X, (int)initDisplayPos.Y, (int)(this.texture.Width * (ConstVar.displayDim.X * scale / this.texture.Width)), (int)(this.texture.Height * (ConstVar.displayDim.X * scale / this.texture.Width)));
-            origin = new Vector2(this.texture.Width / 2, this.texture.Height / 2);
+            rect = new Rectangle((int)initDisplayPos.X, (int)initDisplayPos.Y, (int)(this.texture.Width * scale), (int)(this.texture.Height * scale));
         }
 
         public void Draw()
@@ -43,18 +41,18 @@ namespace RecycleGame
                     rect.Height = (int)(font.MeasureString(text).Y * 2);
                     var x = (rect.X + (rect.Width / 2)) - (font.MeasureString(text).X / 2);
                     var y = (rect.Y + (rect.Height / 2)) - (font.MeasureString(text).Y / 2);
-                    ConstVar.sb.Draw(texture, rect, null, colourTex, 0, origin, new SpriteEffects(), 0);
+                    ConstVar.sb.Draw(texture, rect, colourTex);
                     ConstVar.sb.DrawString(font, text, new Vector2(x, y), PenColour);
                     
                 }
                 else
                 {
-                    ConstVar.sb.Draw(texture, rect, null, colourTex, 0, origin, new SpriteEffects(), 0);
+                    ConstVar.sb.Draw(texture, rect, colourTex);
                 }
             }
         }
         
-        /*public void Update(GameTime gameTime)
+        public void update(GameTime gameTime)
         {
             timer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             if (isVisible)
@@ -65,6 +63,6 @@ namespace RecycleGame
                     timer = ConstVar.TIMER_BANNER;
                 }
             }
-        }*/
+        }
     }
 }

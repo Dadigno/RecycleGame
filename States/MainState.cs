@@ -6,17 +6,14 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Input.Touch;
-using Xamarin.Essentials;
-using System.Threading.Tasks;
 
-
-namespace RecycleGame.States
+namespace Gioco_generico.States
 {
     public class MainState : State
     {
         //Finestre di testo
         gameDebug gDebug;
+        Banner ban;
 
         //Personaggi 
         Character mainChar;
@@ -45,6 +42,8 @@ namespace RecycleGame.States
 
 
         Random rnd = new Random();
+        bool houseDoorActive = false;
+        bool bucketsActive = false;
 
         //Game variables
 
@@ -64,7 +63,7 @@ namespace RecycleGame.States
 
         //Stati interni
         public delegate void state(GameTime gameTime);
-        public state _currentInternalState;
+        public state _currentState;
 
         //Azioni 
         public delegate void action();
@@ -74,9 +73,6 @@ namespace RecycleGame.States
         private static float TIMER = 2000;
         private float timer = TIMER;
         protected float timerAnimated = 0;
-
-        //JoyStick
-        JoyStick joystick;
         public MainState(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, int id) : base(_game, _graphics, _content, id)
         {
             //Carico la mappa
@@ -95,20 +91,20 @@ namespace RecycleGame.States
 
 
             //Inizializzo le finestre di testo
+            ban = new Banner(_game, _graphics, _content, "button", new Vector2(ConstVar.displayDim.X - 300, ConstVar.displayDim.Y - 60),"Fonts/Font", "");
             gDebug = new gameDebug(_game, _graphics, _content);
 
             //Bottoni
 
-            var menuButton = new Button(_game, _graphics, _content, "menu-btn", new Vector2(ConstVar.displayDim.X - ConstVar.displayDim.X * 0.05f, ConstVar.displayDim.X * 0.05f), "Fonts/font", "", 0.05);
-            menuButton.Click += Handle_on;
-            //var helpButton = new Button(_game, _graphics, _content, "help-btn", new Vector2(ConstVar.displayDim.X - ConstVar.displayDim.X * 0.05f, 10), "Fonts/font", "", 0.05);
-            //helpButton.Click += Click_help;
-            //var exitButton = new Button(_game, _graphics, _content, "exit-btn", new Vector2(ConstVar.displayDim.X - 2 * ConstVar.displayDim.X * 0.05f, 10), "Fonts/font", "", 0.05);
-            // exitButton.Click += Click_exit;
+            var helpButton = new Button(_game, _graphics, _content, "help-btn", new Vector2(ConstVar.displayDim.X - 120, 10), "Fonts/Font", "", 0.2);
+            helpButton.Click += Click_help;
+            var exitButton = new Button(_game, _graphics, _content, "exit-btn", new Vector2(ConstVar.displayDim.X - 60, 10), "Fonts/Font", "", 0.2);
+            exitButton.Click += Click_exit;
 
             _buttons = new List<Button>()
               {
-                menuButton
+                helpButton,
+                exitButton
               };
 
             //Bar
@@ -140,41 +136,7 @@ namespace RecycleGame.States
             //Load effect
             coinSound = _content.Load<SoundEffect>("soundEffect/coin-dropped");
 
-            //JpyStick
-            joystick = new JoyStick(_game, _graphics, _content);
-
-
-            _currentInternalState = state1;
-            
-        }
-
-        async void Handle_on(object sender, EventArgs e)
-        {
-            try
-            {
-                await Flashlight.TurnOnAsync();
-            }
-            catch (FeatureNotSupportedException fnsEx)
-            {
-                //await ShowAlert(fnsEx.Message);
-            }
-        }
-
-        async void Handle_off(object sender, EventArgs e)
-        {
-            try
-            {
-                await Flashlight.TurnOffAsync();
-            }
-            catch (FeatureNotSupportedException fnsEx)
-            {
-                //await ShowAlert(fnsEx.Message);
-            }
-        }
-
-        public async Task ShowAlert(string message)
-        {
-            //await DisplayAlert("Faild", message, "ok");
+            _currentState = state1;
         }
 
         private void Character_Action(object sender, CharEventArgs e)
@@ -184,39 +146,36 @@ namespace RecycleGame.States
                 case 5735:
                     //ban.text = "Premi space per entrare";
                     //ban.isVisible = true;
-                    //houseDoorActive = true;
+                    houseDoorActive = true;
                     break;
                 case 10:
                     //ban.text = "P";
                     //ban.isVisible = true;
-                    //bucketsActive = true;
+                    bucketsActive = true;
                     break;
                 default:
-                    //houseDoorActive = false;
-                    //bucketsActive = false;
+                    houseDoorActive = false;
+                    bucketsActive = false;
                     break;
             }
         }
 
         private void Click_help(object sender, EventArgs e)
         {
-             //_game.Exit();
+             _game.Exit();
         }
         private void Click_exit(object sender, EventArgs e)
         {
-            //_game.Exit();
-        }
-        private void Click_menu(object sender, EventArgs e)
-        {
-           // _game.ChangeState(ConstVar.house)
-            
+            _game.Exit();
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            _game.GraphicsDevice.Clear(Color.Black);
+            _game.GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
+
             background.Draw();
+            ban.Draw();
             gDebug.Draw();
             foreach (Item obj in objects)
                 obj.Draw();
@@ -235,15 +194,15 @@ namespace RecycleGame.States
             barSpeciale.Draw();
             barCarta.Draw();
 
-            joystick.Draw();
+
             spriteBatch.End();
         }
 
-        public override void Update(GameTime gameTime, TouchCollection touchCollection)
+        public override void Update(GameTime gameTime, KeyboardState kbState)
         {
-            touchMgnt(touchCollection, gameTime);
-            
+            keyboardMgnt(kbState, gameTime);
             background.update(mainChar);
+            ban.update(gameTime);
             gDebug.Update(mainChar);
             mainChar.update(gameTime, background);
             alice.update(gameTime, background);
@@ -262,7 +221,7 @@ namespace RecycleGame.States
             if (!barCarta.Update(mainChar.inventory.Count(x => x.type == Item.Type.CARTA), cartaTarget))
                 cartaTarget += cartaTarget * 5;
             foreach (var button in _buttons)
-                button.Update(touchCollection);
+                button.update();
 
             // Spawn spazzatura
             float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -293,31 +252,28 @@ namespace RecycleGame.States
             }
 
 
-            _currentInternalState(gameTime);
+            _currentState(gameTime);
 
 
         }
 
-        public void touchMgnt(TouchCollection touchCollection, GameTime gameTime)
+        public void keyboardMgnt(KeyboardState kbState, GameTime gameTime)
         {
-            Vector2 v = Vector2.Normalize(joystick.Update(touchCollection, gameTime));
-            double a = Math.Acos(v.X) * 180 / Math.PI;
-            double b = Math.Asin(v.Y) * 180 / Math.PI;
-            gDebug.text1 = a;
-            gDebug.text2 = b;
-            if (a > 0 && a < 45)
-            {
-                mainChar.setAction(Character.walk.RIGHT);
-            }
-            else if ( a > 135 && a < 225)
+            Keys[] KeyPressed = kbState.GetPressedKeys();
+
+            if (KeyPressed.Contains(Keys.Left))
             {
                 mainChar.setAction(Character.walk.LEFT);
+            }
+            else if (KeyPressed.Contains(Keys.Right))
+            {
+                mainChar.setAction(Character.walk.RIGHT);
             } 
-            else if (b < -45 && b < 135 && v.Y < 0)
+            else if (KeyPressed.Contains(Keys.Up))
             {
                 mainChar.setAction(Character.walk.UP);
             }
-            else if (b > 45 && b < 135 && v.Y > 0)
+            else if (KeyPressed.Contains(Keys.Down))
             {
                 mainChar.setAction(Character.walk.DOWN);
             }
@@ -326,8 +282,26 @@ namespace RecycleGame.States
                 mainChar.setAction(Character.walk.NOP);
             }
 
-            /*if (!KeyPressed.Contains(Keys.Space))
+            if (!KeyPressed.Contains(Keys.Escape))
             {
+                if (OldKeyPressed.Contains(Keys.Escape))
+                {
+                    _game.Exit();
+                }
+            }
+
+            if (!KeyPressed.Contains(Keys.Space))
+            {
+                /*if (OldKeyPressed.Contains(Keys.Space) && houseDoorActive)
+                {
+                    //_game.ChangeState(ConstVar.house);
+                }
+                else if (OldKeyPressed.Contains(Keys.Space) && bucketsActive)
+                {
+                    //ConstVar.chooseBucket.obj = mainChar.inventory;
+                    //_game.ChangeState(ConstVar.chooseBucket);
+                }*/
+
                 if (OldKeyPressed.Contains(Keys.Space))
                 {
                     if (space_button_action != null)
@@ -335,8 +309,8 @@ namespace RecycleGame.States
                         space_button_action();
                     }
                 }
-            }*/
-            
+            }
+            OldKeyPressed = KeyPressed;
         }
 
         public bool isAround(Character a, Character b)  //mi dice se a è attorno a b
@@ -354,7 +328,7 @@ namespace RecycleGame.States
          
         public void changeState(state nextState)
         {
-            _currentInternalState = nextState;
+            _currentState = nextState;
         }
 
         public void state0(GameTime gameTime)

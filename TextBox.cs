@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace RecycleGame
+namespace Gioco_generico
 {
     public class TextBox : Sprite
     {

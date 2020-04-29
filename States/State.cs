@@ -7,9 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Input.Touch;
 
-namespace RecycleGame.States
+namespace Gioco_generico.States
 {
     public abstract class State : Component
     {
@@ -17,7 +16,7 @@ namespace RecycleGame.States
 
         public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch);
         //public abstract void PostUpdate(GameTime gameTime);
-        public abstract void Update(GameTime gameTime, TouchCollection touchCollection);
+        public abstract void Update(GameTime gameTime, KeyboardState kbState);
 
         public State(Game1 game, GraphicsDeviceManager graphics, ContentManager content, int id) : base(game, graphics, content)
         {

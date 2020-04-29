@@ -7,9 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Input.Touch;
 
-namespace RecycleGame.States
+namespace Gioco_generico.States
 {
     public class GameStates : State
     {
@@ -22,7 +21,7 @@ namespace RecycleGame.States
             
         }
 
-        public override void Update(GameTime gameTime, TouchCollection touchCollection)
+        public override void Update(GameTime gameTime, KeyboardState kbState)
         {
             
         }

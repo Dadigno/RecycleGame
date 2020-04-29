@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecycleGame
+namespace Gioco_generico
 {
     public class AiMngnt
     {

@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace RecycleGame
+namespace Gioco_generico
 {
     public class Sprite : Component
     {
@@ -69,10 +69,7 @@ namespace RecycleGame
         {
             return rect;
         }
-        public float getDir()
-        {
-            return dir;
-        }
+        
         public Vector2 getOrigin()
         {
             return origin;

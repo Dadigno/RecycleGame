@@ -7,9 +7,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Input.Touch;
 
-namespace RecycleGame
+namespace Gioco_generico
 {
     public class Button : Banner
     {
@@ -17,48 +16,38 @@ namespace RecycleGame
         private MouseState _previousMouse;
         
         private bool _isPressed;
+        public bool _isActive { get; set; }
         public EventHandler Click;
         public Button(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String texture, Vector2 initDisplayPos, String font, String text, double scale = 1, bool state = true) : base(_game, _graphics, _content, texture, initDisplayPos, font, text, scale)
         {
-            
+            _isActive = state;
         }
 
         public new void Draw()
         {
-
-            if (_isPressed )
-            {
+            colourTex = Color.White;
+            if (_isPressed || !_isActive)
                 colourTex = Color.Gray;
-            }
-            else
-            {
-                colourTex = Color.White;
-            }
 
             isVisible = true;
             base.Draw();
         }
 
-        public void Update(TouchCollection touchcollection)
+        public void update()
         {
-            foreach (var touch in touchcollection)
-            {
+            _previousMouse = _currentMouse;
+            _currentMouse = Mouse.GetState();
+            var mouseRectangle = new Rectangle(_currentMouse.X, _currentMouse.Y, 1, 1);
+            _isPressed = false;
 
-                Point t = new Point((int)touch.Position.X, (int)touch.Position.Y);
-                Rectangle temp = new Rectangle(rect.X - (rect.Width / 2), rect.Y - (rect.Height / 2), rect.Width, rect.Height);
-                if (temp.Contains(t))
-                {
-                    if (touch.State == TouchLocationState.Pressed)
-                    {
-                        _isPressed = true;
-                        continue;
-                    }
-                    if (touch.State == TouchLocationState.Released)
-                    {
-                        _isPressed = false;
-                        Click?.Invoke(this, new EventArgs());
-                    }
-                }
+            if (mouseRectangle.Intersects(rect) && _currentMouse.LeftButton == ButtonState.Pressed)
+            {
+                _isPressed = true;
+            }
+            if (mouseRectangle.Intersects(rect) && _currentMouse.LeftButton == ButtonState.Released && _previousMouse.LeftButton == ButtonState.Pressed)
+            {
+                if (_isActive)
+                    Click?.Invoke(this, new EventArgs());
             }
         }
 

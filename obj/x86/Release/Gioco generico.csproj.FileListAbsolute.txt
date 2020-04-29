@@ -1,0 +1,115 @@
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\Content\Fonts\font.xnb
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\Content\animatedSprite.xnb
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\Content\background.xnb
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\Content\backgroundMenu.xnb
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\Content\button.xnb
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\Content\debug_font.xnb
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\Content\grassTile.xnb
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\Content\mainChar.xnb
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\Content\mainChar1.xnb
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\Content\map1.xnb
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\Content\mappa1.xnb
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\Content\wallTile.xnb
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\Gioco generico.exe
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\Gioco generico.pdb
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\MonoGame.Framework.dll
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\SharpDX.MediaFoundation.dll
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\SharpDX.dll
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\SharpDX.XAudio2.dll
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\SharpDX.DXGI.dll
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\SharpDX.Direct3D11.dll
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\SharpDX.Direct2D1.dll
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\SharpDX.XInput.dll
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\MonoGame.Framework.xml
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\SharpDX.MediaFoundation.xml
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\SharpDX.xml
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\SharpDX.XAudio2.xml
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\SharpDX.DXGI.xml
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\SharpDX.Direct3D11.xml
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\SharpDX.Direct2D1.xml
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\bin\Windows\x86\Release\SharpDX.XInput.xml
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\obj\x86\Release\Gioco generico.csprojAssemblyReference.cache
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\obj\x86\Release\Gioco generico.csproj.CopyComplete
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\obj\x86\Release\Gioco generico.exe
+C:\Users\UniDavide\Documents\MonoGame Project\Gioco generico\obj\x86\Release\Gioco generico.pdb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\oggetti\accendino.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\oggetti\banana.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\oggetti\bidone-carta.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\oggetti\bidone-plastica.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\oggetti\bidone-secco.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\oggetti\bidone-umido.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\oggetti\bidone-vetro.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\oggetti\bidoni.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\oggetti\bomboletta.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\oggetti\bottiglia-vetro.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\oggetti\foglie.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\oggetti\giornale.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\oggetti\latta.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\oggetti\lattina.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\oggetti\mela.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\oggetti\nucleare.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\oggetti\pizza.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\oggetti\plastic-bottle.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\oggetti\profumo.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\oggetti\scatola-cartone.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\maps\background\backgroundMenu.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\maps\background\insidehouse.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\maps\background\insidehouse1.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\maps\background\insidehouse2.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\maps\background\inventario.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\maps\background\inventory.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\maps\background\mappa.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\maps\background\mappa1.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\maps\background\mappagriglia.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\maps\background\mondo1.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\maps\background\mondo1griglia.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\soundEffect\coin-dropped.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\soundEffect\coin-dropped2.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\soundEffect\speech-sound.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\soundEffect\surround.wma
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\soundEffect\surround.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\maps\insidehouse.tmx
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\maps\mappa.tmx
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\maps\mondo1.tmx
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\character\alice.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\character\bob.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\character\mainChar.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\character\mainCharDebug.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\Fonts\barFont.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\Fonts\bigFont.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\Fonts\File.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\Fonts\font.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\Fonts\speechFont.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\bubble\bubble-esclamative.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\bubble\bubble-heart.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\bubble\bubble-question.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\bubble\bubble-speech.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\bubble\bubble-thinking.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\bars\bar.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\bars\infill.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\button.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\exit-btn.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Content\help-btn.xnb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Gioco generico.exe
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\Gioco generico.pdb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\MonoGame.Framework.dll
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\SharpDX.MediaFoundation.dll
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\SharpDX.dll
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\SharpDX.XAudio2.dll
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\SharpDX.DXGI.dll
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\SharpDX.Direct3D11.dll
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\SharpDX.Direct2D1.dll
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\SharpDX.XInput.dll
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\MonoGame.Framework.xml
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\SharpDX.MediaFoundation.xml
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\SharpDX.xml
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\SharpDX.XAudio2.xml
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\SharpDX.DXGI.xml
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\SharpDX.Direct3D11.xml
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\SharpDX.Direct2D1.xml
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\bin\Windows\x86\Release\SharpDX.XInput.xml
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\obj\x86\Release\Gioco generico.csprojAssemblyReference.cache
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\obj\x86\Release\Gioco generico.csproj.CopyComplete
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\obj\x86\Release\Gioco generico.exe
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\obj\x86\Release\Gioco generico.pdb
+C:\Users\davi_\Documents\Monogame projects\Gioco generico\obj\x86\Release\Gioco generico.csproj.CoreCompileInputs.cache

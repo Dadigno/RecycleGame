@@ -1,0 +1,17 @@
+<?xml version="1,0" encoding="UTF-8"?>
+<gpx version="1,1" creator="GPS Visualizer Sandbox https://www,gpsvisualizer,com/draw/" xmlns="http://www,topografix,com/GPX/1/1" xmlns:xsi="http://www,w3,org/2001/XMLSchema-instance" xsi:schemaLocation="http://www,topografix,com/GPX/1/1 http://www,topografix,com/GPX/1/1/gpx,xsd">
+	<wpt lat="44,3939289,8,8908577">
+		<name>groundstation</name>
+	</wpt>
+	<trk>
+		<name></name>
+		<desc>Length: 3,026 km (1,88 mi)</desc>
+		<trkseg>
+			<trkpt lat="44,3984058,8,890686"></trkpt>
+			<trkpt lat="44,3944502,8,8983679"></trkpt>
+			<trkpt lat="44,3896356,8,8907719"></trkpt>
+			<trkpt lat="44,3940516,8,88412"></trkpt>
+			<trkpt lat="44,3988658,8,8906431"></trkpt>
+		</trkseg>
+	</trk>
+</gpx>

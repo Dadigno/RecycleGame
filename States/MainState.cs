@@ -1,0 +1,419 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Input.Touch;
+using Xamarin.Essentials;
+using System.Threading.Tasks;
+
+
+namespace RecycleGame.States
+{
+    public class MainState : State
+    {
+        //Finestre di testo
+        gameDebug gDebug;
+
+        //Personaggi 
+        Character mainChar;
+        Character alice;
+        //AiMngnt aiAlice;
+        //List<AiMngnt> AiStorm;
+        //List<Character> storm;
+
+        //Oggetti
+        List<Item> objects;
+        List<Item> allObjects;
+
+        //Interazione da tastiera
+        Keys[] OldKeyPressed = { };
+
+        //Bottoni
+        private List<Button> _buttons;
+
+        //Bar
+        Bar barPlastica;
+        Bar barUmido;
+        Bar barSecco;
+        Bar barVetro;
+        Bar barSpeciale;
+        Bar barCarta;
+
+
+        Random rnd = new Random();
+
+        //Game variables
+
+        private int plasticaTarget = 10;
+        private int umidoTarget = 10;
+        private int vetroTarget = 10;
+        private int seccoTarget = 10;
+        private int cartaTarget = 10;
+        private int specialeTarget = 10;
+
+        //Sound
+        //Song song;
+        private SoundEffect coinSound;
+
+        //Background
+        public Background background;
+
+        //Stati interni
+        public delegate void state(GameTime gameTime);
+        public state _currentInternalState;
+
+        //Azioni 
+        public delegate void action();
+        public action space_button_action;
+
+        //Timer
+        private static float TIMER = 2000;
+        private float timer = TIMER;
+        protected float timerAnimated = 0;
+
+        //JoyStick
+        JoyStick joystick;
+        public MainState(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, int id) : base(_game, _graphics, _content, id)
+        {
+            //Carico la mappa
+            background = new Background(_game, _graphics, _content, "maps/background/mondo1");   
+            
+            //Inizializzazione personaggi
+            mainChar = new Character(_game, _graphics, _content, "character/bob", new Vector2(ConstVar.animatedSpriteWidth / 2, ConstVar.animatedSpriteHeigth), new Vector2(0, 0), ConstVar.animatedCols, ConstVar.animatedFrame, ConstVar.animatedSpriteWidth, ConstVar.animatedSpriteHeigth);
+            mainChar.lockDisplay = true;
+            mainChar.setTilePos(46, 27, background);
+            mainChar.Action += Character_Action;
+
+            alice = new Character(_game, _graphics, _content, "character/alice", new Vector2(ConstVar.animatedSpriteWidth / 2, ConstVar.animatedSpriteHeigth), new Vector2(0, 0), ConstVar.animatedCols, ConstVar.animatedFrame, ConstVar.animatedSpriteWidth, ConstVar.animatedSpriteHeigth);
+            alice.lockDisplay = false;
+            alice.setTilePos(47, 22, background);
+            //aiBob = new AiMngnt(bob);
+
+
+            //Inizializzo le finestre di testo
+            gDebug = new gameDebug(_game, _graphics, _content);
+
+            //Bottoni
+
+            var menuButton = new Button(_game, _graphics, _content, "menu-btn", new Vector2(ConstVar.displayDim.X - ConstVar.displayDim.X * 0.05f, ConstVar.displayDim.X * 0.05f), "Fonts/font", "", 0.05);
+            menuButton.Click += Handle_on;
+            //var helpButton = new Button(_game, _graphics, _content, "help-btn", new Vector2(ConstVar.displayDim.X - ConstVar.displayDim.X * 0.05f, 10), "Fonts/font", "", 0.05);
+            //helpButton.Click += Click_help;
+            //var exitButton = new Button(_game, _graphics, _content, "exit-btn", new Vector2(ConstVar.displayDim.X - 2 * ConstVar.displayDim.X * 0.05f, 10), "Fonts/font", "", 0.05);
+            // exitButton.Click += Click_exit;
+
+            _buttons = new List<Button>()
+              {
+                menuButton
+              };
+
+            //Bar
+            barPlastica = new Bar(_game, _graphics, _content, "bars/plasticBar", "Plastica", new Vector2(10,0));
+            barCarta = new Bar(_game, _graphics, _content, "bars/plasticBar", "Carta", new Vector2(10, 50));
+            barVetro = new Bar(_game, _graphics, _content, "bars/plasticBar", "Vetro", new Vector2(10, 100));
+            barSecco = new Bar(_game, _graphics, _content, "bars/plasticBar", "Secco", new Vector2(10, 150));
+            barUmido = new Bar(_game, _graphics, _content, "bars/plasticBar", "Umido", new Vector2(10, 200));
+            barSpeciale = new Bar(_game, _graphics, _content, "bars/plasticBar", "Speciale", new Vector2(10, 250));
+
+
+            //Objects 
+            allObjects = new List<Item>();
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/banana", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.UMIDO, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/foglie", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.UMIDO, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/latta", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.PLASTICA, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lattina", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.PLASTICA, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/mela", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.UMIDO, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/giornale", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.CARTA, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/accendino", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.SECCO, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bomboletta", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.SECCO, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/scatola-cartone", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.CARTA, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/pizza", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.UMIDO, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bottiglia-vetro", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.VETRO, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/nucleare", new Vector2(0, 0), new Vector2(0, 0), 0.05, Item.Type.SPECIALE, true));
+
+            objects = new List<Item>();
+
+            //Load effect
+            coinSound = _content.Load<SoundEffect>("soundEffect/coin-dropped");
+
+            //JpyStick
+            joystick = new JoyStick(_game, _graphics, _content);
+
+
+            _currentInternalState = state1;
+            
+        }
+
+        async void Handle_on(object sender, EventArgs e)
+        {
+            try
+            {
+                await Flashlight.TurnOnAsync();
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                //await ShowAlert(fnsEx.Message);
+            }
+        }
+
+        async void Handle_off(object sender, EventArgs e)
+        {
+            try
+            {
+                await Flashlight.TurnOffAsync();
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                //await ShowAlert(fnsEx.Message);
+            }
+        }
+
+        public async Task ShowAlert(string message)
+        {
+            //await DisplayAlert("Faild", message, "ok");
+        }
+
+        private void Character_Action(object sender, CharEventArgs e)
+        {
+            switch (e.a)
+            {
+                case 5735:
+                    //ban.text = "Premi space per entrare";
+                    //ban.isVisible = true;
+                    //houseDoorActive = true;
+                    break;
+                case 10:
+                    //ban.text = "P";
+                    //ban.isVisible = true;
+                    //bucketsActive = true;
+                    break;
+                default:
+                    //houseDoorActive = false;
+                    //bucketsActive = false;
+                    break;
+            }
+        }
+
+        private void Click_help(object sender, EventArgs e)
+        {
+             //_game.Exit();
+        }
+        private void Click_exit(object sender, EventArgs e)
+        {
+            //_game.Exit();
+        }
+        private void Click_menu(object sender, EventArgs e)
+        {
+           // _game.ChangeState(ConstVar.house)
+            
+        }
+
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+            _game.GraphicsDevice.Clear(Color.Black);
+            spriteBatch.Begin();
+            background.Draw();
+            gDebug.Draw();
+            foreach (Item obj in objects)
+                obj.Draw();
+            foreach (var button in _buttons)
+                button.Draw();
+
+            alice.Draw();
+            
+            mainChar.Draw();
+
+           
+            barPlastica.Draw();
+            barUmido.Draw();
+            barSecco.Draw();
+            barVetro.Draw();
+            barSpeciale.Draw();
+            barCarta.Draw();
+
+            joystick.Draw();
+            spriteBatch.End();
+        }
+
+        public override void Update(GameTime gameTime, TouchCollection touchCollection)
+        {
+            touchMgnt(touchCollection, gameTime);
+            
+            background.update(mainChar);
+            gDebug.Update(mainChar);
+            mainChar.update(gameTime, background);
+            alice.update(gameTime, background);
+
+
+            if (!barPlastica.Update(mainChar.inventory.Count(x => x.type == Item.Type.PLASTICA), plasticaTarget))
+                plasticaTarget += plasticaTarget * 5;
+            if (!barUmido.Update(mainChar.inventory.Count(x => x.type == Item.Type.UMIDO), umidoTarget))
+                umidoTarget += umidoTarget * 5;
+            if (!barSecco.Update(mainChar.inventory.Count(x => x.type == Item.Type.SECCO), seccoTarget))
+                seccoTarget += seccoTarget * 5;
+            if (!barVetro.Update(mainChar.inventory.Count(x => x.type == Item.Type.VETRO), vetroTarget))
+                vetroTarget += vetroTarget * 5;
+            if (!barSpeciale.Update(mainChar.inventory.Count(x => x.type == Item.Type.SPECIALE), specialeTarget))
+                specialeTarget += specialeTarget * 5;
+            if (!barCarta.Update(mainChar.inventory.Count(x => x.type == Item.Type.CARTA), cartaTarget))
+                cartaTarget += cartaTarget * 5;
+            foreach (var button in _buttons)
+                button.Update(touchCollection);
+
+            // Spawn spazzatura
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            timerAnimated -= elapsed;
+            if (timerAnimated < 0)
+            {
+                timerAnimated = 100;
+                int[,] walkableTile = (ConstVar.layers.Find(t => Equals(t.name, "street"))).tileMap;
+                int x = rnd.Next(1, 77);
+                int y = rnd.Next(1, 78);
+                if(walkableTile[y, x] != 0 && !objects.Exists(b => b.getTilePos(background) == new Vector2(x, y)))
+                {
+                    Item obj = allObjects[rnd.Next(0, allObjects.Count())].Clone();
+                    obj.setTilePos(x, y, background);
+                    objects.Add(obj);
+                }
+            }
+
+            for (int i = objects.Count; i > 0; i--)
+            {
+                objects[i - 1].Update(gameTime, background);
+                if (objects[i - 1].getTilePos(background) == mainChar.getTilePos(background))
+                {
+                    coinSound.Play();
+                    mainChar.collect(objects[i - 1]);
+                    objects.RemoveAt(i - 1);
+                }
+            }
+
+
+            _currentInternalState(gameTime);
+
+
+        }
+
+        public void touchMgnt(TouchCollection touchCollection, GameTime gameTime)
+        {
+            Vector2 v = Vector2.Normalize(joystick.Update(touchCollection, gameTime));
+            double a = Math.Acos(v.X) * 180 / Math.PI;
+            double b = Math.Asin(v.Y) * 180 / Math.PI;
+            gDebug.text1 = a;
+            gDebug.text2 = b;
+            if (a > 0 && a < 45)
+            {
+                mainChar.setAction(Character.walk.RIGHT);
+            }
+            else if ( a > 135 && a < 225)
+            {
+                mainChar.setAction(Character.walk.LEFT);
+            } 
+            else if (b < -45 && b < 135 && v.Y < 0)
+            {
+                mainChar.setAction(Character.walk.UP);
+            }
+            else if (b > 45 && b < 135 && v.Y > 0)
+            {
+                mainChar.setAction(Character.walk.DOWN);
+            }
+            else
+            {
+                mainChar.setAction(Character.walk.NOP);
+            }
+
+            /*if (!KeyPressed.Contains(Keys.Space))
+            {
+                if (OldKeyPressed.Contains(Keys.Space))
+                {
+                    if (space_button_action != null)
+                    {
+                        space_button_action();
+                    }
+                }
+            }*/
+            
+        }
+
+        public bool isAround(Character a, Character b)  //mi dice se a è attorno a b
+        {
+            Vector2 a_tile = a.getTilePos(background);
+            Vector2 b_tile = b.getTilePos(background);
+            if (b_tile + new Vector2(-1, -1) == a_tile || b_tile + new Vector2(0, -1) == a_tile || b_tile + new Vector2(1, -1) == a_tile)
+                return true;
+            if (b_tile + new Vector2(-1, 0) == a_tile || b_tile + new Vector2(0, 0) == a_tile || b_tile + new Vector2(1, 0) == a_tile)
+                return true;
+            if (b_tile + new Vector2(0, -1) == a_tile || b_tile + new Vector2(0, 1) == a_tile || b_tile + new Vector2(1, 1) == a_tile)
+                return true;
+            return false;
+        }
+         
+        public void changeState(state nextState)
+        {
+            _currentInternalState = nextState;
+        }
+
+        public void state0(GameTime gameTime)
+        {
+
+        }
+
+        public void state1(GameTime gameTime)
+        {
+            alice.think(Character.thinkType.THINK);
+            if(isAround(mainChar,alice))
+            {
+                space_button_action = delegate ()
+                    {
+                        alice.think(Character.thinkType.NONE);
+                        changeState(state2);
+                    };
+            }
+        }
+        
+        public void state2(GameTime gameTime)
+        {
+            space_button_action = null;
+            if (speechIntroAlice.Count() != 0 && !alice.isSpeaking)
+            {
+                alice.speak(speechIntroAlice[0]);
+                speechIntroAlice.RemoveAt(0);
+            }
+            if (speechIntroAlice.Count() == 0 && !alice.isSpeaking)
+            {
+                mainChar.think(Character.thinkType.ESCLAMATIVE);
+                changeState(state3);
+            }
+        }
+        
+        public void state3(GameTime gameTime)
+        {
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            timer -= elapsed;
+            if (timer < 0)
+            {
+                timer = TIMER;
+                mainChar.think(Character.thinkType.NONE);
+                alice.think(Character.thinkType.NONE);
+                changeState(state0);
+            }
+        }
+
+        List<string> speechIntroAlice = new List<string>() {
+            "Hey ciao giovane \navventuriero!\nBenvenuto in citta'!",
+            "Con questo gioco imparerai\na fare la raccolta\n differenziata . . .",
+            "Fai quello che ti dico e\nnon rompere i coglioni\n. . . :)"
+        };
+        List<string> speechBob = new List<string>() {
+            "Bene e tu?",
+            "Cosa dai dicendo?\n Stupido omino con i bordi\n pixelati!!",
+            "Stupido sprite che\nnon sei altro!!!"
+        };
+    }
+}
+
+

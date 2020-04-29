@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Android</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/bars/bar.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/bars/infill - Copia.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/bars/infill.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/bubble/bubble-esclamative.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/bubble/bubble-heart.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/bubble/bubble-question.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/bubble/bubble-speech.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/bubble/bubble-thinking.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/button.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/character/alice.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/character/bob.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/character/mainChar.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/character/mainCharDebug.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/exit-btn.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/Fonts/barFont.spritefont</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/Fonts/bigFont.spritefont</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/Fonts/font.spritefont</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/Fonts/speechFont.spritefont</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/help-btn.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/Icon.ico</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/joy.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/maps/background/mondo1.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/maps/background/mondo1griglia.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/menu-btn.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/oggetti/accendino.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/oggetti/banana.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/oggetti/bidone-carta.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/oggetti/bidone-plastica.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/oggetti/bidone-secco.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/oggetti/bidone-umido.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/oggetti/bidone-vetro.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/oggetti/bidoni.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/oggetti/bomboletta.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/oggetti/bottiglia-vetro.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/oggetti/foglie.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/oggetti/giornale.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/oggetti/latta.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/oggetti/lattina.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/oggetti/mela.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/oggetti/nucleare.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/oggetti/pizza.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/oggetti/plastic-bottle.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/oggetti/profumo.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/oggetti/scatola-cartone.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/pad.png</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/soundEffect/coin-dropped.wav</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/soundEffect/coin-dropped2.wav</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/soundEffect/speech-sound.wav</File>
+    <File>C:/Users/UniDavide/Documents/MonoGame Project/Giochi android/RecycleGame/Content/soundEffect/surround.mp3</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

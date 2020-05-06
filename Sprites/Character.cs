@@ -1,33 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace Gioco_generico
 {
     public class Character : AnimatedSprite
     {
-        
         public enum walk { UP, DOWN, LEFT, RIGHT, NOP };
         public enum thinkType { QUESTION, ESCLAMATIVE, HEART, THINK, NONE};
         protected walk state;
+        public event EventHandler<CharEventArgs> Action;
         public int walkSpeed = 2;
         public bool collide;
         public bool lockDisplay = true;
         public bool isSpeaking;
-        public bool isThinking;
+        private bool isThinking;
         private CharEventArgs args;
-        public event EventHandler<CharEventArgs> Action;
-        public List<Item> inventory = new List<Item>();
+        private List<Item> inventory = new List<Item>();
         private AnimatedSprite thinkingBubble;
         private AnimatedSprite esclamativeBubble;
         private AnimatedSprite questionBubble;
         private AnimatedSprite heartBubble;
-        public SpeechBubble speechBubble;
+        private AnimatedSprite Think;
+        private SpeechBubble speechBubble;
 
         public Character(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, Vector2 origin, Vector2 initGamePosition, int colums, int totFrames, int frameWidth, int frameHeight) : base(_game, _graphics, _content, nameTex, origin, initGamePosition, colums, totFrames, frameWidth, frameHeight)
         {
@@ -55,7 +51,6 @@ namespace Gioco_generico
             heartBubble.Update(gameTime);
             esclamativeBubble.Update(gameTime);
             questionBubble.Update(gameTime);
-
             speechBubble.Update(gameTime, getPos());
 
             int[,] activeTile = (ConstVar.layers.Find(t => Equals(t.name, "activeTile"))).tileMap;
@@ -218,7 +213,7 @@ namespace Gioco_generico
         {
             inventory.Add(obj);
         }
-        AnimatedSprite Think;
+        
         public new void Draw()
         {
             if (isThinking)
@@ -264,7 +259,12 @@ namespace Gioco_generico
             speechBubble.Text = text;
             isSpeaking = true;
         }
-            
+
+        public List<Item> Inventory
+        {
+            get => inventory;
+        }
+
     }
 
     public class CharEventArgs : EventArgs

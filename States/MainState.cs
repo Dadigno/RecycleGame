@@ -207,18 +207,17 @@ namespace Gioco_generico.States
             mainChar.update(gameTime, background);
             alice.update(gameTime, background);
 
-
-            if (!barPlastica.Update(mainChar.inventory.Count(x => x.type == Item.Type.PLASTICA), plasticaTarget))
+            if (!barPlastica.Update(mainChar.Inventory.Count(x => x.type == Item.Type.PLASTICA), plasticaTarget))
                 plasticaTarget += plasticaTarget * 5;
-            if (!barUmido.Update(mainChar.inventory.Count(x => x.type == Item.Type.UMIDO), umidoTarget))
+            if (!barUmido.Update(mainChar.Inventory.Count(x => x.type == Item.Type.UMIDO), umidoTarget))
                 umidoTarget += umidoTarget * 5;
-            if (!barSecco.Update(mainChar.inventory.Count(x => x.type == Item.Type.SECCO), seccoTarget))
+            if (!barSecco.Update(mainChar.Inventory.Count(x => x.type == Item.Type.SECCO), seccoTarget))
                 seccoTarget += seccoTarget * 5;
-            if (!barVetro.Update(mainChar.inventory.Count(x => x.type == Item.Type.VETRO), vetroTarget))
+            if (!barVetro.Update(mainChar.Inventory.Count(x => x.type == Item.Type.VETRO), vetroTarget))
                 vetroTarget += vetroTarget * 5;
-            if (!barSpeciale.Update(mainChar.inventory.Count(x => x.type == Item.Type.SPECIALE), specialeTarget))
+            if (!barSpeciale.Update(mainChar.Inventory.Count(x => x.type == Item.Type.SPECIALE), specialeTarget))
                 specialeTarget += specialeTarget * 5;
-            if (!barCarta.Update(mainChar.inventory.Count(x => x.type == Item.Type.CARTA), cartaTarget))
+            if (!barCarta.Update(mainChar.Inventory.Count(x => x.type == Item.Type.CARTA), cartaTarget))
                 cartaTarget += cartaTarget * 5;
             foreach (var button in _buttons)
                 button.update();

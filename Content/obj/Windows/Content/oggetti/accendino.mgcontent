@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/davi_/Documents/Monogame projects/Gioco generico/Content/oggetti/accendino.png</SourceFile>
+  <SourceFile>D:/Git/RecycleGame/Content/oggetti/accendino.png</SourceFile>
   <SourceTime>2019-11-24T23:55:35.5838161+01:00</SourceTime>
-  <DestFile>C:/Users/davi_/Documents/Monogame projects/Gioco generico/Content/bin/Windows/Content/oggetti/accendino.xnb</DestFile>
-  <DestTime>2020-03-15T22:59:20.0561094+01:00</DestTime>
+  <DestFile>D:/Git/RecycleGame/Content/bin/Windows/Content/oggetti/accendino.xnb</DestFile>
+  <DestTime>2020-04-29T15:28:18.081125+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T17:35:54+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

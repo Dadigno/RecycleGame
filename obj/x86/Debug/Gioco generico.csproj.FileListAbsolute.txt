@@ -158,3 +158,84 @@ C:\Users\davi_\Documents\Monogame projects\Gioco generico\obj\x86\Debug\Gioco ge
 C:\Users\davi_\Documents\Monogame projects\Gioco generico\obj\x86\Debug\Gioco generico.exe
 C:\Users\davi_\Documents\Monogame projects\Gioco generico\obj\x86\Debug\Gioco generico.pdb
 C:\Users\davi_\Documents\Monogame projects\Gioco generico\obj\x86\Debug\Gioco generico.csproj.CoreCompileInputs.cache
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\maps\insidehouse.tmx
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\maps\mappa.tmx
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\maps\mondo1.tmx
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\Fonts\font.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\oggetti\accendino.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\oggetti\banana.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\oggetti\bidone-carta.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\oggetti\bidone-plastica.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\oggetti\bidone-secco.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\oggetti\bidone-umido.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\oggetti\bidone-vetro.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\oggetti\bidoni.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\oggetti\bomboletta.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\oggetti\bottiglia-vetro.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\oggetti\foglie.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\oggetti\giornale.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\oggetti\latta.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\oggetti\lattina.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\oggetti\mela.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\oggetti\nucleare.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\oggetti\pizza.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\oggetti\plastic-bottle.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\oggetti\profumo.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\oggetti\scatola-cartone.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\maps\background\backgroundMenu.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\maps\background\insidehouse.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\maps\background\insidehouse1.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\maps\background\insidehouse2.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\maps\background\inventario.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\maps\background\inventory.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\maps\background\mappa.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\maps\background\mappa1.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\maps\background\mappagriglia.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\maps\background\mondo1.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\maps\background\mondo1griglia.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\soundEffect\coin-dropped.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\soundEffect\coin-dropped2.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\soundEffect\speech-sound.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\soundEffect\surround.wma
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\soundEffect\surround.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\character\alice.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\character\bob.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\character\mainChar.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\character\mainCharDebug.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\bubble\bubble-esclamative.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\bubble\bubble-heart.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\bubble\bubble-question.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\bubble\bubble-speech.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\bubble\bubble-thinking.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\Fonts\barFont.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\Fonts\bigFont.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\Fonts\File.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\Fonts\speechFont.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\bars\bar.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\bars\infill.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\button.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\exit-btn.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Content\help-btn.xnb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Gioco generico.exe
+D:\Git\RecycleGame\bin\Windows\x86\Debug\Gioco generico.pdb
+D:\Git\RecycleGame\bin\Windows\x86\Debug\MonoGame.Framework.dll
+D:\Git\RecycleGame\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+D:\Git\RecycleGame\bin\Windows\x86\Debug\SharpDX.dll
+D:\Git\RecycleGame\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+D:\Git\RecycleGame\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+D:\Git\RecycleGame\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+D:\Git\RecycleGame\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+D:\Git\RecycleGame\bin\Windows\x86\Debug\SharpDX.XInput.dll
+D:\Git\RecycleGame\bin\Windows\x86\Debug\MonoGame.Framework.xml
+D:\Git\RecycleGame\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+D:\Git\RecycleGame\bin\Windows\x86\Debug\SharpDX.xml
+D:\Git\RecycleGame\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+D:\Git\RecycleGame\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+D:\Git\RecycleGame\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+D:\Git\RecycleGame\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+D:\Git\RecycleGame\bin\Windows\x86\Debug\SharpDX.XInput.xml
+D:\Git\RecycleGame\obj\x86\Debug\Gioco generico.csprojAssemblyReference.cache
+D:\Git\RecycleGame\obj\x86\Debug\Gioco generico.csproj.CoreCompileInputs.cache
+D:\Git\RecycleGame\obj\x86\Debug\Gioco generico.csproj.CopyComplete
+D:\Git\RecycleGame\obj\x86\Debug\Gioco generico.exe
+D:\Git\RecycleGame\obj\x86\Debug\Gioco generico.pdb

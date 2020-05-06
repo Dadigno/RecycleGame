@@ -1,6 +1,1 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/davi_/Documents/Monogame projects/Gioco generico/Content/oggetti/bottiglia-vetro.png","C:/Users/davi_/Documents/Monogame projects/Gioco generico/Content/bin/Windows/Content/oggetti/bottiglia-vetro.xnb","TextureProcessor","Texture2DContent",2044,29053,0
-"C:/Users/davi_/Documents/Monogame projects/Gioco generico/Content/oggetti/foglie.png","C:/Users/davi_/Documents/Monogame projects/Gioco generico/Content/bin/Windows/Content/oggetti/foglie.xnb","TextureProcessor","Texture2DContent",31644,99937,0
-"C:/Users/davi_/Documents/Monogame projects/Gioco generico/Content/oggetti/giornale.png","C:/Users/davi_/Documents/Monogame projects/Gioco generico/Content/bin/Windows/Content/oggetti/giornale.xnb","TextureProcessor","Texture2DContent",34387,84541,0
-"C:/Users/davi_/Documents/Monogame projects/Gioco generico/Content/oggetti/latta.png","C:/Users/davi_/Documents/Monogame projects/Gioco generico/Content/bin/Windows/Content/oggetti/latta.xnb","TextureProcessor","Texture2DContent",31398,53845,0
-"C:/Users/davi_/Documents/Monogame projects/Gioco generico/Content/oggetti/scatola-cartone.png","C:/Users/davi_/Documents/Monogame projects/Gioco generico/Content/bin/Windows/Content/oggetti/scatola-cartone.xnb","TextureProcessor","Texture2DContent",11657,95861,0

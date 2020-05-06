@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Gioco_generico
 {
-   
+   //Ogni item rappresenta un oggetto da differenziare
 
     public class Item : Sprite
     {
@@ -19,10 +15,12 @@ namespace Gioco_generico
         private float timerAnimated = 100;
         private bool floating = false;
         private int offset = 10;
+        String objCardPath;
         public Item(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, Vector2 initGamePosition, Vector2 initDisplayPos, double scale, Type type = Type.NONE, bool animation = false) : base(_game, _graphics, _content, nameTex, initGamePosition, initDisplayPos, scale)
         {
             this.type = type;
             this.floating = animation;
+            this.objCardPath = nameTex + "_card";
         }
 
         public Item Clone()
@@ -64,6 +62,13 @@ namespace Gioco_generico
             {
                 base.Draw(true);
             }
+        }
+
+        public void DrawCard(float scale_x, float scale_y)
+        {
+            texture = _content.Load<Texture2D>(objCardPath);
+            Rectangle r = new Rectangle((int)(ConstVar.displayDim.X * scale_x), (int)(ConstVar.displayDim.X * scale_y), texture.Width, texture.Height);
+            ConstVar.sb.Draw(texture, r, null, Color.White, rotation, origin, new SpriteEffects(), 0);
         }
 
         

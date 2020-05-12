@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
+using System.Net;
 
 namespace Gioco_generico.States
 {
@@ -16,7 +17,7 @@ namespace Gioco_generico.States
         Banner ban;
 
         //Personaggi 
-        Character mainChar;
+        public Character mainChar;
         Character alice;
         //AiMngnt aiAlice;
         //List<AiMngnt> AiStorm;
@@ -40,10 +41,10 @@ namespace Gioco_generico.States
         Bar barSpeciale;
         Bar barCarta;
 
-
         Random rnd = new Random();
-        bool houseDoorActive = false;
-        bool bucketsActive = false;
+
+        //Interazioni giocatore-mappa
+        bool windowsActive = false;
 
         //Game variables
 
@@ -91,7 +92,7 @@ namespace Gioco_generico.States
 
 
             //Inizializzo le finestre di testo
-            ban = new Banner(_game, _graphics, _content, "button", new Vector2(ConstVar.displayDim.X - 300, ConstVar.displayDim.Y - 60),"Fonts/Font", "");
+            ban = new Banner(_game, _graphics, _content, "button", new Vector2(ConstVar.displayDim.X /2, ConstVar.displayDim.Y /2),"Fonts/Font", "");
             gDebug = new gameDebug(_game, _graphics, _content);
 
             //Bottoni
@@ -143,19 +144,14 @@ namespace Gioco_generico.States
         {
             switch (e.a)
             {
-                case 5735:
-                    //ban.text = "Premi space per entrare";
-                    //ban.isVisible = true;
-                    houseDoorActive = true;
-                    break;
-                case 10:
-                    //ban.text = "P";
-                    //ban.isVisible = true;
-                    bucketsActive = true;
+                case 9775:
+                    //premi space per aprire la finestra
+                    ban.text = "Premi space per aprire la finestra";
+                    ban.isVisible = true;
                     break;
                 default:
-                    houseDoorActive = false;
-                    bucketsActive = false;
+                    space_button_action = null;
+                    ban.isVisible = false;
                     break;
             }
         }
@@ -175,18 +171,14 @@ namespace Gioco_generico.States
             spriteBatch.Begin();
 
             background.Draw();
-            ban.Draw();
-            gDebug.Draw();
             foreach (Item obj in objects)
                 obj.Draw();
             foreach (var button in _buttons)
                 button.Draw();
 
             alice.Draw();
-            
             mainChar.Draw();
 
-           
             barPlastica.Draw();
             barUmido.Draw();
             barSecco.Draw();
@@ -194,7 +186,8 @@ namespace Gioco_generico.States
             barSpeciale.Draw();
             barCarta.Draw();
 
-
+            ban.Draw();
+            gDebug.Draw();
             spriteBatch.End();
         }
 
@@ -250,10 +243,7 @@ namespace Gioco_generico.States
                 }
             }
 
-
             _currentState(gameTime);
-
-
         }
 
         public void keyboardMgnt(KeyboardState kbState, GameTime gameTime)
@@ -291,23 +281,22 @@ namespace Gioco_generico.States
 
             if (!KeyPressed.Contains(Keys.Space))
             {
-                /*if (OldKeyPressed.Contains(Keys.Space) && houseDoorActive)
+                if (OldKeyPressed.Contains(Keys.Space) && ban.isVisible)
                 {
-                    //_game.ChangeState(ConstVar.house);
+                    
+                    ban.isVisible = false;
+                    ban.isActive = false;
+                    mainChar.move = false;
+                    _game.ChangeState(ConstVar.chooseBucket);
                 }
-                else if (OldKeyPressed.Contains(Keys.Space) && bucketsActive)
-                {
-                    //ConstVar.chooseBucket.obj = mainChar.inventory;
-                    //_game.ChangeState(ConstVar.chooseBucket);
-                }*/
 
-                if (OldKeyPressed.Contains(Keys.Space))
+                /*if (OldKeyPressed.Contains(Keys.Space))
                 {
                     if (space_button_action != null)
                     {
                         space_button_action();
                     }
-                }
+                }*/
             }
             OldKeyPressed = KeyPressed;
         }

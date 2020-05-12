@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using System.Reflection;
 
 namespace Gioco_generico
 {
@@ -15,6 +16,7 @@ namespace Gioco_generico
         protected Rectangle rect;
         public bool isVisible = false;
         private float timer;
+        public bool isActive = true;
         public String text { get; set; }
         public Banner(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String texture, Vector2 initDisplayPos, String font, String text,  double scale = 1) : base (_game, _graphics, _content)
         {
@@ -23,22 +25,25 @@ namespace Gioco_generico
             this.font = _content.Load<SpriteFont>(font);
             PenColour = Color.Black;
             displayPos = initDisplayPos;
-            rect = new Rectangle((int)initDisplayPos.X, (int)initDisplayPos.Y, (int)(this.texture.Width * scale), (int)(this.texture.Height * scale));
+            
         }
 
         public void Draw()
         {
-            if (isVisible)
+            if (isVisible && isActive)
             {
                 if (!string.IsNullOrEmpty(text))
                 {
+                    rect = new Rectangle();
                     rect.Width = (int)(font.MeasureString(text).X * 2);
                     rect.Height = (int)(font.MeasureString(text).Y * 2);
+                    rect.X = (int)displayPos.X - rect.Width / 2;
+                    rect.Y = (int)displayPos.Y - rect.Height / 2;
                     var x = (rect.X + (rect.Width / 2)) - (font.MeasureString(text).X / 2);
                     var y = (rect.Y + (rect.Height / 2)) - (font.MeasureString(text).Y / 2);
+                   
                     ConstVar.sb.Draw(texture, rect, colourTex);
                     ConstVar.sb.DrawString(font, text, new Vector2(x, y), PenColour);
-                    
                 }
                 else
                 {

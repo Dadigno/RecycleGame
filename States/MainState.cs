@@ -14,7 +14,7 @@ namespace Gioco_generico.States
     {
         //Finestre di testo
         gameDebug gDebug;
-        Banner ban;
+        public Banner ban;
 
         //Personaggi 
         public Character mainChar;
@@ -96,10 +96,9 @@ namespace Gioco_generico.States
             gDebug = new gameDebug(_game, _graphics, _content);
 
             //Bottoni
-
-            var helpButton = new Button(_game, _graphics, _content, "help-btn", new Vector2(ConstVar.displayDim.X - 120, 10), "Fonts/Font", "", 0.2);
+            var helpButton = new Button(_game, _graphics, _content, "help-btn", new Vector2(ConstVar.displayDim.X - 120, 10), 0.2);
             helpButton.Click += Click_help;
-            var exitButton = new Button(_game, _graphics, _content, "exit-btn", new Vector2(ConstVar.displayDim.X - 60, 10), "Fonts/Font", "", 0.2);
+            var exitButton = new Button(_game, _graphics, _content, "exit-btn", new Vector2(ConstVar.displayDim.X - 60, 10), 0.2);
             exitButton.Click += Click_exit;
 
             _buttons = new List<Button>()
@@ -173,19 +172,18 @@ namespace Gioco_generico.States
             background.Draw();
             foreach (Item obj in objects)
                 obj.Draw();
+
             foreach (var button in _buttons)
                 button.Draw();
 
             alice.Draw();
             mainChar.Draw();
-
             barPlastica.Draw();
             barUmido.Draw();
             barSecco.Draw();
             barVetro.Draw();
             barSpeciale.Draw();
             barCarta.Draw();
-
             ban.Draw();
             gDebug.Draw();
             spriteBatch.End();
@@ -212,6 +210,8 @@ namespace Gioco_generico.States
                 specialeTarget += specialeTarget * 5;
             if (!barCarta.Update(mainChar.Inventory.Count(x => x.type == Item.Type.CARTA), cartaTarget))
                 cartaTarget += cartaTarget * 5;
+            
+            //bottoni
             foreach (var button in _buttons)
                 button.update();
 
@@ -283,20 +283,17 @@ namespace Gioco_generico.States
             {
                 if (OldKeyPressed.Contains(Keys.Space) && ban.isVisible)
                 {
-                    
                     ban.isVisible = false;
                     ban.isActive = false;
                     mainChar.move = false;
                     _game.ChangeState(ConstVar.chooseBucket);
                 }
 
-                /*if (OldKeyPressed.Contains(Keys.Space))
+                if (OldKeyPressed.Contains(Keys.Space))
                 {
-                    if (space_button_action != null)
-                    {
-                        space_button_action();
-                    }
-                }*/
+
+                    space_button_action?.Invoke();
+                }
             }
             OldKeyPressed = KeyPressed;
         }

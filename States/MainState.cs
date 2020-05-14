@@ -73,6 +73,10 @@ namespace Gioco_generico.States
         private static float TIMER = 2000;
         private float timer = TIMER;
         protected float timerAnimated = 0;
+
+        //Finestra
+        private Windows window;
+
         public MainState(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, int id) : base(_game, _graphics, _content, id)
         {
             //Carico la mappa
@@ -136,6 +140,8 @@ namespace Gioco_generico.States
             //Load effect
             coinSound = _content.Load<SoundEffect>("soundEffect/coin-dropped");
 
+            window = new Windows(_game, _graphics, _content, new Vector2(0, 0), "Finestra/finestra_daUsare(sSBP)", 1);
+
             _currentState = state1;
         }
 
@@ -194,6 +200,7 @@ namespace Gioco_generico.States
             barSpeciale.Draw();
             barCarta.Draw();
 
+            window.windowDraw();
 
             spriteBatch.End();
         }
@@ -309,6 +316,12 @@ namespace Gioco_generico.States
                     }
                 }
             }
+
+            if (KeyPressed.Contains(Keys.W)) //se premo tasto W mostro la finestra
+            {
+                window.show = !window.show;
+            }
+
             OldKeyPressed = KeyPressed;
         }
 

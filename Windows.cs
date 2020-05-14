@@ -16,17 +16,12 @@ namespace Gioco_generico
         Vector2 displayPos;
         private int indexCard;
         Rectangle rect;
-<<<<<<< HEAD
         Texture2D cardNessunRifiuto;
 
         public Windows(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, Vector2 displayPos, string texture, double scale = 1) : base(_game, _graphics, _content)
-=======
-        public Windows(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, Vector2 displayPos, string texture, double scaleX = 1, double scaleY = 1) : base(_game, _graphics, _content)
->>>>>>> 186a9a6f0e9d520b6deab0d746de30ac893a4068
         {
             this.displayPos = displayPos;   //finestra centrata
             background = _content.Load<Texture2D>(texture);
-<<<<<<< HEAD
             rect = new Rectangle((int)displayPos.X, (int)displayPos.Y, (int)(background.Width * scale), (int)(background.Height * scale));
 
             widget = new List<Item>();
@@ -34,9 +29,10 @@ namespace Gioco_generico
             indexCard = 0;
 
             //dichiarazioni bottoni frecce
-            var arrowLeft = new Button(_game, _graphics, _content, "Finestra/freccia_sinistraMax", new Vector2(ConstVar.displayDim.X - 1820, 990), 1);
+            // var arrowLeft = new Button(_game, _graphics, _content, "Finestra/freccia_sinistraMax", new Vector2(ConstVar.displayDim.X - 1820, 990), 1);
+            var arrowLeft = new Button(_game, _graphics, _content, "Finestra/freccia_sinistraMax", new Vector2((float)(rect.X + rect.Width * 0.1), (float)(rect.Y + rect.Height * 0.95)), 1);
             arrowLeft.Click += PreviousCard;
-            var arrowRight = new Button(_game, _graphics, _content, "Finestra/freccia_destraMax", new Vector2(ConstVar.displayDim.X - 1420, 990), 1);
+            var arrowRight = new Button(_game, _graphics, _content, "Finestra/freccia_destraMax", new Vector2((float)(rect.X + rect.Width * 0.25), (float)(rect.Y + rect.Height * 0.95)), 1);
             arrowRight.Click += NextCard;
 
             arrows = new List<Button>()
@@ -87,10 +83,6 @@ namespace Gioco_generico
             show = false;
 
             cardNessunRifiuto = _content.Load<Texture2D>("Finestra/scheda_nessunRifiuto");
-=======
-            rect = new Rectangle((int)displayPos.X, (int)displayPos.Y, (int)(background.Width * scaleX),(int)(background.Height * scaleY));
-            widget = new List<Object>();
->>>>>>> 186a9a6f0e9d520b6deab0d746de30ac893a4068
         }
 
         public void Draw()
@@ -98,7 +90,6 @@ namespace Gioco_generico
             if (show == true)
             {
                 ConstVar.sb.Draw(background, rect, null, Color.White, 0, new Vector2(0, 0), new SpriteEffects(), 0);
-                //widget[indexCard].DrawCard(1, 1);
                 foreach (var button1 in arrows)
                     button1.Draw();
                 foreach (var button2 in puzzle)
@@ -108,12 +99,22 @@ namespace Gioco_generico
                 {
                     ConstVar.sb.Draw(cardNessunRifiuto, new Rectangle((int)((ConstVar.displayDim.X - 1820) * 1), (int)((ConstVar.displayDim.Y - 860) * 1), cardNessunRifiuto.Width, cardNessunRifiuto.Height), null, Color.White);
                 }
+                else
+                {
+                    widget[indexCard].DrawCard(1, 1);
+                }
             }
+
+            
+            
         }
 
         public void Update(GameTime gameTime)
         {
-
+            foreach (var button in arrows)
+                button.update();
+            foreach (var button in puzzle)
+                button.update();
         }
         /*public void windowDraw()
         {
@@ -137,12 +138,14 @@ namespace Gioco_generico
 
         private void PreviousCard(object sender, EventArgs e)
         {
-            widget[indexCard - 1].DrawCard(1, 1);
+            //widget[indexCard - 1].DrawCard(1, 1);
+            indexCard--;
         }
 
         private void NextCard(object sender, EventArgs e)
         {
-            widget[indexCard + 1].DrawCard(1, 1);
+            //widget[indexCard + 1].DrawCard(1, 1);
+            indexCard++;
         }
 
         private void PressCarta(object sender, EventArgs e)

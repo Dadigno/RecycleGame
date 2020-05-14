@@ -15,23 +15,30 @@ namespace Gioco_generico.States
         private List<Button> _buttons;
         private Background background;
         bool isVisible = true;
+        Texture2D menu;
         Vector2 position;
+        Rectangle rect;
         public MenuState(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, int id) : base(_game, _graphics, _content, id)
         {
+
+            //background = new Background(_game, _graphics, _content, "maps/background/backgroundMenu");
+            menu = _content.Load<Texture2D>("windows/menu");
+            rect = new Rectangle((int)ConstVar.displayDim.X / 2 - menu.Width / 2, (int)ConstVar.displayDim.Y / 2 - menu.Height / 2, menu.Width, menu.Height);
+
             var buttonTexture = _content.Load<Texture2D>("button");
             
-            position.X = ConstVar.displayDim.X / 2 - buttonTexture.Width / 2;
-            position.Y = ConstVar.displayDim.Y / 2 - 200;
-            var newGameButton = new Button(_game, _graphics, _content, "button", new Vector2(position.X, position.Y), "Fonts/Font", "Continue");
+            position.X = rect.X + 340;
+            position.Y = rect.Y + 330;
+            var newGameButton = new Button(_game, _graphics, _content, "button", new Vector2(position.X, position.Y));
             newGameButton.Click += NewGameButton_Click;
 
-            var loadGameButton = new Button(_game, _graphics, _content, "button", new Vector2(position.X, position.Y + 50), "Fonts/Font", "Load Game");
+            var loadGameButton = new Button(_game, _graphics, _content, "button", new Vector2(position.X, position.Y + 50));
             loadGameButton.Click += LoadGameButton_Click;
 
-            var quitGameButton = new Button(_game, _graphics, _content, "button", new Vector2(position.X, position.Y + 100), "Fonts/Font", "Quit Game");
+            var quitGameButton = new Button(_game, _graphics, _content, "button", new Vector2(position.X, position.Y + 100));
             quitGameButton.Click += QuitGameButton_Click;
 
-            background = new Background(_game, _graphics, _content, "maps/background/backgroundMenu");
+            
 
             _buttons = new List<Button>()
               {
@@ -41,6 +48,7 @@ namespace Gioco_generico.States
               };
 
             
+
         }
 
 
@@ -62,8 +70,10 @@ namespace Gioco_generico.States
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
+            _game.GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
-            background.Draw();
+            //background.Draw();
+            spriteBatch.Draw(menu, rect, Color.White);
             if (isVisible)
             {
                 foreach (var button in _buttons)

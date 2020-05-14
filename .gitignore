@@ -1,3 +1,5 @@
 /Content/bin
 /Content/obj
 /Content/*.mgcb
+/bin
+/obj

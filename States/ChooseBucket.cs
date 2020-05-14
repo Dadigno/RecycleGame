@@ -39,6 +39,7 @@ namespace Gioco_generico.States
                 if (OldKeyPressed.Contains(Keys.Escape))
                 {
                     ConstVar.main.mainChar.move = true;
+                    ConstVar.main.ban.isActive = true;
                     _game.ChangeState(ConstVar.main);
                 }
             }

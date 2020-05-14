@@ -15,19 +15,30 @@ namespace Gioco_generico.States
     {
         //Interazione da tastiera
         Keys[] OldKeyPressed = { };
+
+        //Finestra
+        public Windows window;
+
         public ChooseBucket(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, int id) : base(_game, _graphics, _content, id)
         {
-
+            window = new Windows(_game, _graphics, _content, new Vector2(0, 0), "Finestra/finestra_daUsare(sSBP)", 1);
+            window.show = true;
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            
+            _game.GraphicsDevice.Clear(Color.CornflowerBlue);
+            spriteBatch.Begin();
+            window.Draw();
+            spriteBatch.End();
         }
 
         public override void Update(GameTime gameTime, KeyboardState kbState)
         {
             keyboardMgnt(kbState, gameTime);
+
+            window.Update(gameTime);
+
         }
 
         public void keyboardMgnt(KeyboardState kbState, GameTime gameTime)

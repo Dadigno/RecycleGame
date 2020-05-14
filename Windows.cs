@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace Gioco_generico
 {
@@ -18,12 +16,17 @@ namespace Gioco_generico
         Vector2 displayPos;
         private int indexCard;
         Rectangle rect;
+<<<<<<< HEAD
         Texture2D cardNessunRifiuto;
 
         public Windows(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, Vector2 displayPos, string texture, double scale = 1) : base(_game, _graphics, _content)
+=======
+        public Windows(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, Vector2 displayPos, string texture, double scaleX = 1, double scaleY = 1) : base(_game, _graphics, _content)
+>>>>>>> 186a9a6f0e9d520b6deab0d746de30ac893a4068
         {
-            this.displayPos = displayPos;
+            this.displayPos = displayPos;   //finestra centrata
             background = _content.Load<Texture2D>(texture);
+<<<<<<< HEAD
             rect = new Rectangle((int)displayPos.X, (int)displayPos.Y, (int)(background.Width * scale), (int)(background.Height * scale));
 
             widget = new List<Item>();
@@ -84,6 +87,10 @@ namespace Gioco_generico
             show = false;
 
             cardNessunRifiuto = _content.Load<Texture2D>("Finestra/scheda_nessunRifiuto");
+=======
+            rect = new Rectangle((int)displayPos.X, (int)displayPos.Y, (int)(background.Width * scaleX),(int)(background.Height * scaleY));
+            widget = new List<Object>();
+>>>>>>> 186a9a6f0e9d520b6deab0d746de30ac893a4068
         }
 
         public void Draw()

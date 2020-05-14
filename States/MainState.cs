@@ -75,8 +75,7 @@ namespace Gioco_generico.States
         private float timer = TIMER;
         protected float timerAnimated = 0;
 
-        //Finestra
-        private Windows window;
+        
 
         public MainState(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, int id) : base(_game, _graphics, _content, id)
         {
@@ -140,7 +139,7 @@ namespace Gioco_generico.States
             //Load effect
             coinSound = _content.Load<SoundEffect>("soundEffect/coin-dropped");
 
-            window = new Windows(_game, _graphics, _content, new Vector2(0, 0), "Finestra/finestra_daUsare(sSBP)", 1);
+           
 
             _currentState = state1;
         }
@@ -190,8 +189,7 @@ namespace Gioco_generico.States
             barVetro.Draw();
             barSpeciale.Draw();
             barCarta.Draw();
-
-            window.Draw();
+            ban.Draw();
 
             spriteBatch.End();
         }
@@ -282,24 +280,23 @@ namespace Gioco_generico.States
             {
                 if (OldKeyPressed.Contains(Keys.Escape))
                 {
-                    _game.Exit();
+                    _game.ChangeState(ConstVar.menu);
                 }
             }
 
             if (!KeyPressed.Contains(Keys.Space))
             {
-                if (OldKeyPressed.Contains(Keys.Space) && ban.isVisible)
+                if (OldKeyPressed.Contains(Keys.Space))
                 {
                     ban.isVisible = false;
                     ban.isActive = false;
                     mainChar.move = false;
-                    //_game.ChangeState(ConstVar.chooseBucket);
-                    window.show = true;
+                    ConstVar.chooseBucket.window.widget = ConstVar.main.mainChar.Inventory;
+                    _game.ChangeState(ConstVar.chooseBucket);
                 }
 
                 if (OldKeyPressed.Contains(Keys.Space))
                 {
-
                     space_button_action?.Invoke();                  
                 }
             }

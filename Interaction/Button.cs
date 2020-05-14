@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Gioco_generico
 {
-    public class Button : Banner
+    public class Button : Sprite
     {
         private MouseState _currentMouse;
         private MouseState _previousMouse;
@@ -13,19 +13,21 @@ namespace Gioco_generico
         private bool _isPressed;
         public bool _isActive { get; set; }
         public EventHandler Click;
-        public Button(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String texture, Vector2 initDisplayPos, String font, String text, double scale = 1, bool state = true) : base(_game, _graphics, _content, texture, initDisplayPos, font, text, scale)
+        public Button(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String texture, Vector2 initDisplayPos, double scale = 1, bool state = true) : base(_game, _graphics, _content, texture, new Vector2(0, 0), initDisplayPos, scale)
         {
             _isActive = state;
         }
 
         public new void Draw()
         {
-            colourTex = Color.White;
+            /*colourTex = Color.White;
             if (_isPressed || !_isActive)
                 colourTex = Color.Gray;
-
+            
             isVisible = true;
-            base.Draw();
+            */
+
+            Draw(true);
         }
 
         public void update()

@@ -16,7 +16,7 @@ namespace Gioco_generico
         protected SpriteFont font;
         protected Color PenColour = Color.Black;
         protected Color colourTex = Color.White;
-        private float SCROLL_VEL = 30;
+        private float SCROLL_VEL = 100;
         private float BUBBLE_DELAY = 2000;
         private float scrollingTime;
         private float bubbleTime;
@@ -84,13 +84,9 @@ namespace Gioco_generico
                     if (l.Count() > 0)
                     {
                         isScrolling = true;
-                        if (l[0] != ' ' && instance.State != SoundState.Playing)
+                        if (instance.State != SoundState.Playing)
                         {
                             instance.Play();
-                        }
-                        else
-                        {
-                            instance.Stop();
                         }
                         temp += l[0];
                         l.RemoveAt(0);
@@ -98,6 +94,7 @@ namespace Gioco_generico
                     else
                     {
                         isScrolling = false;
+                        instance.Stop();
                     }
                 }
                 if (show)

@@ -31,9 +31,9 @@ namespace Gioco_generico
             indexCard = 0;
 
             //dichiarazioni bottoni frecce
-            var arrowLeft = new Button(_game, _graphics, _content, "Finestra/freccia_sinistraMax", new Vector2(ConstVar.displayDim.X - 1820, 990), "Fonts/Font", "", 1);
+            var arrowLeft = new Button(_game, _graphics, _content, "Finestra/freccia_sinistraMax", new Vector2(ConstVar.displayDim.X - 1820, 990), 1);
             arrowLeft.Click += PreviousCard;
-            var arrowRight = new Button(_game, _graphics, _content, "Finestra/freccia_destraMax", new Vector2(ConstVar.displayDim.X - 1420, 990), "Fonts/Font", "", 1);
+            var arrowRight = new Button(_game, _graphics, _content, "Finestra/freccia_destraMax", new Vector2(ConstVar.displayDim.X - 1420, 990), 1);
             arrowRight.Click += NextCard;
 
             arrows = new List<Button>()
@@ -43,27 +43,27 @@ namespace Gioco_generico
               };
 
             //dichiarazioni bottoni puzzle
-            var puzzleCarta = new Button(_game, _graphics, _content, "Finestra/puzzleCarta", new Vector2(ConstVar.displayDim.X - 1190 - 100, ConstVar.displayDim.Y - 760 - 100), "Fonts/Font", "", 1);
+            var puzzleCarta = new Button(_game, _graphics, _content, "Finestra/puzzleCarta", new Vector2(ConstVar.displayDim.X - 1190 - 100, ConstVar.displayDim.Y - 760 - 100), 1);
             puzzleCarta.Click += PressCarta;
-            var puzzleVetro = new Button(_game, _graphics, _content, "Finestra/puzzleVetro", new Vector2(ConstVar.displayDim.X - 890 - 100, ConstVar.displayDim.Y - 760 - 100), "Fonts/Font", "", 1);
+            var puzzleVetro = new Button(_game, _graphics, _content, "Finestra/puzzleVetro", new Vector2(ConstVar.displayDim.X - 890 - 100, ConstVar.displayDim.Y - 760 - 100), 1);
             puzzleVetro.Click += PressVetro;
-            var puzzleFarmaci = new Button(_game, _graphics, _content, "Finestra/puzzleFarmaci", new Vector2(ConstVar.displayDim.X - 595 - 100, ConstVar.displayDim.Y - 760 - 100), "Fonts/Font", "", 1);
+            var puzzleFarmaci = new Button(_game, _graphics, _content, "Finestra/puzzleFarmaci", new Vector2(ConstVar.displayDim.X - 595 - 100, ConstVar.displayDim.Y - 760 - 100), 1);
             puzzleFarmaci.Click += PressFarmaci;
-            var puzzleAbiti = new Button(_game, _graphics, _content, "Finestra/puzzleAbiti", new Vector2(ConstVar.displayDim.X - 300 - 100, ConstVar.displayDim.Y - 760 - 100), "Fonts/Font", "", 1);
+            var puzzleAbiti = new Button(_game, _graphics, _content, "Finestra/puzzleAbiti", new Vector2(ConstVar.displayDim.X - 300 - 100, ConstVar.displayDim.Y - 760 - 100), 1);
             puzzleAbiti.Click += PressAbiti;
-            var puzzleSecco = new Button(_game, _graphics, _content, "Finestra/puzzleSecco", new Vector2(ConstVar.displayDim.X - 1190 - 100, ConstVar.displayDim.Y - 505 - 100), "Fonts/Font", "", 1);
+            var puzzleSecco = new Button(_game, _graphics, _content, "Finestra/puzzleSecco", new Vector2(ConstVar.displayDim.X - 1190 - 100, ConstVar.displayDim.Y - 505 - 100), 1);
             puzzleSecco.Click += PressSecco;
-            var puzzleOrganico = new Button(_game, _graphics, _content, "Finestra/puzzleOrganico", new Vector2(ConstVar.displayDim.X - 890 - 100, ConstVar.displayDim.Y - 505 - 100), "Fonts/Font", "", 1);
+            var puzzleOrganico = new Button(_game, _graphics, _content, "Finestra/puzzleOrganico", new Vector2(ConstVar.displayDim.X - 890 - 100, ConstVar.displayDim.Y - 505 - 100), 1);
             puzzleOrganico.Click += PressOrganico;
-            var puzzleStradali = new Button(_game, _graphics, _content, "Finestra/puzzleStradali", new Vector2(ConstVar.displayDim.X - 595 - 100, ConstVar.displayDim.Y - 505 - 100), "Fonts/Font", "", 1);
+            var puzzleStradali = new Button(_game, _graphics, _content, "Finestra/puzzleStradali", new Vector2(ConstVar.displayDim.X - 595 - 100, ConstVar.displayDim.Y - 505 - 100), 1);
             puzzleStradali.Click += PressStradali;
-            var puzzleBatterie = new Button(_game, _graphics, _content, "Finestra/puzzleBatterie", new Vector2(ConstVar.displayDim.X - 300 - 100, ConstVar.displayDim.Y - 505 - 100), "Fonts/Font", "", 1);
+            var puzzleBatterie = new Button(_game, _graphics, _content, "Finestra/puzzleBatterie", new Vector2(ConstVar.displayDim.X - 300 - 100, ConstVar.displayDim.Y - 505 - 100), 1);
             puzzleBatterie.Click += PressBatterie;
-            var puzzlePlastMetal = new Button(_game, _graphics, _content, "Finestra/puzzlePlastMetal", new Vector2(ConstVar.displayDim.X - 1190 - 100, ConstVar.displayDim.Y - 255 - 100), "Fonts/Font", "", 1);
+            var puzzlePlastMetal = new Button(_game, _graphics, _content, "Finestra/puzzlePlastMetal", new Vector2(ConstVar.displayDim.X - 1190 - 100, ConstVar.displayDim.Y - 255 - 100), 1);
             puzzlePlastMetal.Click += PressPlastMetal;
-            var puzzleToner = new Button(_game, _graphics, _content, "Finestra/puzzleToner", new Vector2(ConstVar.displayDim.X - 595 - 100, ConstVar.displayDim.Y - 255 - 100), "Fonts/Font", "", 1);
+            var puzzleToner = new Button(_game, _graphics, _content, "Finestra/puzzleToner", new Vector2(ConstVar.displayDim.X - 595 - 100, ConstVar.displayDim.Y - 255 - 100), 1);
             puzzleToner.Click += PressToner;
-            var puzzleCentroRac = new Button(_game, _graphics, _content, "Finestra/puzzleCentroRac", new Vector2(ConstVar.displayDim.X - 300 - 100, ConstVar.displayDim.Y - 255 - 100), "Fonts/Font", "", 1);
+            var puzzleCentroRac = new Button(_game, _graphics, _content, "Finestra/puzzleCentroRac", new Vector2(ConstVar.displayDim.X - 300 - 100, ConstVar.displayDim.Y - 255 - 100), 1);
             puzzleCentroRac.Click += PressCentroRac;
 
             puzzle = new List<Button>()
@@ -88,14 +88,27 @@ namespace Gioco_generico
 
         public void Draw()
         {
+            if (show == true)
+            {
+                ConstVar.sb.Draw(background, rect, null, Color.White, 0, new Vector2(0, 0), new SpriteEffects(), 0);
+                //widget[indexCard].DrawCard(1, 1);
+                foreach (var button1 in arrows)
+                    button1.Draw();
+                foreach (var button2 in puzzle)
+                    button2.Draw();
 
+                if (widget.Count == 0)
+                {
+                    ConstVar.sb.Draw(cardNessunRifiuto, new Rectangle((int)((ConstVar.displayDim.X - 1820) * 1), (int)((ConstVar.displayDim.Y - 860) * 1), cardNessunRifiuto.Width, cardNessunRifiuto.Height), null, Color.White);
+                }
+            }
         }
 
         public void Update(GameTime gameTime)
         {
 
         }
-        public void windowDraw()
+        /*public void windowDraw()
         {
             if (show == true)
             {
@@ -113,7 +126,7 @@ namespace Gioco_generico
 
 
             }
-        }
+        }*/
 
         private void PreviousCard(object sender, EventArgs e)
         {

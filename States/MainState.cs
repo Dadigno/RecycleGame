@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
+using System.Net;
 
 namespace Gioco_generico.States
 {
@@ -13,10 +14,10 @@ namespace Gioco_generico.States
     {
         //Finestre di testo
         gameDebug gDebug;
-        Banner ban;
+        public Banner ban;
 
         //Personaggi 
-        Character mainChar;
+        public Character mainChar;
         Character alice;
         //AiMngnt aiAlice;
         //List<AiMngnt> AiStorm;
@@ -40,10 +41,10 @@ namespace Gioco_generico.States
         Bar barSpeciale;
         Bar barCarta;
 
-
         Random rnd = new Random();
-        bool houseDoorActive = false;
-        bool bucketsActive = false;
+
+        //Interazioni giocatore-mappa
+        bool windowsActive = false;
 
         //Game variables
 
@@ -95,14 +96,13 @@ namespace Gioco_generico.States
 
 
             //Inizializzo le finestre di testo
-            ban = new Banner(_game, _graphics, _content, "button", new Vector2(ConstVar.displayDim.X - 300, ConstVar.displayDim.Y - 60),"Fonts/Font", "");
+            ban = new Banner(_game, _graphics, _content, "button", new Vector2(ConstVar.displayDim.X /2, ConstVar.displayDim.Y /2),"Fonts/Font", "");
             gDebug = new gameDebug(_game, _graphics, _content);
 
             //Bottoni
-
-            var helpButton = new Button(_game, _graphics, _content, "help-btn", new Vector2(ConstVar.displayDim.X - 120, 10), "Fonts/Font", "", 0.2);
+            var helpButton = new Button(_game, _graphics, _content, "help-btn", new Vector2(ConstVar.displayDim.X - 120, 10), 0.2);
             helpButton.Click += Click_help;
-            var exitButton = new Button(_game, _graphics, _content, "exit-btn", new Vector2(ConstVar.displayDim.X - 60, 10), "Fonts/Font", "", 0.2);
+            var exitButton = new Button(_game, _graphics, _content, "exit-btn", new Vector2(ConstVar.displayDim.X - 60, 10), 0.2);
             exitButton.Click += Click_exit;
 
             _buttons = new List<Button>()
@@ -149,19 +149,14 @@ namespace Gioco_generico.States
         {
             switch (e.a)
             {
-                case 5735:
-                    //ban.text = "Premi space per entrare";
-                    //ban.isVisible = true;
-                    houseDoorActive = true;
-                    break;
-                case 10:
-                    //ban.text = "P";
-                    //ban.isVisible = true;
-                    bucketsActive = true;
+                case 9775:
+                    //premi space per aprire la finestra
+                    ban.text = "Premi space per aprire la finestra";
+                    ban.isVisible = true;
                     break;
                 default:
-                    houseDoorActive = false;
-                    bucketsActive = false;
+                    space_button_action = null;
+                    ban.isVisible = false;
                     break;
             }
         }
@@ -181,18 +176,14 @@ namespace Gioco_generico.States
             spriteBatch.Begin();
 
             background.Draw();
-            ban.Draw();
-            gDebug.Draw();
             foreach (Item obj in objects)
                 obj.Draw();
+
             foreach (var button in _buttons)
                 button.Draw();
 
             alice.Draw();
-            
             mainChar.Draw();
-
-           
             barPlastica.Draw();
             barUmido.Draw();
             barSecco.Draw();
@@ -200,7 +191,7 @@ namespace Gioco_generico.States
             barSpeciale.Draw();
             barCarta.Draw();
 
-            window.windowDraw();
+            window.Draw();
 
             spriteBatch.End();
         }
@@ -226,6 +217,8 @@ namespace Gioco_generico.States
                 specialeTarget += specialeTarget * 5;
             if (!barCarta.Update(mainChar.Inventory.Count(x => x.type == Item.Type.CARTA), cartaTarget))
                 cartaTarget += cartaTarget * 5;
+            
+            //bottoni
             foreach (var button in _buttons)
                 button.update();
 
@@ -257,10 +250,7 @@ namespace Gioco_generico.States
                 }
             }
 
-
             _currentState(gameTime);
-
-
         }
 
         public void keyboardMgnt(KeyboardState kbState, GameTime gameTime)
@@ -298,28 +288,20 @@ namespace Gioco_generico.States
 
             if (!KeyPressed.Contains(Keys.Space))
             {
-                /*if (OldKeyPressed.Contains(Keys.Space) && houseDoorActive)
+                if (OldKeyPressed.Contains(Keys.Space) && ban.isVisible)
                 {
-                    //_game.ChangeState(ConstVar.house);
-                }
-                else if (OldKeyPressed.Contains(Keys.Space) && bucketsActive)
-                {
-                    //ConstVar.chooseBucket.obj = mainChar.inventory;
+                    ban.isVisible = false;
+                    ban.isActive = false;
+                    mainChar.move = false;
                     //_game.ChangeState(ConstVar.chooseBucket);
-                }*/
+                    window.show = true;
+                }
 
                 if (OldKeyPressed.Contains(Keys.Space))
                 {
-                    if (space_button_action != null)
-                    {
-                        space_button_action();
-                    }
-                }
-            }
 
-            if (KeyPressed.Contains(Keys.W)) //se premo tasto W mostro la finestra
-            {
-                window.show = !window.show;
+                    space_button_action?.Invoke();                  
+                }
             }
 
             OldKeyPressed = KeyPressed;

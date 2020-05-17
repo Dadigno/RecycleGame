@@ -16,7 +16,7 @@ namespace Gioco_generico
         protected Vector2 displayPos;
         protected String nameTex;
         public double scale;
-
+        protected Color colourTex = Color.White;
         public Sprite(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, Vector2 initGamePos, Vector2 initDisplayPos, double scale = 1) : base(_game, _graphics, _content)
         {
             gamePos = initGamePos;
@@ -58,7 +58,7 @@ namespace Gioco_generico
         public void Draw(bool show)
         {
             if (show)
-                ConstVar.sb.Draw(texture, rect, null, Color.White, rotation, origin, new SpriteEffects(), 0);
+                ConstVar.sb.Draw(texture, rect, null, colourTex, rotation, origin, new SpriteEffects(), 0);
         }
 
         public Rectangle getRect()

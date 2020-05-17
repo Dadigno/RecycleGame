@@ -99,9 +99,9 @@ namespace Gioco_generico.States
             gDebug = new gameDebug(_game, _graphics, _content);
 
             //Bottoni
-            var helpButton = new Button(_game, _graphics, _content, "help-btn", new Vector2(ConstVar.displayDim.X - 120, 10), 0.2);
+            var helpButton = new Button(_game, _graphics, _content, "help-btn", new Vector2(ConstVar.displayDim.X * 0.95f, ConstVar.displayDim.Y * 0.05f), 0.2);
             helpButton.Click += Click_help;
-            var exitButton = new Button(_game, _graphics, _content, "exit-btn", new Vector2(ConstVar.displayDim.X - 60, 10), 0.2);
+            var exitButton = new Button(_game, _graphics, _content, "exit-btn", new Vector2(ConstVar.displayDim.X * 0.98f, ConstVar.displayDim.Y * 0.05f), 0.2);
             exitButton.Click += Click_exit;
 
             _buttons = new List<Button>()

@@ -29,21 +29,19 @@ namespace Gioco_generico.States
             
             position.X = rect.X + 340;
             position.Y = rect.Y + 330;
-            var newGameButton = new Button(_game, _graphics, _content, "button", new Vector2(position.X, position.Y));
-            newGameButton.Click += NewGameButton_Click;
+            var newGameButton = new Button(_game, _graphics, _content, "windows/play_button", new Vector2(position.X, position.Y));
+            newGameButton.Click += PlayGameButton_Click;
 
-            var loadGameButton = new Button(_game, _graphics, _content, "button", new Vector2(position.X, position.Y + 50));
-            loadGameButton.Click += LoadGameButton_Click;
+            //var loadGameButton = new Button(_game, _graphics, _content, "", new Vector2(position.X, position.Y + 50));
+            //loadGameButton.Click += InfoGameButton_Click;
 
-            var quitGameButton = new Button(_game, _graphics, _content, "button", new Vector2(position.X, position.Y + 100));
+            var quitGameButton = new Button(_game, _graphics, _content, "windows/exit_button", new Vector2(position.X, position.Y + 100));
             quitGameButton.Click += QuitGameButton_Click;
-
-            
 
             _buttons = new List<Button>()
               {
                 newGameButton,
-                loadGameButton,
+                //loadGameButton,
                 quitGameButton,
               };
 
@@ -52,12 +50,12 @@ namespace Gioco_generico.States
         }
 
 
-        private void LoadGameButton_Click(object sender, EventArgs e)
+        private void InfoGameButton_Click(object sender, EventArgs e)
         {
             
         }
 
-        private void NewGameButton_Click(object sender, EventArgs e)
+        private void PlayGameButton_Click(object sender, EventArgs e)
         {
             _game.ChangeState(ConstVar.main);
         }
@@ -70,9 +68,8 @@ namespace Gioco_generico.States
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            _game.GraphicsDevice.Clear(Color.CornflowerBlue);
+            _game.GraphicsDevice.Clear(Color.Green);
             spriteBatch.Begin();
-            //background.Draw();
             spriteBatch.Draw(menu, rect, Color.White);
             if (isVisible)
             {

@@ -21,9 +21,11 @@ namespace Gioco_generico
         protected Rectangle rectInfill;
         protected Rectangle rectAvatar;
         protected Vector2 displayPos;
-        private double scale = 0.2;
+        double scale = 0.2;
         //private double avatarScale = 0.2;
-        public Bar(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, String titlebar, Vector2 displayPos) : base(_game, _graphics, _content)
+
+
+        public Bar(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, String titlebar, Vector2 displayPos, int target, Item.Type type) : base(_game, _graphics, _content)
         {
             this.displayPos = displayPos;
             infillTex = _content.Load<Texture2D>("bars/infill");
@@ -38,14 +40,20 @@ namespace Gioco_generico
             rectInfill = new Rectangle(rectBar.X + (int)(0.03 * barWidth), rectBar.Y + (int)(0.12 * barHeight), (int)(infillWidth), (int)(infillHeight));
             counter = new TextBox(_game, _graphics, _content, new Vector2(0, 0), new Vector2(rectInfill.X + rectInfill.Width / 2, rectInfill.Y), _content.Load<SpriteFont>("Fonts/barFont"), "0", Color.White);
             title = new TextBox(_game, _graphics, _content, new Vector2(0, 0), new Vector2(rectBar.X + (int)(rectBar.Width * 0.05), rectInfill.Y), _content.Load<SpriteFont>("Fonts/barFont"), titlebar, Color.White);
-            
-            
+            Target = target;
+            Type = type;
             //avatarTex = _content.Load<Texture2D>("oggetti/plastic-bottle");
             //double avatarHeight = (int)(avatarTex.Height * ((rectBar.Width * avatarScale) / avatarTex.Width));
             //rectAvatar = new Rectangle(rectBar.X, rectBar.Y - (int)avatarHeight / 2 + rectBar.Height / 2 , (int)(rectBar.Width * avatarScale), (int)avatarHeight);
         }
 
         public double Value   // property
+        { get; set; }
+
+        public double Target   // property
+        { get; set; }
+
+        public Item.Type Type   // property
         { get; set; }
 
         public void Draw()
@@ -56,13 +64,12 @@ namespace Gioco_generico
             title.Draw();
             //ConstVar.sb.Draw(avatarTex, rectAvatar, Color.White);
         }
-
-        public bool Update(int v, int target)
+        public bool Update(int v)
         {
-            if (v < target)
+            if (v < Target)
             {
-                counter.update(v.ToString() + " / " + target.ToString());
-                Value = (double)v / (double)target;
+                counter.update(v.ToString() + " / " + Target.ToString());
+                Value = v / Target;
                 return true;
             }
             return false;

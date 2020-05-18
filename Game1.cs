@@ -57,8 +57,8 @@ namespace Gioco_generico
             ConstVar.menu = new MenuState(this, graphics, Content, 0);
             ConstVar.main = new MainState(this, graphics, Content, 1);
             //ConstVar.house = new InsideState(this, graphics, Content, 2);
-            ConstVar.chooseBucket = new ChooseBucket(this, graphics, Content, 3);
-            _currentState = ConstVar.main;
+            ConstVar.chooseBucket = new ChooseBucket(this, graphics, Content, 2);
+            _currentState = ConstVar.menu;
         }
 
      

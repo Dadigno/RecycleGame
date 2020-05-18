@@ -34,26 +34,11 @@ namespace Gioco_generico.States
         private List<Button> _buttons;
 
         //Bar
-        Bar barPlastica;
-        Bar barUmido;
-        Bar barSecco;
-        Bar barVetro;
-        Bar barSpeciale;
-        Bar barCarta;
+        private List<Bar> _bars;
+
 
         Random rnd = new Random();
 
-        //Interazioni giocatore-mappa
-        bool windowsActive = false;
-
-        //Game variables
-
-        private int plasticaTarget = 10;
-        private int umidoTarget = 10;
-        private int vetroTarget = 10;
-        private int seccoTarget = 10;
-        private int cartaTarget = 10;
-        private int specialeTarget = 10;
 
         //Sound
         //Song song;
@@ -110,14 +95,23 @@ namespace Gioco_generico.States
                 exitButton
               };
 
-            //Bar
-            barPlastica = new Bar(_game, _graphics, _content, "bars/plasticBar", "Plastica", new Vector2(10,0));
-            barCarta = new Bar(_game, _graphics, _content, "bars/plasticBar", "Carta", new Vector2(10, 50));
-            barVetro = new Bar(_game, _graphics, _content, "bars/plasticBar", "Vetro", new Vector2(10, 100));
-            barSecco = new Bar(_game, _graphics, _content, "bars/plasticBar", "Secco", new Vector2(10, 150));
-            barUmido = new Bar(_game, _graphics, _content, "bars/plasticBar", "Umido", new Vector2(10, 200));
-            barSpeciale = new Bar(_game, _graphics, _content, "bars/plasticBar", "Speciale", new Vector2(10, 250));
+            //Bars
+            var barPlastica = new Bar(_game, _graphics, _content, "bars/plasticBar", "Plastica", new Vector2(10,0), 10, Item.Type.PLASTICA);
+            var barCarta = new Bar(_game, _graphics, _content, "bars/plasticBar", "Carta", new Vector2(10, 50), 10, Item.Type.CARTA);
+            var barVetro = new Bar(_game, _graphics, _content, "bars/plasticBar", "Vetro", new Vector2(10, 100), 10, Item.Type.VETRO);
+            var barSecco = new Bar(_game, _graphics, _content, "bars/plasticBar", "Secco", new Vector2(10, 150), 10, Item.Type.SECCO);
+            var barUmido = new Bar(_game, _graphics, _content, "bars/plasticBar", "Umido", new Vector2(10, 200), 10, Item.Type.UMIDO);
+            var barSpeciale = new Bar(_game, _graphics, _content, "bars/plasticBar", "Speciale", new Vector2(10, 250), 10, Item.Type.SPECIALE);
 
+            _bars = new List<Bar>()
+              {
+                barPlastica,
+                barCarta,
+                barVetro,
+                barSecco,
+                barUmido,
+                barSpeciale
+              };
 
             //Objects 
             allObjects = new List<Item>();
@@ -181,14 +175,11 @@ namespace Gioco_generico.States
             foreach (var button in _buttons)
                 button.Draw();
 
+            foreach (var bar in _bars)
+                bar.Draw();
+
             alice.Draw();
             mainChar.Draw();
-            barPlastica.Draw();
-            barUmido.Draw();
-            barSecco.Draw();
-            barVetro.Draw();
-            barSpeciale.Draw();
-            barCarta.Draw();
             ban.Draw();
 
             spriteBatch.End();
@@ -203,22 +194,13 @@ namespace Gioco_generico.States
             mainChar.update(gameTime, background);
             alice.update(gameTime, background);
 
-            if (!barPlastica.Update(mainChar.Inventory.Count(x => x.type == Item.Type.PLASTICA), plasticaTarget))
-                plasticaTarget += plasticaTarget * 5;
-            if (!barUmido.Update(mainChar.Inventory.Count(x => x.type == Item.Type.UMIDO), umidoTarget))
-                umidoTarget += umidoTarget * 5;
-            if (!barSecco.Update(mainChar.Inventory.Count(x => x.type == Item.Type.SECCO), seccoTarget))
-                seccoTarget += seccoTarget * 5;
-            if (!barVetro.Update(mainChar.Inventory.Count(x => x.type == Item.Type.VETRO), vetroTarget))
-                vetroTarget += vetroTarget * 5;
-            if (!barSpeciale.Update(mainChar.Inventory.Count(x => x.type == Item.Type.SPECIALE), specialeTarget))
-                specialeTarget += specialeTarget * 5;
-            if (!barCarta.Update(mainChar.Inventory.Count(x => x.type == Item.Type.CARTA), cartaTarget))
-                cartaTarget += cartaTarget * 5;
-            
-            //bottoni
+            //Bottoni
             foreach (var button in _buttons)
                 button.update();
+
+            //Bars
+            foreach (var bar in _bars)
+                bar.Update(mainChar.Inventory.Count(x => x.type == bar.Type));
 
             // Spawn spazzatura
             float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;

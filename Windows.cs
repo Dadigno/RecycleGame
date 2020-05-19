@@ -42,27 +42,27 @@ namespace Gioco_generico
               };
 
             //dichiarazioni bottoni puzzle
-            var puzzleCarta = new Button(_game, _graphics, _content, "Finestra/puzzleCarta", new Vector2(ConstVar.displayDim.X - 1190 - 100, ConstVar.displayDim.Y - 760 - 100), 1);
+            var puzzleCarta = new Button(_game, _graphics, _content, "Finestra/puzzleCarta", new Vector2((float)(ConstVar.displayDim.X * 0.40625), (float)(ConstVar.displayDim.Y * 0.321759)), 1);
             puzzleCarta.Click += PressCarta;
-            var puzzleVetro = new Button(_game, _graphics, _content, "Finestra/puzzleVetro", new Vector2(ConstVar.displayDim.X - 890 - 100, ConstVar.displayDim.Y - 760 - 100), 1);
+            var puzzleVetro = new Button(_game, _graphics, _content, "Finestra/puzzleVetro", new Vector2((float)(ConstVar.displayDim.X * 0.561198), (float)(ConstVar.displayDim.Y * 0.321759)), 1);
             puzzleVetro.Click += PressVetro;
-            var puzzleFarmaci = new Button(_game, _graphics, _content, "Finestra/puzzleFarmaci", new Vector2(ConstVar.displayDim.X - 595 - 100, ConstVar.displayDim.Y - 760 - 100), 1);
+            var puzzleFarmaci = new Button(_game, _graphics, _content, "Finestra/puzzleFarmaci", new Vector2((float)(ConstVar.displayDim.X * 0.71484), (float)(ConstVar.displayDim.Y * 0.321759)), 1);
             puzzleFarmaci.Click += PressFarmaci;
-            var puzzleAbiti = new Button(_game, _graphics, _content, "Finestra/puzzleAbiti", new Vector2(ConstVar.displayDim.X - 300 - 100, ConstVar.displayDim.Y - 760 - 100), 1);
+            var puzzleAbiti = new Button(_game, _graphics, _content, "Finestra/puzzleAbiti", new Vector2((float)(ConstVar.displayDim.X * 0.869792), (float)(ConstVar.displayDim.Y * 0.321759)), 1);
             puzzleAbiti.Click += PressAbiti;
-            var puzzleSecco = new Button(_game, _graphics, _content, "Finestra/puzzleSecco", new Vector2(ConstVar.displayDim.X - 1190 - 100, ConstVar.displayDim.Y - 505 - 100), 1);
+            var puzzleSecco = new Button(_game, _graphics, _content, "Finestra/puzzleSecco", new Vector2((float)(ConstVar.displayDim.X * 0.40625), (float)(ConstVar.displayDim.Y * 0.555556)), 1);
             puzzleSecco.Click += PressSecco;
-            var puzzleOrganico = new Button(_game, _graphics, _content, "Finestra/puzzleOrganico", new Vector2(ConstVar.displayDim.X - 890 - 100, ConstVar.displayDim.Y - 505 - 100), 1);
+            var puzzleOrganico = new Button(_game, _graphics, _content, "Finestra/puzzleOrganico", new Vector2((float)(ConstVar.displayDim.X * 0.561198), (float)(ConstVar.displayDim.Y * 0.555556)), 1);
             puzzleOrganico.Click += PressOrganico;
-            var puzzleStradali = new Button(_game, _graphics, _content, "Finestra/puzzleStradali", new Vector2(ConstVar.displayDim.X - 595 - 100, ConstVar.displayDim.Y - 505 - 100), 1);
+            var puzzleStradali = new Button(_game, _graphics, _content, "Finestra/puzzleStradali", new Vector2((float)(ConstVar.displayDim.X * 0.71484), (float)(ConstVar.displayDim.Y * 0.555556)), 1);
             puzzleStradali.Click += PressStradali;
-            var puzzleBatterie = new Button(_game, _graphics, _content, "Finestra/puzzleBatterie", new Vector2(ConstVar.displayDim.X - 300 - 100, ConstVar.displayDim.Y - 505 - 100), 1);
+            var puzzleBatterie = new Button(_game, _graphics, _content, "Finestra/puzzleBatterie", new Vector2((float)(ConstVar.displayDim.X * 0.869792), (float)(ConstVar.displayDim.Y * 0.555556)), 1);
             puzzleBatterie.Click += PressBatterie;
-            var puzzlePlastMetal = new Button(_game, _graphics, _content, "Finestra/puzzlePlastMetal", new Vector2(ConstVar.displayDim.X - 1190 - 100, ConstVar.displayDim.Y - 255 - 100), 1);
+            var puzzlePlastMetal = new Button(_game, _graphics, _content, "Finestra/puzzlePlastMetal", new Vector2((float)(ConstVar.displayDim.X * 0.483073), (float)(ConstVar.displayDim.Y * 0.789352)), 1);
             puzzlePlastMetal.Click += PressPlastMetal;
-            var puzzleToner = new Button(_game, _graphics, _content, "Finestra/puzzleToner", new Vector2(ConstVar.displayDim.X - 595 - 100, ConstVar.displayDim.Y - 255 - 100), 1);
+            var puzzleToner = new Button(_game, _graphics, _content, "Finestra/puzzleToner", new Vector2((float)(ConstVar.displayDim.X * 0.71484), (float)(ConstVar.displayDim.Y * 0.789352)), 1);
             puzzleToner.Click += PressToner;
-            var puzzleCentroRac = new Button(_game, _graphics, _content, "Finestra/puzzleCentroRac", new Vector2(ConstVar.displayDim.X - 300 - 100, ConstVar.displayDim.Y - 255 - 100), 1);
+            var puzzleCentroRac = new Button(_game, _graphics, _content, "Finestra/puzzleCentroRac", new Vector2((float)(ConstVar.displayDim.X * 0.869792), (float)(ConstVar.displayDim.Y * 0.789352)), 1);
             puzzleCentroRac.Click += PressCentroRac;
 
             puzzle = new List<Button>()

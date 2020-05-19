@@ -12,8 +12,9 @@ namespace Gioco_generico
         private MouseState _previousMouse;
         
         private bool _isPressed;
-        public bool _isActive { get; set; }
+        //public bool _isActive { get; set; }
         public EventHandler Click;
+        public bool Enable { get; set; }
 
         Texture2D texture;
         Rectangle rect;
@@ -31,14 +32,14 @@ namespace Gioco_generico
                 rect = new Rectangle((int)initDisplayPos.X, (int)initDisplayPos.Y, 1, 1);
             }
             origin = new Vector2(0, 0);
-            _isActive = state;
+            Enable = state;
 
         }
 
         public new void Draw()
         {
             colourTex = Color.White;
-            if (_isPressed || !_isActive)
+            if (_isPressed || !Enable)
                 colourTex = Color.Gray;
             ConstVar.sb.Draw(texture, rect, null, colourTex, 0, origin, new SpriteEffects(), 0);
         }
@@ -48,7 +49,6 @@ namespace Gioco_generico
             _previousMouse = _currentMouse;
             _currentMouse = Mouse.GetState();
             var mouseRectangle = new Rectangle(_currentMouse.X, _currentMouse.Y, 1, 1);
-
             if (mouseRectangle.Intersects(rect) && _currentMouse.LeftButton == ButtonState.Pressed)
             {
                 _isPressed = true;
@@ -61,7 +61,7 @@ namespace Gioco_generico
 
             if (mouseRectangle.Intersects(rect) && _currentMouse.LeftButton == ButtonState.Released && _previousMouse.LeftButton == ButtonState.Pressed)
             {
-                if (_isActive)
+                if (Enable)
                     Click?.Invoke(this, new EventArgs());
             }
         }

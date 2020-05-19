@@ -60,7 +60,7 @@ namespace Gioco_generico.States
         private float timer = TIMER;
         protected float timerAnimated = 0;
 
-        
+        Narrator narrator;
 
         public MainState(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, int id) : base(_game, _graphics, _content, id)
         {
@@ -76,7 +76,6 @@ namespace Gioco_generico.States
             alice = new Character(_game, _graphics, _content, "character/alice", new Vector2(ConstVar.animatedSpriteWidth / 2, ConstVar.animatedSpriteHeigth), new Vector2(0, 0), ConstVar.animatedCols, ConstVar.animatedFrame, ConstVar.animatedSpriteWidth, ConstVar.animatedSpriteHeigth);
             alice.lockDisplay = false;
             alice.setTilePos(47, 22, background);
-            //aiBob = new AiMngnt(bob);
 
 
             //Inizializzo le finestre di testo
@@ -133,7 +132,9 @@ namespace Gioco_generico.States
             //Load effect
             coinSound = _content.Load<SoundEffect>("soundEffect/coin-dropped");
 
-           
+            //Narrator
+            narrator = new Narrator(_game, _graphics, _content, "character/narrator", new Vector2(0, 0), new Vector2(ConstVar.displayDim.X * 0.08f, ConstVar.displayDim.Y * 0.85f));
+        
 
             _currentState = state1;
         }
@@ -181,6 +182,9 @@ namespace Gioco_generico.States
             alice.Draw();
             mainChar.Draw();
             ban.Draw();
+
+            //Narrator
+            narrator.Draw();
 
             spriteBatch.End();
         }
@@ -230,6 +234,10 @@ namespace Gioco_generico.States
                 }
             }
 
+
+            //Narratore
+            narrator.Update(gameTime);
+
             _currentState(gameTime);
         }
 
@@ -268,7 +276,7 @@ namespace Gioco_generico.States
 
             if (!KeyPressed.Contains(Keys.Space))
             {
-                if (OldKeyPressed.Contains(Keys.Space))
+                if (OldKeyPressed.Contains(Keys.Space) && ban.isVisible)
                 {
                     ban.isVisible = false;
                     ban.isActive = false;

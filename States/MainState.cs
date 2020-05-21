@@ -134,7 +134,10 @@ namespace Gioco_generico.States
 
             //Narrator
             narrator = new Narrator(_game, _graphics, _content, "character/narrator", new Vector2(0, 0), new Vector2(ConstVar.displayDim.X * 0.08f, ConstVar.displayDim.Y * 0.85f));
-        
+
+            mainChar.collect(allObjects[2]);
+            mainChar.collect(allObjects[3]);
+            mainChar.collect(allObjects[3]);
 
             _currentState = state1;
         }
@@ -333,12 +336,12 @@ namespace Gioco_generico.States
         public void state2(GameTime gameTime)
         {
             space_button_action = null;
-            if (speechIntroAlice.Count() != 0 && !alice.isSpeaking)
+            if (speechIntroAlice.Count() != 0 && !narrator.isSpeaking)
             {
-                alice.speak(speechIntroAlice[0]);
+                narrator.speak(speechIntroAlice[0]);
                 speechIntroAlice.RemoveAt(0);
             }
-            if (speechIntroAlice.Count() == 0 && !alice.isSpeaking)
+            if (speechIntroAlice.Count() == 0 && !narrator.isSpeaking)
             {
                 mainChar.think(Character.thinkType.ESCLAMATIVE);
                 changeState(state3);

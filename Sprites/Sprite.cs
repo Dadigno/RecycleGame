@@ -26,7 +26,7 @@ namespace Gioco_generico
             if (nameTex != "")
             {
                 texture = _content.Load<Texture2D>(nameTex);
-                origin = new Vector2(texture.Width / 2, texture.Height / 2);
+                origin = new Vector2((float)(texture.Width * scale) / 2, (float)(texture.Height * scale) / 2);
                 rect = new Rectangle((int)initDisplayPos.X, (int)initDisplayPos.Y, (int)(this.texture.Width * scale), (int)(this.texture.Height * scale));
             }
             else

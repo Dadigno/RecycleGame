@@ -10,12 +10,12 @@ namespace Gioco_generico
         SpeechBubble speechBubble;
         bool show = false;
         List<String> messages;
-        bool isSpeaking;
+        public bool isSpeaking;
         public Narrator(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, Vector2 initGamePos, Vector2 initDisplayPos, double scale = 1) : base(_game, _graphics, _content, nameTex, initGamePos, initDisplayPos, scale)
         {
             speechBubble = new SpeechBubble(_game, _graphics, _content, "bubble/bubble-narrator", "Fonts/speechFont");
-            speechBubble.Text = "\nCiao sono il\ntuo narratore";
-            isSpeaking = true;
+            //speechBubble.Text = "\nCiao sono il\ntuo narratore";
+            //isSpeaking = true;
         }
 
         public void Draw()
@@ -31,6 +31,12 @@ namespace Gioco_generico
         public void Update(GameTime gameTime)
         {
             speechBubble.Update(gameTime, getPos());
+        }
+
+        public void speak(string text)
+        {
+            speechBubble.Text = text;
+            isSpeaking = true;
         }
     }
 }

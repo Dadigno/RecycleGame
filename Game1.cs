@@ -18,7 +18,16 @@ namespace Gioco_generico
         ConfigFile settingFile;
         private State _currentState;
         private State _nextState;
-       
+
+
+        public ConstVar.Level stateLevel;
+        public int Score;
+        //Ogni oggetto è 100 punti, ogni errore -50
+        //LIVELLO 1 0
+        //LIVELLO 2 10000
+        //LIVELLO 3 20000
+
+
         public void ChangeState(State state)
         {
             _nextState = state;

@@ -56,9 +56,9 @@ namespace Gioco_generico
         public static List<layer> layers = new List<layer>();
         public static List<layer> layersInside = new List<layer>();
 
+        public enum Level { LEVEL1, LEVEL2, LEVEL3 };
         
+
+
     }
-
-    public enum Button_type { HELP, CLOSE, NEWGAME };
-
 }

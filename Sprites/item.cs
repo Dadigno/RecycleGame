@@ -9,7 +9,7 @@ namespace Gioco_generico
 
     public class Item : Sprite
     {
-        public enum Type { PLASTICA, UMIDO, SECCO, VETRO, CARTA, SPECIALE, NONE};
+        public enum Type { PLASTICA, UMIDO, SECCO, VETRO, CARTA, SPECIALE, INVENTORY, NONE};
         public Type type;
         double[] sine = {0.1, 0.1, 0.1, 0.2, 0.3, 0.3, 0.4, 0.5, 0.6, 0.7, 0.7, 0.8, 0.9, 0.9, 0.9, 1, 1, 1, 1, 1, 0.9, 0.9, 0.9, 0.8, 0.7, 0.7, 0.6, 0.5, 0.4, 0.3, 0.3, 0.2, 0.1, 0.1, 0.1 };
         private float timerAnimated = 100;
@@ -66,9 +66,9 @@ namespace Gioco_generico
 
         public void DrawCard(float scale_x, float scale_y)
         {
-            texture = _content.Load<Texture2D>(objCardPath);
-            Rectangle r = new Rectangle((int)(ConstVar.displayDim.X * scale_x), (int)(ConstVar.displayDim.X * scale_y), texture.Width, texture.Height);
-            ConstVar.sb.Draw(texture, r, null, Color.White, rotation, origin, new SpriteEffects(), 0);
+            Texture2D tex = _content.Load<Texture2D>(objCardPath);
+            Rectangle r = new Rectangle((int)(ConstVar.displayDim.X * scale_x), (int)(ConstVar.displayDim.Y * scale_y), tex.Width, tex.Height);
+            ConstVar.sb.Draw(tex,r,Color.White);
         }
 
         

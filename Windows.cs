@@ -101,11 +101,10 @@ namespace Gioco_generico
                 }
                 else
                 {
-                    widget[indexCard].DrawCard(1, 1);
+                    widget[indexCard].DrawCard(0.052f, 0.203f);
                 }
             }
 
-            
             
         }
 
@@ -139,13 +138,15 @@ namespace Gioco_generico
         private void PreviousCard(object sender, EventArgs e)
         {
             //widget[indexCard - 1].DrawCard(1, 1);
-            indexCard--;
+            if(indexCard > 0)
+                indexCard--;
         }
 
         private void NextCard(object sender, EventArgs e)
         {
             //widget[indexCard + 1].DrawCard(1, 1);
-            indexCard++;
+            if(indexCard < widget.Count - 1)
+                indexCard++;
         }
 
         private void PressCarta(object sender, EventArgs e)

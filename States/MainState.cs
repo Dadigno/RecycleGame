@@ -30,15 +30,7 @@ namespace Gioco_generico.States
         //Interazione da tastiera
         Keys[] OldKeyPressed = { };
 
-        //Bottoni
-        private List<Button> _buttons;
-
-        //Bar
-        private List<Bar> _bars;
-
-
         Random rnd = new Random();
-
 
         //Sound
         //Song song;
@@ -60,7 +52,19 @@ namespace Gioco_generico.States
         private float timer = TIMER;
         protected float timerAnimated = 0;
 
+        /*******************************************/
+        /*           Elementi on display           */
+        /*******************************************/
+        //Bottoni
+        private List<Button> _buttons;
+
+        //Bar
+        //private List<Bar> _bars;
+        private Bar scoreBar;
         Narrator narrator;
+
+
+
 
         public MainState(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, int id) : base(_game, _graphics, _content, id)
         {
@@ -95,7 +99,7 @@ namespace Gioco_generico.States
               };
 
             //Bars
-            var barPlastica = new Bar(_game, _graphics, _content, "bars/plasticBar", "Plastica", new Vector2(10,0), 10, Item.Type.PLASTICA);
+            /*var barPlastica = new Bar(_game, _graphics, _content, "bars/plasticBar", "Plastica", new Vector2(10,0), 10, Item.Type.PLASTICA);
             var barCarta = new Bar(_game, _graphics, _content, "bars/plasticBar", "Carta", new Vector2(10, 50), 10, Item.Type.CARTA);
             var barVetro = new Bar(_game, _graphics, _content, "bars/plasticBar", "Vetro", new Vector2(10, 100), 10, Item.Type.VETRO);
             var barSecco = new Bar(_game, _graphics, _content, "bars/plasticBar", "Secco", new Vector2(10, 150), 10, Item.Type.SECCO);
@@ -110,7 +114,11 @@ namespace Gioco_generico.States
                 barSecco,
                 barUmido,
                 barSpeciale
-              };
+              };*/
+
+            scoreBar = new Bar(_game, _graphics, _content, "bars/plasticBar", "Score", new Vector2(10, 100), Item.Type.NONE);
+
+            
 
             //Objects 
             allObjects = new List<Item>();
@@ -125,7 +133,7 @@ namespace Gioco_generico.States
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/scatola-cartone", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.CARTA, true));
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/pizza", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.UMIDO, true));
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bottiglia-vetro", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.VETRO, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/nucleare", new Vector2(0, 0), new Vector2(0, 0), 0.05, Item.Type.SPECIALE, true));
+            //allObjects.Add(new Item(_game, _graphics, _content, "oggetti/nucleare", new Vector2(0, 0), new Vector2(0, 0), 0.05, Item.Type.SPECIALE, true));
 
             objects = new List<Item>();
 
@@ -135,9 +143,9 @@ namespace Gioco_generico.States
             //Narrator
             narrator = new Narrator(_game, _graphics, _content, "character/narrator", new Vector2(0, 0), new Vector2(ConstVar.displayDim.X * 0.08f, ConstVar.displayDim.Y * 0.85f));
 
-            mainChar.collect(allObjects[2]);
+           /* mainChar.collect(allObjects[2]);
             mainChar.collect(allObjects[3]);
-            mainChar.collect(allObjects[3]);
+            mainChar.collect(allObjects[3]);*/
 
             _currentState = state1;
         }
@@ -179,8 +187,9 @@ namespace Gioco_generico.States
             foreach (var button in _buttons)
                 button.Draw();
 
-            foreach (var bar in _bars)
-                bar.Draw();
+            //foreach (var bar in _bars)
+            //    bar.Draw();
+            scoreBar.Draw();
 
             alice.Draw();
             mainChar.Draw();
@@ -206,8 +215,9 @@ namespace Gioco_generico.States
                 button.update();
 
             //Bars
-            foreach (var bar in _bars)
-                bar.Update(mainChar.Inventory.Count(x => x.type == bar.Type));
+            //foreach (var bar in _bars)
+            //    bar.Update(mainChar.Inventory.Count(x => x.type == bar.Type));
+            scoreBar.Update(_game.Score);
 
             // Spawn spazzatura
             float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -220,6 +230,7 @@ namespace Gioco_generico.States
                 int y = rnd.Next(1, 78);
                 if(walkableTile[y, x] != 0 && !objects.Exists(b => b.getTilePos(background) == new Vector2(x, y)))
                 {
+                    //Modificare in modo che gli oggetti che spawnano siano coerenti con il livello del gioco; cit. Sara <3
                     Item obj = allObjects[rnd.Next(0, allObjects.Count())].Clone();
                     obj.setTilePos(x, y, background);
                     objects.Add(obj);
@@ -233,6 +244,7 @@ namespace Gioco_generico.States
                 {
                     coinSound.Play();
                     mainChar.collect(objects[i - 1]);
+                    _game.Score += _game.GameLevel.POINT;
                     objects.RemoveAt(i - 1);
                 }
             }

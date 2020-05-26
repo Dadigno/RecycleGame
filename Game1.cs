@@ -20,13 +20,29 @@ namespace Gioco_generico
         private State _nextState;
 
 
-        public ConstVar.Level stateLevel;
-        public int Score;
         //Ogni oggetto è 100 punti, ogni errore -50
-        //LIVELLO 1 0
-        //LIVELLO 2 10000
-        //LIVELLO 3 20000
+        //LIVELLO 1 
+        //LIVELLO 2 
+        //LIVELLO 3 
+        static ConstVar.LEVEL LEVEL3 = new ConstVar.LEVEL(200000, 2000, 20000);
+        static ConstVar.LEVEL LEVEL2 = new ConstVar.LEVEL(20000, 200, 2000, LEVEL3);
+        static ConstVar.LEVEL LEVEL1 = new ConstVar.LEVEL(500, 20, 200, LEVEL2);
+        
+        
 
+        public ConstVar.LEVEL GameLevel;
+        private int _score;
+        public int Score
+        {
+            get => _score;
+            set
+            {
+                if(_score < GameLevel.POINT_TARGET)
+                {
+                    _score = value;
+                }
+            }
+        }
 
         public void ChangeState(State state)
         {
@@ -61,12 +77,13 @@ namespace Gioco_generico
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             loadTMX("content/maps/mondo1.tmx", ConstVar.layers);
+            GameLevel = LEVEL1;
             ConstVar.sb = spriteBatch;
             ConstVar.font = Content.Load<SpriteFont>("Fonts/font");
             ConstVar.menu = new MenuState(this, graphics, Content, 0);
             ConstVar.main = new MainState(this, graphics, Content, 1);
-            //ConstVar.house = new InsideState(this, graphics, Content, 2);
             ConstVar.chooseBucket = new ChooseBucket(this, graphics, Content, 2);
+            
             _currentState = ConstVar.menu;
         }
 
@@ -87,6 +104,7 @@ namespace Gioco_generico
             }
             KeyboardState kbState = Keyboard.GetState();
             _currentState.Update(gameTime, kbState);
+            HandleLevel();
             base.Update(gameTime);
         }
 
@@ -95,6 +113,13 @@ namespace Gioco_generico
             //GraphicsDevice.Clear(Color.CornflowerBlue);
             _currentState.Draw(gameTime, spriteBatch);
             base.Draw(gameTime);
+        }
+
+
+        void HandleLevel()
+        {
+            if (Score > GameLevel.POINT_TARGET && GameLevel.NEXT_LEVEL != null)
+                GameLevel = GameLevel.NEXT_LEVEL;
         }
     }
 }

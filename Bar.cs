@@ -25,7 +25,7 @@ namespace Gioco_generico
         //private double avatarScale = 0.2;
 
 
-        public Bar(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, String titlebar, Vector2 displayPos, int target, Item.Type type) : base(_game, _graphics, _content)
+        public Bar(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, String titlebar, Vector2 displayPos, Item.Type type) : base(_game, _graphics, _content)
         {
             this.displayPos = displayPos;
             infillTex = _content.Load<Texture2D>("bars/infill");
@@ -40,7 +40,7 @@ namespace Gioco_generico
             rectInfill = new Rectangle(rectBar.X + (int)(0.03 * barWidth), rectBar.Y + (int)(0.12 * barHeight), (int)(infillWidth), (int)(infillHeight));
             counter = new TextBox(_game, _graphics, _content, new Vector2(0, 0), new Vector2(rectInfill.X + rectInfill.Width / 2, rectInfill.Y), _content.Load<SpriteFont>("Fonts/barFont"), "0", Color.White);
             title = new TextBox(_game, _graphics, _content, new Vector2(0, 0), new Vector2(rectBar.X + (int)(rectBar.Width * 0.05), rectInfill.Y), _content.Load<SpriteFont>("Fonts/barFont"), titlebar, Color.White);
-            Target = target;
+            
             Type = type;
             //avatarTex = _content.Load<Texture2D>("oggetti/plastic-bottle");
             //double avatarHeight = (int)(avatarTex.Height * ((rectBar.Width * avatarScale) / avatarTex.Width));
@@ -64,15 +64,18 @@ namespace Gioco_generico
             title.Draw();
             //ConstVar.sb.Draw(avatarTex, rectAvatar, Color.White);
         }
-        public bool Update(int v)
+        public void Update(int v)
         {
-            if (v < Target)
+            Target = _game.GameLevel.POINT_TARGET;
+            counter.update(v.ToString() + " / " + Target.ToString());
+            if (v > Target)
             {
-                counter.update(v.ToString() + " / " + Target.ToString());
-                Value = v / Target;
-                return true;
+                Value = 1;
             }
-            return false;
+            else
+            {
+                Value = v / Target;
+            }
         }
 
 

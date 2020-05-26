@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Gioco_generico.States;
-using static Gioco_generico.Game1;
+using System.Runtime.CompilerServices;
 
 namespace Gioco_generico
 {
@@ -53,12 +53,29 @@ namespace Gioco_generico
         public static InsideState house;
         public static ChooseBucket chooseBucket;
 
-        public static List<layer> layers = new List<layer>();
-        public static List<layer> layersInside = new List<layer>();
+        public static List<Game1.layer> layers = new List<Game1.layer>();
+        public static List<Game1.layer> layersInside = new List<Game1.layer>();
 
-        public enum Level { LEVEL1, LEVEL2, LEVEL3 };
-        
-
+        //public enum Level { LEVEL1, LEVEL2, LEVEL3, LEVEL4};
+        public class LEVEL
+        {
+            //livello di partenza del gioco
+            public int POINT_TARGET;
+            public int POINT_ERROR;
+            public int POINT;
+            public LEVEL NEXT_LEVEL;
+            public LEVEL(int t, int e, int p, LEVEL next = null)
+            {
+                POINT_TARGET = t;
+                POINT_ERROR = e;
+                POINT = p;
+                NEXT_LEVEL = next;
+            }
+        }
 
     }
+
+    
+
+    
 }

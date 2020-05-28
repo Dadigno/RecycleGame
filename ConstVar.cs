@@ -60,12 +60,14 @@ namespace Gioco_generico
         public class LEVEL
         {
             //livello di partenza del gioco
+            public string name;
             public int POINT_TARGET;
             public int POINT_ERROR;
             public int POINT;
             public LEVEL NEXT_LEVEL;
-            public LEVEL(int t, int e, int p, LEVEL next = null)
+            public LEVEL(int t, int e, int p, string s, LEVEL next = null)
             {
+                name = s;
                 POINT_TARGET = t;
                 POINT_ERROR = e;
                 POINT = p;

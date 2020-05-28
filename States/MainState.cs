@@ -122,18 +122,18 @@ namespace Gioco_generico.States
 
             //Objects 
             allObjects = new List<Item>();
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/banana", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.UMIDO, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/foglie", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.UMIDO, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/latta", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.PLASTICA, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lattina", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.PLASTICA, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/mela", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.UMIDO, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/banana", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.ORGANICO, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/foglie", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.ORGANICO, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/latta", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.METALLI, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lattina", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.METALLI, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/mela", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.ORGANICO, true));
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/giornale", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.CARTA, true));
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/accendino", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.SECCO, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bomboletta", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.SECCO, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bomboletta", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.METALLI, true));
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/scatola-cartone", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.CARTA, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/pizza", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.UMIDO, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/pizza", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.ORGANICO, true));
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bottiglia-vetro", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.VETRO, true));
-            //allObjects.Add(new Item(_game, _graphics, _content, "oggetti/nucleare", new Vector2(0, 0), new Vector2(0, 0), 0.05, Item.Type.SPECIALE, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/nucleare", new Vector2(0, 0), new Vector2(0, 0), 0.05, Item.Type.CENTRORACCOLTA, true));
 
             objects = new List<Item>();
 
@@ -244,9 +244,15 @@ namespace Gioco_generico.States
                 {
                     coinSound.Play();
                     mainChar.collect(objects[i - 1]);
-                    _game.Score += _game.GameLevel.POINT;
+                    //_game.Score += _game.GameLevel.POINT;
                     objects.RemoveAt(i - 1);
                 }
+            }
+
+            if (ConstVar.chooseBucket.window.correctAnswer == true)
+            {
+                _game.Score += _game.GameLevel.POINT;
+                ConstVar.chooseBucket.window.correctAnswer = false;
             }
 
 

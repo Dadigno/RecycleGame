@@ -30,13 +30,13 @@ namespace Gioco_generico.States
             position.X = rect.X + 340;
             position.Y = rect.Y + 330;
             var newGameButton = new Button(_game, _graphics, _content, "windows/play_button", new Vector2(position.X, position.Y));
-            newGameButton.Click += PlayGameButton_Click;
+            newGameButton.Action += PlayGameButton_Click;
 
             //var loadGameButton = new Button(_game, _graphics, _content, "", new Vector2(position.X, position.Y + 50));
             //loadGameButton.Click += InfoGameButton_Click;
 
             var quitGameButton = new Button(_game, _graphics, _content, "windows/exit_button", new Vector2(position.X, position.Y + 100));
-            quitGameButton.Click += QuitGameButton_Click;
+            quitGameButton.Action += QuitGameButton_Click;
 
             _buttons = new List<Button>()
               {

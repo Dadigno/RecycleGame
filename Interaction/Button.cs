@@ -13,14 +13,16 @@ namespace Gioco_generico
         
         private bool _isPressed;
         //public bool _isActive { get; set; }
-        public EventHandler Click;
+        public event EventHandler<ButtEventArgs> Action;
+        //public EventHandler Click;
+        Item.Type Type;
         public bool Enable { get; set; }
-
+        private string name;
         Texture2D texture;
         Rectangle rect;
         Color colourTex = Color.White;
         Vector2 origin;
-        public Button(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String texture, Vector2 initDisplayPos, double scale = 1, bool state = true)
+        public Button(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String texture, Vector2 initDisplayPos, Item.Type t = Item.Type.NONE, double scale = 1, bool state = true)
         {
             if(texture != "")
             {
@@ -33,7 +35,8 @@ namespace Gioco_generico
             }
             origin = new Vector2(0, 0);
             Enable = state;
-
+            name = texture;
+            this.Type = t;
         }
 
         public new void Draw()
@@ -61,12 +64,19 @@ namespace Gioco_generico
 
             if (mouseRectangle.Intersects(rect) && _currentMouse.LeftButton == ButtonState.Released && _previousMouse.LeftButton == ButtonState.Pressed)
             {
-                if (Enable)
-                    Click?.Invoke(this, new EventArgs());
+                if (Enable) {
+                    ButtEventArgs e = new ButtEventArgs();
+                    e.T = this.Type;
+                    Action?.Invoke(this, e);
+                }
             }
         }
 
-        
+    }
 
+    public class ButtEventArgs : EventArgs
+    {
+
+        public Item.Type T { get; set; }
     }
 }

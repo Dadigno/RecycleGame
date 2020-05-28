@@ -9,7 +9,7 @@ namespace Gioco_generico
 
     public class Item : Sprite
     {
-        public enum Type { PLASTICA, UMIDO, SECCO, VETRO, CARTA, SPECIALE, INVENTORY, NONE};
+        public enum Type { PLASTICA, METALLI, ORGANICO, SECCO, VETRO, CARTA, FARMACI, ABITI, STRADALI, BATTERIE, TONER, CENTRORACCOLTA, NONE };
         public Type type;
         double[] sine = {0.1, 0.1, 0.1, 0.2, 0.3, 0.3, 0.4, 0.5, 0.6, 0.7, 0.7, 0.8, 0.9, 0.9, 0.9, 1, 1, 1, 1, 1, 0.9, 0.9, 0.9, 0.8, 0.7, 0.7, 0.6, 0.5, 0.4, 0.3, 0.3, 0.2, 0.1, 0.1, 0.1 };
         private float timerAnimated = 100;

@@ -22,7 +22,12 @@ namespace Gioco_generico
         Texture2D cardNessunRifiuto;
         Texture2D cardPross1;
         Texture2D cardPross2;
-        public bool correctAnswer;
+        public enum Answer { NONE, CORRECT, ERROR};
+        Answer answer = Answer.NONE;
+        static float BLINK_TIME = 250;
+        float timer = 0;
+        bool blinkCorrect = false;
+        bool blinkError = false;
         Texture2D contornoRosso;
         Texture2D contornoVerde;
 
@@ -102,13 +107,34 @@ namespace Gioco_generico
             contornoRosso = _content.Load<Texture2D>("Finestra/contornoRosso");
             contornoVerde = _content.Load<Texture2D>("Finestra/contornoVerde");
 
-            correctAnswer = false;
         }
 
         public void Draw()
         {
             if (show == true)
             {
+                ConstVar.sb.Draw(background, rect, null, Color.White, 0, new Vector2(0, 0), new SpriteEffects(), 0);
+                if (widget.Count == 0)
+                {
+                    ConstVar.sb.Draw(cardNessunRifiuto, new Rectangle((int)((ConstVar.displayDim.X - 1820) * 1), (int)((ConstVar.displayDim.Y - 860) * 1), cardNessunRifiuto.Width, cardNessunRifiuto.Height), null, Color.White);
+                }
+                else
+                {
+                    widget[indexCard].DrawCard(0.052f, 0.203f);
+                }
+
+
+                if(blinkError)
+                    ConstVar.sb.Draw(contornoRosso, rect, null, Color.White, 0, new Vector2(0, 0), new SpriteEffects(), 0);
+                if(blinkCorrect)
+                    ConstVar.sb.Draw(contornoVerde, rect, null, Color.White, 0, new Vector2(0, 0), new SpriteEffects(), 0);
+
+
+
+                foreach (var button1 in arrows)
+                    button1.Draw();
+                
+
                 if (_game.GameLevel.name == "Livello1")
                 {
                     Draw1();
@@ -121,15 +147,53 @@ namespace Gioco_generico
                 {
                     Draw3();
                 }
+
+
+               
+
             }
 
             
         }
-
+        int blinkCounter = 0;
         public void Update(GameTime gameTime)
         {
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            if (answer != Answer.NONE)
+            {
+                timer -= elapsed;
+                if (timer < 0)
+                {
+                    timer = BLINK_TIME;
+                    if (blinkCounter < 4)
+                    {
+                        if (answer == Answer.CORRECT)
+                        {
+                            blinkCorrect = !blinkCorrect;
+                        }
+                        else if (answer == Answer.ERROR)
+                        {
+                            blinkError = !blinkError;
+                        }
+                        else if (answer == Answer.NONE)
+                        {
+                            blinkCorrect = false;
+                            blinkError = false;
+                        }
+
+                        blinkCounter++;
+                    }
+                    else
+                    {
+                        blinkCounter = 0;
+                        answer = Answer.NONE;
+                    }
+                }
+            }
+
+
             foreach (var button in arrows)
-                button.update();
+            button.update();
 
             if (_game.GameLevel.name == "Livello1")
             {
@@ -192,16 +256,17 @@ namespace Gioco_generico
             {
                 if (widget[indexCard].type == e.T)
                 {
-                    correctAnswer = true;
+                    answer = Answer.CORRECT;
                     _game.Score += _game.GameLevel.POINT;
                     widget.RemoveAt(indexCard);
-                    if (indexCard == widget.Count)
+                    if (indexCard == widget.Count )
                     {
                         indexCard -= 1;
                     }
                 }
                 else
                 {
+                    answer = Answer.ERROR;
                     _game.Score -= _game.GameLevel.POINT;
                 }
             }
@@ -211,20 +276,8 @@ namespace Gioco_generico
         
         private void Draw1()
         {
-            ConstVar.sb.Draw(background, rect, null, Color.White, 0, new Vector2(0, 0), new SpriteEffects(), 0);
-            foreach (var button1 in arrows)
-                button1.Draw();
             foreach (var button2 in puzzle1)
                 button2.Draw();
-
-            if (widget.Count == 0)
-            {
-                ConstVar.sb.Draw(cardNessunRifiuto, new Rectangle((int)((ConstVar.displayDim.X - 1820) * 1), (int)((ConstVar.displayDim.Y - 860) * 1), cardNessunRifiuto.Width, cardNessunRifiuto.Height), null, Color.White);
-            }
-            else
-            {
-                widget[indexCard].DrawCard(0.052f, 0.203f);
-            }
 
             ConstVar.sb.Draw(cardPross1, new Rectangle((int)((ConstVar.displayDim.X - 695) * 1), (int)((ConstVar.displayDim.Y - 860) * 1), cardPross1.Width, cardPross1.Height), null, Color.White);
 
@@ -232,22 +285,10 @@ namespace Gioco_generico
 
         private void Draw2()
         {
-            ConstVar.sb.Draw(background, rect, null, Color.White, 0, new Vector2(0, 0), new SpriteEffects(), 0);
-            foreach (var button1 in arrows)
-                button1.Draw();
             foreach (var button2 in puzzle1)
                 button2.Draw();
             foreach (var button3 in puzzle2)
                 button3.Draw();
-
-            if (widget.Count == 0)
-            {
-                ConstVar.sb.Draw(cardNessunRifiuto, new Rectangle((int)((ConstVar.displayDim.X - 1820) * 1), (int)((ConstVar.displayDim.Y - 860) * 1), cardNessunRifiuto.Width, cardNessunRifiuto.Height), null, Color.White);
-            }
-            else
-            {
-                widget[indexCard].DrawCard(0.052f, 0.203f);
-            }
 
             ConstVar.sb.Draw(cardPross2, new Rectangle((int)((ConstVar.displayDim.X - 400) * 1), (int)((ConstVar.displayDim.Y - 355) * 1), cardPross2.Width, cardPross2.Height), null, Color.White);
         }
@@ -255,8 +296,6 @@ namespace Gioco_generico
         private void Draw3()
         {
             ConstVar.sb.Draw(background, rect, null, Color.White, 0, new Vector2(0, 0), new SpriteEffects(), 0);
-            foreach (var button1 in arrows)
-                button1.Draw();
             foreach (var button2 in puzzle1)
                 button2.Draw();
             foreach (var button3 in puzzle2)
@@ -264,14 +303,6 @@ namespace Gioco_generico
             foreach (var button4 in puzzle3)
                 button4.Draw();
 
-            if (widget.Count == 0)
-            {
-                ConstVar.sb.Draw(cardNessunRifiuto, new Rectangle((int)((ConstVar.displayDim.X - 1820) * 1), (int)((ConstVar.displayDim.Y - 860) * 1), cardNessunRifiuto.Width, cardNessunRifiuto.Height), null, Color.White);
-            }
-            else
-            {
-                widget[indexCard].DrawCard(0.052f, 0.203f);
-            }
         }
     }
 }

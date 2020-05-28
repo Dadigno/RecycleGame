@@ -64,8 +64,6 @@ namespace Gioco_generico.States
         Narrator narrator;
 
 
-
-
         public MainState(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, int id) : base(_game, _graphics, _content, id)
         {
             //Carico la mappa
@@ -87,10 +85,10 @@ namespace Gioco_generico.States
             gDebug = new gameDebug(_game, _graphics, _content);
 
             //Bottoni
-            var helpButton = new Button(_game, _graphics, _content, "help-btn", new Vector2(ConstVar.displayDim.X * 0.95f, ConstVar.displayDim.Y * 0.05f), 0.2);
-            helpButton.Click += Click_help;
-            var exitButton = new Button(_game, _graphics, _content, "exit-btn", new Vector2(ConstVar.displayDim.X * 0.98f, ConstVar.displayDim.Y * 0.05f), 0.2);
-            exitButton.Click += Click_exit;
+            var helpButton = new Button(_game, _graphics, _content, "help-btn", new Vector2(ConstVar.displayDim.X * 0.95f, ConstVar.displayDim.Y * 0.05f), Item.Type.NONE, 0.2);
+            helpButton.Action += Click_help;
+            var exitButton = new Button(_game, _graphics, _content, "exit-btn", new Vector2(ConstVar.displayDim.X * 0.98f, ConstVar.displayDim.Y * 0.05f), Item.Type.NONE, 0.2);
+            exitButton.Action += Click_exit;
 
             _buttons = new List<Button>()
               {
@@ -116,7 +114,7 @@ namespace Gioco_generico.States
                 barSpeciale
               };*/
 
-            scoreBar = new Bar(_game, _graphics, _content, "bars/plasticBar", "Score", new Vector2(10, 100), Item.Type.NONE);
+            scoreBar = new Bar(_game, _graphics, _content, "bars/plasticBar", "Score", new Vector2(10, 10), Item.Type.NONE);
 
             
 
@@ -124,12 +122,12 @@ namespace Gioco_generico.States
             allObjects = new List<Item>();
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/banana", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.ORGANICO, true));
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/foglie", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.ORGANICO, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/latta", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.METALLI, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lattina", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.METALLI, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/latta", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.PLASTICA_MET, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lattina", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.PLASTICA_MET, true));
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/mela", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.ORGANICO, true));
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/giornale", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.CARTA, true));
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/accendino", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.SECCO, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bomboletta", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.METALLI, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bomboletta", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.PLASTICA_MET, true));
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/scatola-cartone", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.CARTA, true));
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/pizza", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.ORGANICO, true));
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bottiglia-vetro", new Vector2(0, 0), new Vector2(0, 0), 0.2, Item.Type.VETRO, true));
@@ -248,14 +246,6 @@ namespace Gioco_generico.States
                     objects.RemoveAt(i - 1);
                 }
             }
-
-            if (ConstVar.chooseBucket.window.correctAnswer == true)
-            {
-                _game.Score += _game.GameLevel.POINT;
-                ConstVar.chooseBucket.window.correctAnswer = false;
-            }
-
-
             //Narratore
             narrator.Update(gameTime);
 

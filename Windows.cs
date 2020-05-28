@@ -12,11 +12,19 @@ namespace Gioco_generico
         public List<Item> widget;
         Texture2D background;
         private List<Button> arrows;
-        private List<Button> puzzle;
+        //private List<Button> puzzle;
+        private List<Button> puzzle1;
+        private List<Button> puzzle2;
+        private List<Button> puzzle3;
         Vector2 displayPos;
         private int indexCard;
         Rectangle rect;
         Texture2D cardNessunRifiuto;
+        Texture2D cardPross1;
+        Texture2D cardPross2;
+        public bool correctAnswer;
+        Texture2D contornoRosso;
+        Texture2D contornoVerde;
 
         public Windows(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, Vector2 displayPos, string texture, double scale = 1) : base(_game, _graphics, _content)
         {
@@ -65,43 +73,69 @@ namespace Gioco_generico
             var puzzleCentroRac = new Button(_game, _graphics, _content, "Finestra/puzzleCentroRac", new Vector2((float)(ConstVar.displayDim.X * 0.869792), (float)(ConstVar.displayDim.Y * 0.789352)), 1);
             puzzleCentroRac.Click += PressCentroRac;
 
-            puzzle = new List<Button>()
+            puzzle1 = new List<Button>()
               {
                 puzzleCarta,
                 puzzleVetro,
-                puzzleFarmaci,
-                puzzleAbiti,
                 puzzleSecco,
                 puzzleOrganico,
+                puzzlePlastMetal
+              };
+
+            puzzle2 = new List<Button>()
+              { puzzleFarmaci,
+                puzzleAbiti,
                 puzzleStradali,
                 puzzleBatterie,
-                puzzlePlastMetal,
-                puzzleToner,
+                puzzleToner
+              };
+
+            puzzle3 = new List<Button>()
+              {
                 puzzleCentroRac
               };
 
             show = false;
 
             cardNessunRifiuto = _content.Load<Texture2D>("Finestra/scheda_nessunRifiuto");
+            cardPross1 = _content.Load<Texture2D>("Finestra/Pross_Livello1");
+            cardPross2 = _content.Load<Texture2D>("Finestra/Pross_Livello2");
+            contornoRosso = _content.Load<Texture2D>("Finestra/contornoRosso");
+            contornoVerde = _content.Load<Texture2D>("Finestra/contornoVerde");
+
+            correctAnswer = false;
         }
 
         public void Draw()
         {
             if (show == true)
             {
-                ConstVar.sb.Draw(background, rect, null, Color.White, 0, new Vector2(0, 0), new SpriteEffects(), 0);
-                foreach (var button1 in arrows)
-                    button1.Draw();
-                foreach (var button2 in puzzle)
-                    button2.Draw();
+                /*ConstVar.sb.Draw(background, rect, null, Color.White, 0, new Vector2(0, 0), new SpriteEffects(), 0);
+                 foreach (var button1 in arrows)
+                     button1.Draw();
+                 foreach (var button2 in puzzle)
+                     button2.Draw();
 
-                if (widget.Count == 0)
+                 if (widget.Count == 0)
+                 {
+                     ConstVar.sb.Draw(cardNessunRifiuto, new Rectangle((int)((ConstVar.displayDim.X - 1820) * 1), (int)((ConstVar.displayDim.Y - 860) * 1), cardNessunRifiuto.Width, cardNessunRifiuto.Height), null, Color.White);
+                 }
+                 else
+                 {
+                     widget[indexCard].DrawCard(0.052f, 0.203f);
+                 }*/
+
+                if (_game.GameLevel.name == "Livello1")
                 {
-                    ConstVar.sb.Draw(cardNessunRifiuto, new Rectangle((int)((ConstVar.displayDim.X - 1820) * 1), (int)((ConstVar.displayDim.Y - 860) * 1), cardNessunRifiuto.Width, cardNessunRifiuto.Height), null, Color.White);
+                    Draw1();
                 }
-                else
+                else if (_game.GameLevel.name == "Livello2")
                 {
-                    widget[indexCard].DrawCard(0.052f, 0.203f);
+                    Draw2();
+                }
+                else if (_game.GameLevel.name == "Livello3")
+                {
+                    Draw3();
                 }
             }
 
@@ -112,8 +146,31 @@ namespace Gioco_generico
         {
             foreach (var button in arrows)
                 button.update();
-            foreach (var button in puzzle)
-                button.update();
+            /*foreach (var button in puzzle1)
+                button.update();*/
+
+            if (_game.GameLevel.name == "Livello1")
+            {
+                foreach (var button in puzzle1)
+                    button.update();
+            }
+            else if (_game.GameLevel.name == "Livello2")
+            {
+                foreach (var button in puzzle1)
+                    button.update();
+                foreach (var button in puzzle2)
+                    button.update();
+            }
+            else if (_game.GameLevel.name == "Livello3")
+            {
+                foreach (var button in puzzle1)
+                    button.update();
+                foreach (var button in puzzle2)
+                    button.update();
+                foreach (var button in puzzle3)
+                    button.update();
+
+            }
         }
         /*public void windowDraw()
         {
@@ -151,57 +208,227 @@ namespace Gioco_generico
 
         private void PressCarta(object sender, EventArgs e)
         {
-
+            if (widget[indexCard].type == Item.Type.CARTA)
+            {
+                correctAnswer = true;
+                widget.RemoveAt(indexCard);
+                ConstVar.main.mainChar.Inventory.RemoveAt(indexCard);
+                if (indexCard == widget.Count)
+                {
+                    indexCard -= 1;
+                }
+            }
         }
 
         private void PressVetro(object sender, EventArgs e)
         {
-
+            if (widget[indexCard].type == Item.Type.VETRO)
+            {
+                correctAnswer = true;
+                widget.RemoveAt(indexCard);
+                ConstVar.main.mainChar.Inventory.RemoveAt(indexCard);
+                if (indexCard == widget.Count)
+                {
+                    indexCard -= 1;
+                }
+            }
         }
 
         private void PressFarmaci(object sender, EventArgs e)
         {
 
+            if (widget[indexCard].type == Item.Type.FARMACI)
+            {
+                correctAnswer = true;
+                widget.RemoveAt(indexCard);
+                ConstVar.main.mainChar.Inventory.RemoveAt(indexCard);
+                if (indexCard == widget.Count)
+                {
+                    indexCard -= 1;
+                }
+            }
         }
 
         private void PressAbiti(object sender, EventArgs e)
         {
 
+            if (widget[indexCard].type == Item.Type.ABITI)
+            {
+                correctAnswer = true;
+                widget.RemoveAt(indexCard);
+                ConstVar.main.mainChar.Inventory.RemoveAt(indexCard);
+                if (indexCard == widget.Count)
+                {
+                    indexCard -= 1;
+                }
+            }
         }
 
         private void PressSecco(object sender, EventArgs e)
         {
-
+            if (widget[indexCard].type == Item.Type.SECCO)
+            {
+                correctAnswer = true;
+                widget.RemoveAt(indexCard);
+                ConstVar.main.mainChar.Inventory.RemoveAt(indexCard);
+                if (indexCard == widget.Count)
+                {
+                    indexCard -= 1;
+                }
+            }
         }
 
         private void PressOrganico(object sender, EventArgs e)
         {
-
+            if (widget[indexCard].type == Item.Type.ORGANICO)
+            {
+                correctAnswer = true;
+                widget.RemoveAt(indexCard);
+                ConstVar.main.mainChar.Inventory.RemoveAt(indexCard);
+                if (indexCard == widget.Count)
+                {
+                    indexCard -= 1;
+                }
+            }
         }
 
         private void PressStradali(object sender, EventArgs e)
         {
 
+            if (widget[indexCard].type == Item.Type.STRADALI)
+            {
+                correctAnswer = true;
+                widget.RemoveAt(indexCard);
+                ConstVar.main.mainChar.Inventory.RemoveAt(indexCard);
+                if (indexCard == widget.Count)
+                {
+                    indexCard -= 1;
+                }
+            }
         }
 
         private void PressBatterie(object sender, EventArgs e)
         {
 
+            if (widget[indexCard].type == Item.Type.BATTERIE)
+            {
+                correctAnswer = true;
+                widget.RemoveAt(indexCard);
+                ConstVar.main.mainChar.Inventory.RemoveAt(indexCard);
+                if (indexCard == widget.Count)
+                {
+                    indexCard -= 1;
+                }
+            }
         }
 
         private void PressPlastMetal(object sender, EventArgs e)
         {
-
+            if (widget[indexCard].type == Item.Type.PLASTICA | widget[indexCard].type == Item.Type.METALLI)
+            {
+                correctAnswer = true;
+                widget.RemoveAt(indexCard);
+                ConstVar.main.mainChar.Inventory.RemoveAt(indexCard);
+                if (indexCard == widget.Count)
+                {
+                    indexCard -= 1;
+                }
+            }
         }
 
         private void PressToner(object sender, EventArgs e)
         {
 
+            if (widget[indexCard].type == Item.Type.TONER)
+            {
+                correctAnswer = true;
+                widget.RemoveAt(indexCard);
+                ConstVar.main.mainChar.Inventory.RemoveAt(indexCard);
+                if (indexCard == widget.Count)
+                {
+                    indexCard -= 1;
+                }
+            }
         }
 
         private void PressCentroRac(object sender, EventArgs e)
         {
 
+            if (widget[indexCard].type == Item.Type.CENTRORACCOLTA)
+            {
+                correctAnswer = true;
+                widget.RemoveAt(indexCard);
+                ConstVar.main.mainChar.Inventory.RemoveAt(indexCard);
+                if (indexCard == widget.Count)
+                {
+                    indexCard -= 1;
+                }
+            }
+        }
+
+        private void Draw1()
+        {
+            ConstVar.sb.Draw(background, rect, null, Color.White, 0, new Vector2(0, 0), new SpriteEffects(), 0);
+            foreach (var button1 in arrows)
+                button1.Draw();
+            foreach (var button2 in puzzle1)
+                button2.Draw();
+
+            if (widget.Count == 0)
+            {
+                ConstVar.sb.Draw(cardNessunRifiuto, new Rectangle((int)((ConstVar.displayDim.X - 1820) * 1), (int)((ConstVar.displayDim.Y - 860) * 1), cardNessunRifiuto.Width, cardNessunRifiuto.Height), null, Color.White);
+            }
+            else
+            {
+                widget[indexCard].DrawCard(0.052f, 0.203f);
+            }
+
+            ConstVar.sb.Draw(cardPross1, new Rectangle((int)((ConstVar.displayDim.X - 695) * 1), (int)((ConstVar.displayDim.Y - 860) * 1), cardPross1.Width, cardPross1.Height), null, Color.White);
+
+        }
+
+        private void Draw2()
+        {
+            ConstVar.sb.Draw(background, rect, null, Color.White, 0, new Vector2(0, 0), new SpriteEffects(), 0);
+            foreach (var button1 in arrows)
+                button1.Draw();
+            foreach (var button2 in puzzle1)
+                button2.Draw();
+            foreach (var button3 in puzzle2)
+                button3.Draw();
+
+            if (widget.Count == 0)
+            {
+                ConstVar.sb.Draw(cardNessunRifiuto, new Rectangle((int)((ConstVar.displayDim.X - 1820) * 1), (int)((ConstVar.displayDim.Y - 860) * 1), cardNessunRifiuto.Width, cardNessunRifiuto.Height), null, Color.White);
+            }
+            else
+            {
+                widget[indexCard].DrawCard(0.052f, 0.203f);
+            }
+
+            ConstVar.sb.Draw(cardPross2, new Rectangle((int)((ConstVar.displayDim.X - 400) * 1), (int)((ConstVar.displayDim.Y - 355) * 1), cardPross2.Width, cardPross2.Height), null, Color.White);
+        }
+
+        private void Draw3()
+        {
+            ConstVar.sb.Draw(background, rect, null, Color.White, 0, new Vector2(0, 0), new SpriteEffects(), 0);
+            foreach (var button1 in arrows)
+                button1.Draw();
+            foreach (var button2 in puzzle1)
+                button2.Draw();
+            foreach (var button3 in puzzle2)
+                button3.Draw();
+            foreach (var button4 in puzzle3)
+                button4.Draw();
+
+            if (widget.Count == 0)
+            {
+                ConstVar.sb.Draw(cardNessunRifiuto, new Rectangle((int)((ConstVar.displayDim.X - 1820) * 1), (int)((ConstVar.displayDim.Y - 860) * 1), cardNessunRifiuto.Width, cardNessunRifiuto.Height), null, Color.White);
+            }
+            else
+            {
+                widget[indexCard].DrawCard(0.052f, 0.203f);
+            }
         }
     }
 }

@@ -226,25 +226,6 @@ namespace Gioco_generico
 
             ConstVar.UI.Update(gameTime);
         }
-        /*public void windowDraw()
-        {
-            if (show == true)
-            {
-                ConstVar.sb.Draw(background, rect, null, Color.White, 0, new Vector2(0, 0), new SpriteEffects(), 0);
-                //widget[indexCard].DrawCard(1, 1);
-                foreach (var button1 in arrows)
-                    button1.Draw();
-                foreach (var button2 in puzzle)
-                    button2.Draw();
-
-                if (widget.Count == 0)
-                {
-                    ConstVar.sb.Draw(cardNessunRifiuto, new Rectangle((int)((ConstVar.displayDim.X - 1820) * 1), (int)((ConstVar.displayDim.Y - 860) * 1), cardNessunRifiuto.Width, cardNessunRifiuto.Height), null, Color.White);
-                }
-
-
-            }
-        }*/
 
         private void PreviousCard(object sender, EventArgs e)
         {
@@ -314,7 +295,6 @@ namespace Gioco_generico
 
         private void Draw3()
         {
-            ConstVar.sb.Draw(background, rect, null, Color.White, 0, new Vector2(0, 0), new SpriteEffects(), 0);
             foreach (var button2 in puzzle1)
                 button2.Draw();
             foreach (var button3 in puzzle2)

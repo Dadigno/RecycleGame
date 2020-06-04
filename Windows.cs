@@ -259,7 +259,7 @@ namespace Gioco_generico
                     answer = Answer.CORRECT;
                     _game.Score += _game.GameLevel.POINT;
                     widget.RemoveAt(indexCard);
-                    if (indexCard == widget.Count )
+                    if (indexCard == widget.Count && widget.Count != 0)
                     {
                         indexCard -= 1;
                     }

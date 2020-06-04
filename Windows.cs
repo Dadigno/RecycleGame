@@ -279,7 +279,14 @@ namespace Gioco_generico
                 {
                     answer = Answer.ERROR;
                     effectAnswerWrong.Play();
-                    _game.Score -= _game.GameLevel.POINT;
+                    if (_game.Score < _game.GameLevel.POINT)
+                    {
+                        _game.Score = 0;
+                    }
+                    else
+                    {
+                        _game.Score -= _game.GameLevel.POINT;
+                    }
                 }
             }
         }

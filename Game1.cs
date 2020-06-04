@@ -83,7 +83,7 @@ namespace Gioco_generico
             ConstVar.menu = new MenuState(this, graphics, Content, 0);
             ConstVar.main = new MainState(this, graphics, Content, 1);
             ConstVar.chooseBucket = new ChooseBucket(this, graphics, Content, 2);
-            
+            ConstVar.UI = new UI(this, graphics, Content);
             _currentState = ConstVar.menu;
         }
 
@@ -104,6 +104,7 @@ namespace Gioco_generico
             }
             KeyboardState kbState = Keyboard.GetState();
             _currentState.Update(gameTime, kbState);
+            
             HandleLevel();
             base.Update(gameTime);
         }
@@ -112,6 +113,7 @@ namespace Gioco_generico
         {
             //GraphicsDevice.Clear(Color.CornflowerBlue);
             _currentState.Draw(gameTime, spriteBatch);
+            
             base.Draw(gameTime);
         }
 

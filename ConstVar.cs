@@ -56,7 +56,9 @@ namespace Gioco_generico
         public static List<Game1.layer> layers = new List<Game1.layer>();
         public static List<Game1.layer> layersInside = new List<Game1.layer>();
 
-        //public enum Level { LEVEL1, LEVEL2, LEVEL3, LEVEL4};
+        //User interface
+        public static UI UI;
+
         public class LEVEL
         {
             //livello di partenza del gioco

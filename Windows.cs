@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 
 namespace Gioco_generico
 {
@@ -31,6 +32,10 @@ namespace Gioco_generico
         Texture2D contornoRosso;
         Texture2D contornoVerde;
         int blinkCounter = 0;
+        private SoundEffect effectAnswerCorrect;
+        private SoundEffect effectAnswerWrong;
+        private SoundEffect effectScrollArrow;
+
         public Windows(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, Vector2 displayPos, string texture, double scale = 1) : base(_game, _graphics, _content)
         {
             this.displayPos = displayPos;   //finestra centrata
@@ -107,6 +112,9 @@ namespace Gioco_generico
             contornoRosso = _content.Load<Texture2D>("Finestra/contornoRosso");
             contornoVerde = _content.Load<Texture2D>("Finestra/contornoVerde");
 
+            effectAnswerCorrect = _content.Load<SoundEffect>("soundEffect/effectAnswerCorrect");
+            effectAnswerWrong = _content.Load<SoundEffect>("soundEffect/effectAnswerWrong");
+            effectScrollArrow = _content.Load<SoundEffect>("soundEffect/effectScrollArrow");
         }
 
         public void Draw()
@@ -242,12 +250,14 @@ namespace Gioco_generico
         {
             if(indexCard > 0)
                 indexCard--;
+            effectScrollArrow.Play();
         }
 
         private void NextCard(object sender, EventArgs e)
         {
             if(indexCard < widget.Count - 1)
                 indexCard++;
+            effectScrollArrow.Play();
         }
 
         private void ButtonAction(object sender, ButtEventArgs e)
@@ -257,6 +267,7 @@ namespace Gioco_generico
                 if (widget[indexCard].type == e.T)
                 {
                     answer = Answer.CORRECT;
+                    effectAnswerCorrect.Play();
                     _game.Score += _game.GameLevel.POINT;
                     widget.RemoveAt(indexCard);
                     if (indexCard == widget.Count && widget.Count != 0)
@@ -267,6 +278,7 @@ namespace Gioco_generico
                 else
                 {
                     answer = Answer.ERROR;
+                    effectAnswerWrong.Play();
                     _game.Score -= _game.GameLevel.POINT;
                 }
             }

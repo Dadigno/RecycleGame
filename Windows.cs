@@ -30,7 +30,7 @@ namespace Gioco_generico
         bool blinkError = false;
         Texture2D contornoRosso;
         Texture2D contornoVerde;
-
+        int blinkCounter = 0;
         public Windows(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, Vector2 displayPos, string texture, double scale = 1) : base(_game, _graphics, _content)
         {
             this.displayPos = displayPos;   //finestra centrata
@@ -147,15 +147,13 @@ namespace Gioco_generico
                 {
                     Draw3();
                 }
-
-
+                ConstVar.UI.Draw();
                
-
             }
 
             
         }
-        int blinkCounter = 0;
+        
         public void Update(GameTime gameTime)
         {
             float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -217,6 +215,8 @@ namespace Gioco_generico
                     button.update();
 
             }
+
+            ConstVar.UI.Update(gameTime);
         }
         /*public void windowDraw()
         {

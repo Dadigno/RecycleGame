@@ -40,8 +40,8 @@ namespace Gioco_generico.States
         public Background background;
 
         //Stati interni
-        public delegate void state(GameTime gameTime);
-        public state _currentState;
+        //public delegate void state(GameTime gameTime);
+        //public state _currentState;
 
         //Azioni 
         public delegate void action();
@@ -52,23 +52,12 @@ namespace Gioco_generico.States
         private float timer = TIMER;
         protected float timerAnimated = 0;
 
-        /*******************************************/
-        /*           Elementi on display           */
-        /*******************************************/
-        //Bottoni
-        private List<Button> _buttons;
-
-        //Bar
-        //private List<Bar> _bars;
-        private Bar scoreBar;
-        Narrator narrator;
-
 
         public MainState(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, int id) : base(_game, _graphics, _content, id)
         {
             //Carico la mappa
-            background = new Background(_game, _graphics, _content, "maps/background/mondo1");   
-            
+            background = new Background(_game, _graphics, _content, "maps/background/mondo1");
+
             //Inizializzazione personaggi
             mainChar = new Character(_game, _graphics, _content, "character/bob", new Vector2(ConstVar.animatedSpriteWidth / 2, ConstVar.animatedSpriteHeigth), new Vector2(0, 0), ConstVar.animatedCols, ConstVar.animatedFrame, ConstVar.animatedSpriteWidth, ConstVar.animatedSpriteHeigth);
             mainChar.lockDisplay = true;
@@ -81,42 +70,8 @@ namespace Gioco_generico.States
 
 
             //Inizializzo le finestre di testo
-            ban = new Banner(_game, _graphics, _content, "button", new Vector2(ConstVar.displayDim.X /2, ConstVar.displayDim.Y /2),"Fonts/Font", "");
+            ban = new Banner(_game, _graphics, _content, "button", new Vector2(ConstVar.displayDim.X / 2, ConstVar.displayDim.Y / 2), "Fonts/Font", "");
             gDebug = new gameDebug(_game, _graphics, _content);
-
-            //Bottoni
-            var helpButton = new Button(_game, _graphics, _content, "help-btn", new Vector2(ConstVar.displayDim.X * 0.95f, ConstVar.displayDim.Y * 0.05f), Item.Type.NONE, 0.2);
-            helpButton.Action += Click_help;
-            var exitButton = new Button(_game, _graphics, _content, "exit-btn", new Vector2(ConstVar.displayDim.X * 0.98f, ConstVar.displayDim.Y * 0.05f), Item.Type.NONE, 0.2);
-            exitButton.Action += Click_exit;
-
-            _buttons = new List<Button>()
-              {
-                helpButton,
-                exitButton
-              };
-
-            //Bars
-            /*var barPlastica = new Bar(_game, _graphics, _content, "bars/plasticBar", "Plastica", new Vector2(10,0), 10, Item.Type.PLASTICA);
-            var barCarta = new Bar(_game, _graphics, _content, "bars/plasticBar", "Carta", new Vector2(10, 50), 10, Item.Type.CARTA);
-            var barVetro = new Bar(_game, _graphics, _content, "bars/plasticBar", "Vetro", new Vector2(10, 100), 10, Item.Type.VETRO);
-            var barSecco = new Bar(_game, _graphics, _content, "bars/plasticBar", "Secco", new Vector2(10, 150), 10, Item.Type.SECCO);
-            var barUmido = new Bar(_game, _graphics, _content, "bars/plasticBar", "Umido", new Vector2(10, 200), 10, Item.Type.UMIDO);
-            var barSpeciale = new Bar(_game, _graphics, _content, "bars/plasticBar", "Speciale", new Vector2(10, 250), 10, Item.Type.SPECIALE);
-
-            _bars = new List<Bar>()
-              {
-                barPlastica,
-                barCarta,
-                barVetro,
-                barSecco,
-                barUmido,
-                barSpeciale
-              };*/
-
-            scoreBar = new Bar(_game, _graphics, _content, "bars/plasticBar", "Score", new Vector2(10, 10), Item.Type.NONE);
-
-            
 
             //Objects 
             allObjects = new List<Item>();
@@ -138,14 +93,11 @@ namespace Gioco_generico.States
             //Load effect
             coinSound = _content.Load<SoundEffect>("soundEffect/coin-dropped");
 
-            //Narrator
-            narrator = new Narrator(_game, _graphics, _content, "character/narrator", new Vector2(0, 0), new Vector2(ConstVar.displayDim.X * 0.08f, ConstVar.displayDim.Y * 0.85f));
+            /* mainChar.collect(allObjects[2]);
+             mainChar.collect(allObjects[3]);
+             mainChar.collect(allObjects[3]);*/
 
-           /* mainChar.collect(allObjects[2]);
-            mainChar.collect(allObjects[3]);
-            mainChar.collect(allObjects[3]);*/
-
-            _currentState = state1;
+           // _currentState = state1;
         }
 
         private void Character_Action(object sender, CharEventArgs e)
@@ -164,14 +116,7 @@ namespace Gioco_generico.States
             }
         }
 
-        private void Click_help(object sender, EventArgs e)
-        {
-             _game.Exit();
-        }
-        private void Click_exit(object sender, EventArgs e)
-        {
-            _game.Exit();
-        }
+
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
@@ -182,20 +127,10 @@ namespace Gioco_generico.States
             foreach (Item obj in objects)
                 obj.Draw();
 
-            foreach (var button in _buttons)
-                button.Draw();
-
-            //foreach (var bar in _bars)
-            //    bar.Draw();
-            scoreBar.Draw();
-
             alice.Draw();
             mainChar.Draw();
             ban.Draw();
-
-            //Narrator
-            narrator.Draw();
-
+            ConstVar.UI.Draw();
             spriteBatch.End();
         }
 
@@ -208,14 +143,6 @@ namespace Gioco_generico.States
             mainChar.update(gameTime, background);
             alice.update(gameTime, background);
 
-            //Bottoni
-            foreach (var button in _buttons)
-                button.update();
-
-            //Bars
-            //foreach (var bar in _bars)
-            //    bar.Update(mainChar.Inventory.Count(x => x.type == bar.Type));
-            scoreBar.Update(_game.Score);
 
             // Spawn spazzatura
             float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -226,7 +153,7 @@ namespace Gioco_generico.States
                 int[,] walkableTile = (ConstVar.layers.Find(t => Equals(t.name, "street"))).tileMap;
                 int x = rnd.Next(1, 77);
                 int y = rnd.Next(1, 78);
-                if(walkableTile[y, x] != 0 && !objects.Exists(b => b.getTilePos(background) == new Vector2(x, y)))
+                if (walkableTile[y, x] != 0 && !objects.Exists(b => b.getTilePos(background) == new Vector2(x, y)))
                 {
                     //Modificare in modo che gli oggetti che spawnano siano coerenti con il livello del gioco; cit. Sara <3
                     Item obj = allObjects[rnd.Next(0, allObjects.Count())].Clone();
@@ -246,10 +173,8 @@ namespace Gioco_generico.States
                     objects.RemoveAt(i - 1);
                 }
             }
-            //Narratore
-            narrator.Update(gameTime);
-
-            _currentState(gameTime);
+            ConstVar.UI.Update(gameTime);
+            //_currentState(gameTime);
         }
 
         public void keyboardMgnt(KeyboardState kbState, GameTime gameTime)
@@ -263,7 +188,7 @@ namespace Gioco_generico.States
             else if (KeyPressed.Contains(Keys.Right))
             {
                 mainChar.setAction(Character.walk.RIGHT);
-            } 
+            }
             else if (KeyPressed.Contains(Keys.Up))
             {
                 mainChar.setAction(Character.walk.UP);
@@ -298,7 +223,7 @@ namespace Gioco_generico.States
 
                 if (OldKeyPressed.Contains(Keys.Space))
                 {
-                    space_button_action?.Invoke();                  
+                    space_button_action?.Invoke();
                 }
             }
 
@@ -317,7 +242,9 @@ namespace Gioco_generico.States
                 return true;
             return false;
         }
-         
+
+        /*
+
         public void changeState(state nextState)
         {
             _currentState = nextState;
@@ -378,7 +305,7 @@ namespace Gioco_generico.States
             "Bene e tu?",
             "Cosa dai dicendo?\n Stupido omino con i bordi\n pixelati!!",
             "Stupido sprite che\nnon sei altro!!!"
-        };
+        };*/
     }
 }
 

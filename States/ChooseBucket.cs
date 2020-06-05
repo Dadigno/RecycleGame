@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Audio;
 
 
 namespace Gioco_generico.States
@@ -19,10 +20,13 @@ namespace Gioco_generico.States
         //Finestra
         public Windows window;
 
+        private SoundEffect effectCloseWindow;
+
         public ChooseBucket(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, int id) : base(_game, _graphics, _content, id)
         {
-            window = new Windows(_game, _graphics, _content, new Vector2(0,0), "Finestra/finestra_daUsare(sSBP)",1);
+            window = new Windows(_game, _graphics, _content, new Vector2(0, 0), "Finestra/finestra_daUsare(sSBP)", (double)0.1);
             window.show = true;
+            effectCloseWindow = _content.Load<SoundEffect>("soundEffect/effectCloseWindow");
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -52,6 +56,7 @@ namespace Gioco_generico.States
                     ConstVar.main.mainChar.move = true;
                     ConstVar.main.ban.isActive = true;
                     _game.ChangeState(ConstVar.main);
+                    effectCloseWindow.Play();
                 }
             }
 

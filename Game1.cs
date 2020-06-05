@@ -120,7 +120,7 @@ namespace Gioco_generico
 
         void HandleLevel()
         {
-            if (Score > GameLevel.POINT_TARGET && GameLevel.NEXT_LEVEL != null)
+            if (Score >= GameLevel.POINT_TARGET && GameLevel.NEXT_LEVEL != null)
                 GameLevel = GameLevel.NEXT_LEVEL;
         }
     }

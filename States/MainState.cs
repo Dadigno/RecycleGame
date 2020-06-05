@@ -35,6 +35,7 @@ namespace Gioco_generico.States
         //Sound
         //Song song;
         private SoundEffect coinSound;
+        private SoundEffect effectOpenWindow;
 
         //Background
         public Background background;
@@ -100,12 +101,13 @@ namespace Gioco_generico.States
 
             //Load effect
             coinSound = _content.Load<SoundEffect>("soundEffect/coin-dropped");
+            effectOpenWindow = _content.Load<SoundEffect>("soundEffect/effectOpenWindow");
 
             /* mainChar.collect(allObjects[2]);
              mainChar.collect(allObjects[3]);
              mainChar.collect(allObjects[3]);*/
 
-           // _currentState = state1;
+            // _currentState = state1;
         }
 
         private void Character_Action(object sender, CharEventArgs e)
@@ -228,6 +230,7 @@ namespace Gioco_generico.States
                     ban.isVisible = false;
                     ban.isActive = false;
                     mainChar.move = false;
+                    effectOpenWindow.Play();
                     ConstVar.chooseBucket.window.widget = ConstVar.main.mainChar.Inventory;
                     _game.ChangeState(ConstVar.chooseBucket);
                 }

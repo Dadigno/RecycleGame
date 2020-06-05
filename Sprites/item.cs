@@ -67,7 +67,8 @@ namespace Gioco_generico
         public void DrawCard(float scale_x, float scale_y)
         {
             Texture2D tex = _content.Load<Texture2D>(objCardPath);
-            Rectangle r = new Rectangle((int)(ConstVar.displayDim.X * scale_x), (int)(ConstVar.displayDim.Y * scale_y), tex.Width, tex.Height);
+            //Rectangle r = new Rectangle((int)(ConstVar.displayDim.X * scale_x), (int)(ConstVar.displayDim.Y * scale_y), tex.Width, tex.Height);
+            Rectangle r = new Rectangle(((int)(ConstVar.chooseBucket.window.background.Width * ConstVar.chooseBucket.window.scaleY * scale_x) + (int)(ConstVar.chooseBucket.window.background.Width * ConstVar.chooseBucket.window.scaleX / 2)), ((int)(ConstVar.chooseBucket.window.background.Height * ConstVar.chooseBucket.window.scaleY * scale_y) + (int)(ConstVar.chooseBucket.window.background.Height * ConstVar.chooseBucket.window.scaleX / 2)), (int)(tex.Width * ConstVar.chooseBucket.window.scaleY), (int)(tex.Height * ConstVar.chooseBucket.window.scaleY));
             ConstVar.sb.Draw(tex,r,Color.White);
         }
 

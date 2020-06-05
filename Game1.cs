@@ -24,9 +24,9 @@ namespace Gioco_generico
         //LIVELLO 1 
         //LIVELLO 2 
         //LIVELLO 3 
-        static ConstVar.LEVEL LEVEL3 = new ConstVar.LEVEL(200000, 2000, 20000, "Livello3");
-        static ConstVar.LEVEL LEVEL2 = new ConstVar.LEVEL(20000, 200, 2000, "Livello2", LEVEL3);
-        static ConstVar.LEVEL LEVEL1 = new ConstVar.LEVEL(500, 20, 200, "Livello1", LEVEL2);
+        static ConstVar.LEVEL LEVEL3 = new ConstVar.LEVEL(200000, 2000, 20000, "Livello3", 30);
+        static ConstVar.LEVEL LEVEL2 = new ConstVar.LEVEL(20000, 200, 2000, "Livello2", 20, LEVEL3);
+        static ConstVar.LEVEL LEVEL1 = new ConstVar.LEVEL(500, 20, 200, "Livello1", 10, LEVEL2);
         
         
 

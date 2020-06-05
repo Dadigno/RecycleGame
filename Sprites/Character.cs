@@ -12,13 +12,13 @@ namespace Gioco_generico
         public enum thinkType { QUESTION, ESCLAMATIVE, HEART, THINK, NONE};
         protected walk state;
         public bool move = true;
-        public event EventHandler<CharEventArgs> Action;
+        public event EventHandler<CharEventArgs> Action;        
         public int walkSpeed = 2;
         public bool collide;
         public bool lockDisplay = true;
         public bool isSpeaking;
         private bool isThinking;
-        private CharEventArgs args;
+		private CharEventArgs args;
         private List<Item> inventory = new List<Item>();
         private AnimatedSprite thinkingBubble;
         private AnimatedSprite esclamativeBubble;

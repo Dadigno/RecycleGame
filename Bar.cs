@@ -29,7 +29,7 @@ namespace Gioco_generico
         {
             this.displayPos = displayPos;
             infillTex = _content.Load<Texture2D>("bars/infill");
-            barTex = _content.Load<Texture2D>("bars/bar");
+            barTex = _content.Load<Texture2D>("bars/genericBar");
             double barWidth = barTex.Width * (scale * ConstVar.displayDim.X / barTex.Width);
             double barHeight = barWidth * barTex.Height / barTex.Width;
             rectBar = new Rectangle((int)displayPos.X, (int)displayPos.Y, (int)(barWidth), (int)barHeight);
@@ -64,9 +64,10 @@ namespace Gioco_generico
             title.Draw();
             //ConstVar.sb.Draw(avatarTex, rectAvatar, Color.White);
         }
-        public void Update(int v)
+        public void Update(int v, int target)
         {
-            Target = _game.GameLevel.POINT_TARGET;
+            //Target = _game.GameLevel.POINT_TARGET;
+            Target = target;
             counter.update(v.ToString() + " / " + Target.ToString());
             if (v > Target)
             {

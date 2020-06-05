@@ -13,7 +13,8 @@ namespace Gioco_generico
 
         //Bar
         //private List<Bar> _bars;
-        private Bar scoreBar;
+        Bar ScoreBar;
+        Bar InventoryBar;
         Narrator narrator;
 
 
@@ -38,8 +39,8 @@ namespace Gioco_generico
                 barSpeciale
               };*/
 
-            scoreBar = new Bar(_game, _graphics, _content, "bars/plasticBar", "Score", new Vector2(10, 10), Item.Type.NONE);
-
+            ScoreBar = new Bar(_game, _graphics, _content, "bars/genericBar", "Score", new Vector2(10, 10), Item.Type.NONE);
+            InventoryBar = new Bar(_game, _graphics, _content, "bars/genericBar", "Inventory", new Vector2(10, 50), Item.Type.NONE);
 
             //Bottoni
             var helpButton = new Button(_game, _graphics, _content, "help-btn", new Vector2(ConstVar.displayDim.X * 0.95f, ConstVar.displayDim.Y * 0.05f), Item.Type.NONE, 0.2);
@@ -64,7 +65,8 @@ namespace Gioco_generico
         {
             //foreach (var bar in _bars)
             //    bar.Draw();
-            scoreBar.Draw();
+            ScoreBar.Draw();
+            InventoryBar.Draw();
             narrator.Draw();
 
             foreach (var button in _buttons)
@@ -82,8 +84,8 @@ namespace Gioco_generico
             //Bars
             //foreach (var bar in _bars)
             //    bar.Update(mainChar.Inventory.Count(x => x.type == bar.Type));
-            scoreBar.Update(_game.Score);
-
+            ScoreBar.Update(_game.Score, _game.GameLevel.POINT_TARGET);
+            InventoryBar.Update(ConstVar.main.mainChar.Inventory.Count, _game.GameLevel.FULL_INVENTORY);
             //Narratore
             narrator.Update(gameTime);
         }

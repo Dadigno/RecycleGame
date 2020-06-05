@@ -24,14 +24,14 @@ namespace Gioco_generico.States
 
         public ChooseBucket(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, int id) : base(_game, _graphics, _content, id)
         {
-            window = new Windows(_game, _graphics, _content, new Vector2(0, 0), "Finestra/finestra_daUsare(sSBP)", (double)0.1);
+            window = new Windows(_game, _graphics, _content, new Vector2(0, 0), "Finestra/finestra_daUsare(sSBP)", (double)0.2);
             window.show = true;
             effectCloseWindow = _content.Load<SoundEffect>("soundEffect/effectCloseWindow");
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            _game.GraphicsDevice.Clear(Color.CornflowerBlue);
+            _game.GraphicsDevice.Clear(Color.Green);
             spriteBatch.Begin();
             window.Draw();
             spriteBatch.End();

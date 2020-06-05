@@ -51,6 +51,8 @@ namespace Gioco_generico
         public double scaleX;
         public double scaleY;
 
+        Banner ban;
+
         public Windows(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, Vector2 displayPos, string texture, double scale) : base(_game, _graphics, _content)
         { 
             //gestione valori scalamento
@@ -164,6 +166,9 @@ namespace Gioco_generico
             effectAnswerCorrect = _content.Load<SoundEffect>("soundEffect/effectAnswerCorrect");
             effectAnswerWrong = _content.Load<SoundEffect>("soundEffect/effectAnswerWrong");
             effectScrollArrow = _content.Load<SoundEffect>("soundEffect/effectScrollArrow");
+
+            ban = new Banner(_game, _graphics, _content, "button", new Vector2(ConstVar.displayDim.X / 2, ConstVar.displayDim.Y / 2), "Fonts/Font", "1");
+            ban.isVisible = true;
         }
 
         public void Draw()
@@ -205,8 +210,10 @@ namespace Gioco_generico
                 {
                     Draw3();
                 }
-
+                
                 ConstVar.UI.Draw();
+
+                ban.Draw();
             }           
         }
         

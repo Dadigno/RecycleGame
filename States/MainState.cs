@@ -91,12 +91,12 @@ namespace Gioco_generico.States
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/battery", new Vector2(0, 0), new Vector2(0, 0), 0.06, Item.Type.BATTERIE, true));
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/car-battery", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.BATTERIE, true));
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bottiglia", new Vector2(0, 0), new Vector2(0, 0), 0.07, Item.Type.PLASTICA_MET, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/tv", new Vector2(0, 0), new Vector2(0, 0), 0.08, Item.Type.CENTRORACCOLTA, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/wooden-chair", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.CENTRORACCOLTA, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/microwave-oven", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.CENTRORACCOLTA, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/clothes", new Vector2(0, 0), new Vector2(0, 0), 0.05, Item.Type.ABITI, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lamp", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.CENTRORACCOLTA, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/jeans", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.ABITI, true));
+            //allObjects.Add(new Item(_game, _graphics, _content, "oggetti/tv", new Vector2(0, 0), new Vector2(0, 0), 0.08, Item.Type.CENTRORACCOLTA, true));
+            //allObjects.Add(new Item(_game, _graphics, _content, "oggetti/wooden-chair", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.CENTRORACCOLTA, true));
+            //allObjects.Add(new Item(_game, _graphics, _content, "oggetti/microwave-oven", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.CENTRORACCOLTA, true));
+            //allObjects.Add(new Item(_game, _graphics, _content, "oggetti/clothes", new Vector2(0, 0), new Vector2(0, 0), 0.05, Item.Type.ABITI, true));
+            //allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lamp", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.CENTRORACCOLTA, true));
+            //allObjects.Add(new Item(_game, _graphics, _content, "oggetti/jeans", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.ABITI, true));
             objects = new List<Item>();
 
             //Load effect

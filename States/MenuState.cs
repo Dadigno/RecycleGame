@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 
 namespace Gioco_generico.States
 {
@@ -18,6 +19,8 @@ namespace Gioco_generico.States
         Texture2D menu;
         Vector2 position;
         Rectangle rect;
+        private SoundEffect effectScrollArrow;
+
         public MenuState(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, int id) : base(_game, _graphics, _content, id)
         {
 
@@ -45,7 +48,7 @@ namespace Gioco_generico.States
                 quitGameButton,
               };
 
-            
+            effectScrollArrow = _content.Load<SoundEffect>("soundEffect/effectScrollArrow");
 
         }
 
@@ -58,10 +61,12 @@ namespace Gioco_generico.States
         private void PlayGameButton_Click(object sender, EventArgs e)
         {
             _game.ChangeState(ConstVar.main);
+            effectScrollArrow.Play();
         }
 
         private void QuitGameButton_Click(object sender, EventArgs e)
         {
+            effectScrollArrow.Play();
             _game.Exit();
         }
 

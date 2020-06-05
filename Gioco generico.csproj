@@ -46,6 +46,7 @@
     <Compile Include="ConfigFile.cs" />
     <Compile Include="gameDebug.cs" />
     <Compile Include="Bar.cs" />
+    <Compile Include="Narrator.cs" />
     <Compile Include="Sprites\Item.cs" />
     <Compile Include="Sprites\SpeechBubble.cs" />
     <Compile Include="States\ChooseBucket.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="States\State.cs" />
     <Compile Include="TextBox.cs" />
     <Compile Include="tmxTool.cs" />
+    <Compile Include="UI.cs" />
     <Compile Include="Windows.cs" />
   </ItemGroup>
   <ItemGroup>

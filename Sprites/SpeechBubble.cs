@@ -16,7 +16,7 @@ namespace Gioco_generico
         protected SpriteFont font;
         protected Color PenColour = Color.Black;
         protected Color colourTex = Color.White;
-        private float SCROLL_VEL = 100;
+        private float SCROLL_VEL = 50;
         private float BUBBLE_DELAY = 2000;
         private float scrollingTime;
         private float bubbleTime;

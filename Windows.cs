@@ -167,7 +167,7 @@ namespace Gioco_generico
             effectAnswerWrong = _content.Load<SoundEffect>("soundEffect/effectAnswerWrong");
             effectScrollArrow = _content.Load<SoundEffect>("soundEffect/effectScrollArrow");
 
-            ban = new Banner(_game, _graphics, _content, "button", new Vector2(ConstVar.displayDim.X / 2, ConstVar.displayDim.Y / 2), "Fonts/Font", "1");
+            ban = new Banner(_game, _graphics, _content, "button/button", new Vector2(ConstVar.displayDim.X / 2, ConstVar.displayDim.Y / 2), "Fonts/Font", "1");
             ban.isVisible = true;
         }
 

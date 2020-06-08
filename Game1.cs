@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Gioco_generico.States;
-
+using Microsoft.Xna.Framework.Audio;
 
 namespace Gioco_generico
 {
@@ -18,7 +18,7 @@ namespace Gioco_generico
         ConfigFile settingFile;
         private State _currentState;
         private State _nextState;
-
+        private SoundEffect surround;
 
         //Ogni oggetto è 100 punti, ogni errore -50
         //LIVELLO 1 
@@ -28,7 +28,6 @@ namespace Gioco_generico
         static ConstVar.LEVEL LEVEL2 = new ConstVar.LEVEL(20000, 200, 2000, "Livello2", 20, LEVEL3);
         static ConstVar.LEVEL LEVEL1 = new ConstVar.LEVEL(500, 20, 200, "Livello1", 10, LEVEL2);
         
-
         
         public ConstVar.LEVEL GameLevel;
         private int _score;
@@ -77,6 +76,10 @@ namespace Gioco_generico
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             loadTMX("content/maps/mondo1.tmx", ConstVar.layers);
+            loadAdvices();
+            loadNarratorText();
+            surround = Content.Load<SoundEffect>("soundEffect/surround");
+            surround.Play();
             GameLevel = LEVEL1;
             ConstVar.sb = spriteBatch;
             ConstVar.font = Content.Load<SpriteFont>("Fonts/font");

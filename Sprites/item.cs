@@ -11,10 +11,11 @@ namespace Gioco_generico
     {
         public enum Type { PLASTICA_MET, ORGANICO, SECCO, VETRO, CARTA, FARMACI, ABITI, STRADALI, BATTERIE, TONER, CENTRORACCOLTA, NONE };
         public Type type;
-        double[] sine = {0.1, 0.1, 0.1, 0.2, 0.3, 0.3, 0.4, 0.5, 0.6, 0.7, 0.7, 0.8, 0.9, 0.9, 0.9, 1, 1, 1, 1, 1, 0.9, 0.9, 0.9, 0.8, 0.7, 0.7, 0.6, 0.5, 0.4, 0.3, 0.3, 0.2, 0.1, 0.1, 0.1 };
+        double[] sine = {0.1, 0.1, 0.1, 0.2, 0.3, 0.3, 0.4, 0.5, 0.6, 0.7, 0.7, 0.8, 0.9, 0.9, 0.9, 1, 1, 1, 1, 1, 0.9, 0.9, 0.9, 0.8, 0.7, 0.7, 0.6, 0.5, 0.4, 0.3, 0.3, 0.2, 0.1, 0.1, 0.1, -0.1, -0.1, -0.1, -0.2, -0.3, -0.3, -0.4, -0.5, -0.6, -0.7, -0.7, -0.8, -0.9, -0.9, -0.9, -1, -1, -1, -1, -1, -0.9, -0.9, -0.9, -0.8, -0.7, -0.7, -0.6, -0.5, -0.4, -0.3, -0.3, -0.2, -0.1, -0.1, -0.1 };
+        
         private float timerAnimated = 100;
         private bool floating = false;
-        private int offset = 10;
+        private int offset = 5;
         String objCardPath;
         public Item(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, Vector2 initGamePosition, Vector2 initDisplayPos, double scale, Type type = Type.NONE, bool animation = false) : base(_game, _graphics, _content, nameTex, initGamePosition, initDisplayPos, scale)
         {
@@ -55,7 +56,7 @@ namespace Gioco_generico
         {
             if (floating)
             {
-                Rectangle t = new Rectangle(rect.X, rect.Y - (int)offy, rect.Width, rect.Height);
+                Rectangle t = new Rectangle(rect.X, rect.Y + (int)offy, rect.Width, rect.Height);
                 ConstVar.sb.Draw(texture, t, null, Color.White, rotation, origin, new SpriteEffects(), 0);
             }
             else

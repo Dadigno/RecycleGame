@@ -17,10 +17,10 @@ namespace Gioco_generico
         private MouseState _currentMouse;
         public gameDebug(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content)
         {
-            box1 = new TextBox(_game, _graphics, _content, new Vector2(0,0),  new Vector2(ConstVar.displayDim.X - 200, 0), ConstVar.font, "", Color.Black);
-            box2 = new TextBox(_game, _graphics, _content, new Vector2(0,0), new Vector2(ConstVar.displayDim.X - 200, 20), ConstVar.font, "", Color.Black);
-            box3 = new TextBox(_game, _graphics, _content, new Vector2(0,0), new Vector2(ConstVar.displayDim.X - 200, 40), ConstVar.font, "", Color.Black);
-            box4 = new TextBox(_game, _graphics, _content, new Vector2(0, 0), new Vector2(ConstVar.displayDim.X - 200, 60), ConstVar.font, "", Color.Black);
+            box1 = new TextBox(_game, _graphics, _content, new Vector2(0,0),  new Vector2(ConstVar.displayDim.X - 500, 0), ConstVar.font, "", Color.Black);
+            box2 = new TextBox(_game, _graphics, _content, new Vector2(0,0), new Vector2(ConstVar.displayDim.X - 500, 20), ConstVar.font, "", Color.Black);
+            box3 = new TextBox(_game, _graphics, _content, new Vector2(0,0), new Vector2(ConstVar.displayDim.X - 500, 40), ConstVar.font, "", Color.Black);
+            box4 = new TextBox(_game, _graphics, _content, new Vector2(0, 0), new Vector2(ConstVar.displayDim.X - 500, 60), ConstVar.font, "", Color.Black);
         }
 
         public void Draw()

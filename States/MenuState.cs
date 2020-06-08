@@ -25,20 +25,20 @@ namespace Gioco_generico.States
         {
 
             //background = new Background(_game, _graphics, _content, "maps/background/backgroundMenu");
-            menu = _content.Load<Texture2D>("windows/menu");
+            menu = _content.Load<Texture2D>("menu");
             rect = new Rectangle((int)ConstVar.displayDim.X / 2 - menu.Width / 2, (int)ConstVar.displayDim.Y / 2 - menu.Height / 2, menu.Width, menu.Height);
 
-            var buttonTexture = _content.Load<Texture2D>("button");
+            var buttonTexture = _content.Load<Texture2D>("button/button");
             
             position.X = rect.X + 340;
             position.Y = rect.Y + 330;
-            var newGameButton = new Button(_game, _graphics, _content, "windows/play_button", new Vector2(position.X, position.Y));
+            var newGameButton = new Button(_game, _graphics, _content, "button/play_button", new Vector2(position.X, position.Y));
             newGameButton.Action += PlayGameButton_Click;
 
             //var loadGameButton = new Button(_game, _graphics, _content, "", new Vector2(position.X, position.Y + 50));
             //loadGameButton.Click += InfoGameButton_Click;
 
-            var quitGameButton = new Button(_game, _graphics, _content, "windows/exit_button", new Vector2(position.X, position.Y + 100));
+            var quitGameButton = new Button(_game, _graphics, _content, "button/exit_button", new Vector2(position.X, position.Y + 100));
             quitGameButton.Action += QuitGameButton_Click;
 
             _buttons = new List<Button>()

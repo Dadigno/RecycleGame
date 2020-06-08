@@ -55,7 +55,8 @@ namespace Gioco_generico
 
         public static List<Game1.layer> layers = new List<Game1.layer>();
         public static List<Game1.layer> layersInside = new List<Game1.layer>();
-
+        public static List<string> advices = new List<string>();
+        public static List<string> narratorScript = new List<string>();
         //User interface
         public static UI UI;
 

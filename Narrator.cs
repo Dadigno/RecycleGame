@@ -2,20 +2,24 @@
 using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Gioco_generico
 {
     public class Narrator : Sprite
     {
+        //Max 128 caratteru per riga
         SpeechBubble speechBubble;
         bool show = false;
         List<String> messages;
-        public bool isSpeaking;
-        public Narrator(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, Vector2 initGamePos, Vector2 initDisplayPos, double scale = 1) : base(_game, _graphics, _content, nameTex, initGamePos, initDisplayPos, scale)
+        bool isSpeaking;
+        delegate void doSomething();
+        doSomething handler;
+
+        public Narrator(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, Vector2 initGamePos, Vector2 initDisplayPos, float scale = 1) : base(_game, _graphics, _content, nameTex, initGamePos, initDisplayPos, scale)
         {
-            speechBubble = new SpeechBubble(_game, _graphics, _content, "bubble/bubble-narrator", "Fonts/speechFont");
-            //speechBubble.Text = "\nCiao sono il\ntuo narratore";
-            //isSpeaking = true;
+            speechBubble = new SpeechBubble(_game, _graphics, _content, "bubble/bubble-narrator", "Fonts/font");
+            handler = doTutorial;
         }
 
         public void Draw()
@@ -26,6 +30,7 @@ namespace Gioco_generico
             {
                 isSpeaking = speechBubble.Draw();
             }
+            handler?.Invoke();
         }
 
         public void Update(GameTime gameTime)
@@ -37,6 +42,22 @@ namespace Gioco_generico
         {
             speechBubble.Text = text;
             isSpeaking = true;
+        }
+        int step = 0;
+        public void doTutorial()
+        {
+            if (!isSpeaking)
+            {
+                speak(ConstVar.narratorScript[step]);
+                if (step < ConstVar.narratorScript.Count - 1)
+                {
+                    step++;
+                }
+                else
+                {
+                    handler = null;
+                }
+            }
         }
     }
 }

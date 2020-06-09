@@ -17,7 +17,7 @@ namespace Gioco_generico
         protected Color PenColour = Color.Black;
         protected Color colourTex = Color.White;
         private float SCROLL_VEL = 50;
-        private float BUBBLE_DELAY = 2000;
+        private float BUBBLE_DELAY = 4000;
         private float scrollingTime;
         private float bubbleTime;
         
@@ -30,16 +30,17 @@ namespace Gioco_generico
         //Song song;
         private SoundEffect speechSound;
         SoundEffectInstance instance;
-        public SpeechBubble(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, string font, double scale = 1) : base(_game, _graphics, _content, nameTex, new Vector2(0,0), new Vector2(0,0), scale)
+        float border;
+        public SpeechBubble(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, string font, float scale = 1) : base(_game, _graphics, _content, nameTex, new Vector2(0,0), new Vector2(0,0), scale)
         {
             this.font = _content.Load<SpriteFont>(font);
-            origin = new Vector2(0, 0);
             scrollingTime = SCROLL_VEL;
             bubbleTime = BUBBLE_DELAY;
 
             //Load effect
             speechSound = _content.Load<SoundEffect>("soundEffect/speech-sound");
             instance = speechSound.CreateInstance();
+            border = rect.Width*0.9f;
         }   
 
         public String Text
@@ -60,7 +61,7 @@ namespace Gioco_generico
 
         public void Update(GameTime gameTime, Vector2 pos)
         {
-            setPos((int)(pos.X - rect.Width * 0.2), (int)(pos.Y - rect.Height * 1.2));
+            setPos((int)(pos.X + rect.Width * 0.5), (int)(pos.Y - rect.Height * 0.5));
             float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             scrollingTime -= elapsed;
             if(isScrolling == false && temp != "")
@@ -73,7 +74,7 @@ namespace Gioco_generico
                 }
             }
         }
-
+        float row = 1;
         public new bool Draw()
         {
             if (text != "")
@@ -86,21 +87,37 @@ namespace Gioco_generico
                         isScrolling = true;
                         if (instance.State != SoundState.Playing)
                         {
-                            instance.Play();
+                           instance.Play();
                         }
                         temp += l[0];
+                        float a = font.MeasureString(temp.Replace("\r\n","")).X / border;
+                        if ( a > row)
+                        {
+                            if (l[0] != ' ' && l[1] != ' ')
+                            {
+                                temp += '-';
+                            }
+                            if(l[1] == ' ')
+                            {
+                                l.RemoveAt(1);
+                            }
+
+                            temp += Environment.NewLine;
+                            row++;
+                        }
                         l.RemoveAt(0);
                     }
                     else
                     {
                         isScrolling = false;
+                        row = 1;
                         instance.Stop();
                     }
                 }
                 if (show)
                 {
                     base.Draw(true);
-                    ConstVar.sb.DrawString(font, temp, new Vector2((float)(rect.X + rect.Width * 0.05), (float)(rect.Y + rect.Height * 0.05)), PenColour);
+                    ConstVar.sb.DrawString(font, temp, new Vector2(rect.X - texture.Width*0.45f, rect.Y-texture.Height*0.43f), PenColour);
                     return true;
                 }
                 else

@@ -17,7 +17,7 @@ namespace Gioco_generico
         private bool floating = false;
         private int offset = 5;
         String objCardPath;
-        public Item(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, Vector2 initGamePosition, Vector2 initDisplayPos, double scale, Type type = Type.NONE, bool animation = false) : base(_game, _graphics, _content, nameTex, initGamePosition, initDisplayPos, scale)
+        public Item(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, Vector2 initGamePosition, Vector2 initDisplayPos, float scale, Type type = Type.NONE, bool animation = false) : base(_game, _graphics, _content, nameTex, initGamePosition, initDisplayPos, scale)
         {
             this.type = type;
             this.floating = animation;
@@ -26,7 +26,7 @@ namespace Gioco_generico
 
         public Item Clone()
         {
-            return new Item(this._game, this._graphics, this._content, this.nameTex, new Vector2(0, 0), this.displayPos, (double)this.scale, this.type, this.floating);
+            return new Item(this._game, this._graphics, this._content, this.nameTex, new Vector2(0, 0), this.displayPos, this.scale, this.type, this.floating);
         }
 
         int i = 0;
@@ -56,19 +56,16 @@ namespace Gioco_generico
         {
             if (floating)
             {
-                Rectangle t = new Rectangle(rect.X, rect.Y + (int)offy, rect.Width, rect.Height);
-                ConstVar.sb.Draw(texture, t, null, Color.White, rotation, origin, new SpriteEffects(), 0);
+                setPos((int)getPos().X, (int)(getPos().Y + offy));
+                
+                //ConstVar.sb.Draw(texture, new Vector2(getPos().X,getPos().Y + (int)offy), null, Color.White, 0, new Vector2(texture.Width/2, texture.Height/2), new Vector2(0.5f, 0.5f), new SpriteEffects(), 0);
             }
-            else
-            {
-                base.Draw(true);
-            }
+            base.Draw(true);
         }
 
         public void DrawCard(float scale_x, float scale_y)
         {
             Texture2D tex = _content.Load<Texture2D>(objCardPath);
-            //Rectangle r = new Rectangle((int)(ConstVar.displayDim.X * scale_x), (int)(ConstVar.displayDim.Y * scale_y), tex.Width, tex.Height);
             Rectangle r = new Rectangle(((int)(ConstVar.chooseBucket.window.background.Width * ConstVar.chooseBucket.window.scaleY * scale_x) + (int)(ConstVar.chooseBucket.window.background.Width * ConstVar.chooseBucket.window.scaleX / 2)), ((int)(ConstVar.chooseBucket.window.background.Height * ConstVar.chooseBucket.window.scaleY * scale_y) + (int)(ConstVar.chooseBucket.window.background.Height * ConstVar.chooseBucket.window.scaleX / 2)), (int)(tex.Width * ConstVar.chooseBucket.window.scaleY), (int)(tex.Height * ConstVar.chooseBucket.window.scaleY));
             ConstVar.sb.Draw(tex,r,Color.White);
         }

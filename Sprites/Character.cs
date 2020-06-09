@@ -33,7 +33,7 @@ namespace Gioco_generico
             esclamativeBubble = new AnimatedSprite(_game, _graphics, _content, "bubble/bubble-esclamative", new Vector2(0, 0), new Vector2(0, 0), 8, 8, 30, 30);
             questionBubble = new AnimatedSprite(_game, _graphics, _content, "bubble/bubble-question", new Vector2(0, 0), new Vector2(0, 0), 8, 8, 30, 30);
             heartBubble = new AnimatedSprite(_game, _graphics, _content, "bubble/bubble-heart", new Vector2(0, 0), new Vector2(0, 0), 8, 8, 30, 30);
-            speechBubble = new SpeechBubble(_game, _graphics, _content, "bubble/bubble-speech", "Fonts/speechFont", 0.5);
+            speechBubble = new SpeechBubble(_game, _graphics, _content, "bubble/bubble-speech", "Fonts/speechFont", 0.5f);
 
             state = walk.NOP;
             isThinking = false;

@@ -15,9 +15,9 @@ namespace Gioco_generico
         protected Vector2 gamePos;
         protected Vector2 displayPos;
         protected String nameTex;
-        public double scale;
+        public float scale;
         protected Color colourTex = Color.White;
-        public Sprite(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, Vector2 initGamePos, Vector2 initDisplayPos, double scale = 1) : base(_game, _graphics, _content)
+        public Sprite(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, Vector2 initGamePos, Vector2 initDisplayPos, float scale = 1) : base(_game, _graphics, _content)
         {
             gamePos = initGamePos;
             displayPos = initDisplayPos;
@@ -26,7 +26,6 @@ namespace Gioco_generico
             if (nameTex != "")
             {
                 texture = _content.Load<Texture2D>(nameTex);
-                origin = new Vector2((float)(texture.Width * scale) / 2, (float)(texture.Height * scale) / 2);
                 rect = new Rectangle((int)initDisplayPos.X, (int)initDisplayPos.Y, (int)(this.texture.Width * scale), (int)(this.texture.Height * scale));
             }
             else
@@ -58,7 +57,10 @@ namespace Gioco_generico
         public void Draw(bool show)
         {
             if (show)
-                ConstVar.sb.Draw(texture, rect, null, colourTex, rotation, origin, new SpriteEffects(), 0);
+            {
+                ConstVar.sb.Draw(texture, new Vector2(getPos().X, getPos().Y), null, Color.White, 0, new Vector2(texture.Width / 2, texture.Height / 2), new Vector2(scale, scale), new SpriteEffects(), 0);
+                // ConstVar.sb.Draw(texture, rect, null, colourTex, rotation, new Vector2(0, 0), new SpriteEffects(), 0); 
+            }
         }
 
         public Rectangle getRect()

@@ -33,7 +33,7 @@ namespace Gioco_generico
 
         public void Draw()
         {
-            ConstVar.sb.Draw(texture, rect, new Rectangle(currentCol * rect.Width, currentRow * rect.Height, rect.Width, rect.Height), Color.White, dir, origin, new SpriteEffects(), 0);
+            ConstVar.sb.Draw(texture, rect, new Rectangle(currentCol * rect.Width, currentRow * rect.Height, rect.Width, rect.Height), Color.White, dir, new Vector2(rect.Width/2,rect.Height), new SpriteEffects(), 0);
             if (isRunning)
             {
                 if (timerAnimated < 0)

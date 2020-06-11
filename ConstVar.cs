@@ -80,6 +80,19 @@ namespace Gioco_generico
             }
         }
 
+        public class Result
+        {
+            public int numeroRipsosteCorrette;
+            public int numeroRisposteSbagliate;
+ 
+
+            public Result (int nRC, int NRE)
+            {
+                numeroRipsosteCorrette = nRC;
+                numeroRisposteSbagliate = NRE;
+            }
+        }
+
     }
 
     

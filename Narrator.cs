@@ -8,18 +8,20 @@ namespace Gioco_generico
 {
     public class Narrator : Sprite
     {
-        //Max 128 caratteru per riga
         SpeechBubble speechBubble;
         bool show = false;
         List<String> messages;
         bool isSpeaking;
+        bool isSleeping = true;
         delegate void doSomething();
         doSomething handler;
+        /// <summary> Se True il narratore non sta facendo nulla</summary>
+        public bool Sleeping { get; }
+       
 
         public Narrator(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, Vector2 initGamePos, Vector2 initDisplayPos, float scale = 1) : base(_game, _graphics, _content, nameTex, initGamePos, initDisplayPos, scale)
         {
             speechBubble = new SpeechBubble(_game, _graphics, _content, "bubble/bubble-narrator", "Fonts/font");
-            handler = doTutorial;
         }
 
         public void Draw()
@@ -38,13 +40,20 @@ namespace Gioco_generico
             speechBubble.Update(gameTime, getPos());
         }
 
-        public void speak(string text)
+        /// <summary>Se isSleeping è true pronuncia il testo passato nell'argomento </summary>
+        void speak(string text)
         {
-            speechBubble.Text = text;
-            isSpeaking = true;
+            if (isSleeping)
+            {
+                speechBubble.Text = text;
+                isSpeaking = true;
+            }
         }
+
         int step = 0;
-        public void doTutorial()
+
+        
+        void doTutorial()
         {
             if (!isSpeaking)
             {
@@ -55,9 +64,17 @@ namespace Gioco_generico
                 }
                 else
                 {
+                    isSleeping = true;
                     handler = null;
                 }
             }
+            
+        }
+
+        /// <summary>Segue il copione descritto dentro il file narratorScript</summary>
+        public void phase1()
+        {
+            handler = doTutorial;
         }
     }
 }

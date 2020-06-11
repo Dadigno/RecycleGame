@@ -11,6 +11,7 @@ namespace Gioco_generico
         public enum walk { UP, DOWN, LEFT, RIGHT, NOP };
         public enum thinkType { QUESTION, ESCLAMATIVE, HEART, THINK, NONE};
         protected walk state;
+        /// <summary>Se True il personaggio si può muovere con la tastiera</summary>
         public bool move = true;
         public event EventHandler<CharEventArgs> Action;        
         public int walkSpeed = 2;
@@ -25,7 +26,7 @@ namespace Gioco_generico
         private AnimatedSprite questionBubble;
         private AnimatedSprite heartBubble;
         private AnimatedSprite Think;
-        private SpeechBubble speechBubble;
+        //private SpeechBubble speechBubble;
 
         public Character(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, Vector2 origin, Vector2 initGamePosition, int colums, int totFrames, int frameWidth, int frameHeight) : base(_game, _graphics, _content, nameTex, origin, initGamePosition, colums, totFrames, frameWidth, frameHeight)
         {
@@ -33,7 +34,7 @@ namespace Gioco_generico
             esclamativeBubble = new AnimatedSprite(_game, _graphics, _content, "bubble/bubble-esclamative", new Vector2(0, 0), new Vector2(0, 0), 8, 8, 30, 30);
             questionBubble = new AnimatedSprite(_game, _graphics, _content, "bubble/bubble-question", new Vector2(0, 0), new Vector2(0, 0), 8, 8, 30, 30);
             heartBubble = new AnimatedSprite(_game, _graphics, _content, "bubble/bubble-heart", new Vector2(0, 0), new Vector2(0, 0), 8, 8, 30, 30);
-            speechBubble = new SpeechBubble(_game, _graphics, _content, "bubble/bubble-speech", "Fonts/speechFont", 0.5f);
+            //speechBubble = new SpeechBubble(_game, _graphics, _content, "bubble/bubble-speech", "Fonts/speechFont", 0.5f);
 
             state = walk.NOP;
             isThinking = false;
@@ -53,7 +54,7 @@ namespace Gioco_generico
             heartBubble.Update(gameTime);
             esclamativeBubble.Update(gameTime);
             questionBubble.Update(gameTime);
-            speechBubble.Update(gameTime, getPos());
+            //speechBubble.Update(gameTime, getPos());
 
             int[,] activeTile = (ConstVar.layers.Find(t => Equals(t.name, "active"))).tileMap;
             if (activeTile != null)
@@ -223,12 +224,12 @@ namespace Gioco_generico
             if (isThinking)
             {
                 Think.isRunning = true;
-                Think.setPos(rect.X, rect.Y - ConstVar.animatedSpriteHeigth - thinkingBubble.rect.Height);
+                Think.setPos(rect.X + rect.Width / 2, rect.Y - rect.Height);
                 Think.Draw();
             }
             if (isSpeaking)
             {
-                isSpeaking = speechBubble.Draw();
+               // isSpeaking = speechBubble.Draw();
             }
             base.Draw();
         }
@@ -260,7 +261,7 @@ namespace Gioco_generico
 
         public void speak(string text)
         {
-            speechBubble.Text = text;
+            //speechBubble.Text = text;
             isSpeaking = true;
         }
 

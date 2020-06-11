@@ -28,7 +28,6 @@ namespace Gioco_generico
         static ConstVar.LEVEL LEVEL2 = new ConstVar.LEVEL(20000, 200, 2000, "Livello2", 20, LEVEL3);
         static ConstVar.LEVEL LEVEL1 = new ConstVar.LEVEL(500, 20, 200, "Livello1", 10, LEVEL2);
         
-        
         public ConstVar.LEVEL GameLevel;
         private int _score;
         public int Score
@@ -79,7 +78,7 @@ namespace Gioco_generico
             loadAdvices();
             loadNarratorText();
             surround = Content.Load<SoundEffect>("soundEffect/surround");
-            surround.Play();
+            //surround.Play();
             GameLevel = LEVEL1;
             ConstVar.sb = spriteBatch;
             ConstVar.font = Content.Load<SpriteFont>("Fonts/font");

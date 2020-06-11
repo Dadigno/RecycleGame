@@ -12,16 +12,16 @@ namespace Gioco_generico
         bool show = false;
         List<String> messages;
         bool isSpeaking;
-        bool isSleeping = true;
+		bool isSleeping = true;
         delegate void doSomething();
         doSomething handler;
         /// <summary> Se True il narratore non sta facendo nulla</summary>
         public bool Sleeping { get; }
-       
-
         public Narrator(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, Vector2 initGamePos, Vector2 initDisplayPos, float scale = 1) : base(_game, _graphics, _content, nameTex, initGamePos, initDisplayPos, scale)
-        {
-            speechBubble = new SpeechBubble(_game, _graphics, _content, "bubble/bubble-narrator", "Fonts/font");
+        {            
+			speechBubble = new SpeechBubble(_game, _graphics, _content, "bubble/bubble-narrator", "Fonts/speechFont");
+			//speechBubble.Text = "\nCiao sono il\ntuo narratore";
+            //speechBubble = new SpeechBubble(_game, _graphics, _content, "bubble/bubble-narrator", "Fonts/font");
         }
 
         public void Draw()

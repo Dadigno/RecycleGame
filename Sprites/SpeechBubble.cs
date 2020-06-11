@@ -31,8 +31,8 @@ namespace Gioco_generico
         //Song song;
         private SoundEffect speechSound;
         SoundEffectInstance instance;
-        float border;
-        public SpeechBubble(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, string font, float scale = 1) : base(_game, _graphics, _content, nameTex, new Vector2(0,0), new Vector2(0,0), scale)
+		float border;
+        public SpeechBubble(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, string font, float scale = 1) : base(_game, _graphics, _content, nameTex, new Vector2(0,0), new Vector2(0,0), scale) 
         {
             this.font = _content.Load<SpriteFont>(font);
             scrollingTime = SCROLL_VEL;

@@ -18,7 +18,7 @@ namespace Gioco_generico
         Bar ScoreBar;
         Bar InventoryBar;
 
-        
+
         public UI(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content) :  base(_game, _graphics, _content)
         {
 

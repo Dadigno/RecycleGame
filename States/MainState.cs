@@ -91,17 +91,17 @@ namespace Gioco_generico.States
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bottiglia-vetro", new Vector2(0, 0), new Vector2(0, 0), 0.3f, Item.Type.VETRO, true));
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/nucleare", new Vector2(0, 0), new Vector2(0, 0), 0.05f, Item.Type.CENTRORACCOLTA, true));
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bottiglia", new Vector2(0, 0), new Vector2(0, 0), 0.07f, Item.Type.PLASTICA_MET, true));
-            /*allObjects.Add(new Item(_game, _graphics, _content, "oggetti/battery", new Vector2(0, 0), new Vector2(0, 0), 0.06f, Item.Type.BATTERIE, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/car-battery", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.BATTERIE, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/tv", new Vector2(0, 0), new Vector2(0, 0), 0.08, Item.Type.CENTRORACCOLTA, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/wooden-chair", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.CENTRORACCOLTA, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/microwave-oven", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.CENTRORACCOLTA, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/clothes", new Vector2(0, 0), new Vector2(0, 0), 0.05, Item.Type.ABITI, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lamp", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.CENTRORACCOLTA, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/jeans", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.ABITI, true));*/
-
-            //Object in game
-            objects = new List<Item>();
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/battery", new Vector2(0, 0), new Vector2(0, 0), 0.06f, Item.Type.BATTERIE, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/car-battery", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.BATTERIE, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/tv", new Vector2(0, 0), new Vector2(0, 0), 0.08f, Item.Type.CENTRORACCOLTA, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/wooden-chair", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.CENTRORACCOLTA, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/microwave-oven", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.CENTRORACCOLTA, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/clothes", new Vector2(0, 0), new Vector2(0, 0), 0.05f, Item.Type.ABITI, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lamp", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.CENTRORACCOLTA, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/jeans", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.ABITI, true));
+        	allObjects.Add(new Item(_game, _graphics, _content, "oggetti/plastic-sack", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.PLASTICA_MET, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/chemical-containers", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.PLASTICA_MET, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bucket", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.PLASTICA_MET, true));            objects = new List<Item>();
 
             //Load effect
             coinSound = _content.Load<SoundEffect>("soundEffect/coin-dropped");

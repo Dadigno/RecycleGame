@@ -2,3 +2,6 @@
 
 # CS0109: Il membro non nasconde un membro ereditato. La parola chiave new non è obbligatoria
 dotnet_diagnostic.CS0109.severity = none
+
+# IDE0051: Rimuovi i membri privati inutilizzati
+dotnet_diagnostic.IDE0051.severity = none

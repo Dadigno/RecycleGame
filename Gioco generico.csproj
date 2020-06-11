@@ -44,6 +44,7 @@
     <Compile Include="AiMngnt.cs" />
     <Compile Include="Component.cs" />
     <Compile Include="ConfigFile.cs" />
+    <Compile Include="GameController.cs" />
     <Compile Include="gameDebug.cs" />
     <Compile Include="Bar.cs" />
     <Compile Include="Narrator.cs" />
@@ -66,7 +67,7 @@
     <Compile Include="States\MainState.cs" />
     <Compile Include="States\State.cs" />
     <Compile Include="TextBox.cs" />
-    <Compile Include="tmxTool.cs" />
+    <Compile Include="Tools.cs" />
     <Compile Include="UI.cs" />
     <Compile Include="Windows.cs" />
   </ItemGroup>
@@ -75,6 +76,7 @@
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>

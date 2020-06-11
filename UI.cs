@@ -37,9 +37,11 @@ namespace Gioco_generico
                 exitButton
               };
 
-
+            adviceEnable = true;
             //Narrator
             narrator = new Narrator(_game, _graphics, _content, "character/narrator", new Vector2(0, 0), new Vector2(ConstVar.displayDim.X * 0.08f, ConstVar.displayDim.Y * 0.85f));
+            
+            
         }
 
         public void Draw()
@@ -67,7 +69,7 @@ namespace Gioco_generico
             narrator.Update(gameTime);
         }
 
-            private void Click_help(object sender, EventArgs e)
+        private void Click_help(object sender, EventArgs e)
         {
             _game.Exit();
         }

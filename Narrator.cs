@@ -11,7 +11,7 @@ namespace Gioco_generico
         bool show = false;
         List<String> messages;
         public bool isSpeaking;
-        public Narrator(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, Vector2 initGamePos, Vector2 initDisplayPos, double scale = 1) : base(_game, _graphics, _content, nameTex, initGamePos, initDisplayPos, scale)
+        public Narrator(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, Vector2 initGamePos, Vector2 initDisplayPos, float scale = 1) : base(_game, _graphics, _content, nameTex, initGamePos, initDisplayPos, scale)
         {
             speechBubble = new SpeechBubble(_game, _graphics, _content, "bubble/bubble-narrator", "Fonts/speechFont");
             //speechBubble.Text = "\nCiao sono il\ntuo narratore";

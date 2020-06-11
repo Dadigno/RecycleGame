@@ -41,8 +41,8 @@ namespace Gioco_generico.States
         public Background background;
 
         //Stati interni
-        //public delegate void state(GameTime gameTime);
-        //public state _currentState;
+        public delegate void state(GameTime gameTime);
+        public state _currentInternalState;
 
         //Azioni 
         public delegate void action();
@@ -62,7 +62,7 @@ namespace Gioco_generico.States
             //Inizializzazione personaggi
             mainChar = new Character(_game, _graphics, _content, "character/bob", new Vector2(ConstVar.animatedSpriteWidth / 2, ConstVar.animatedSpriteHeigth), new Vector2(0, 0), ConstVar.animatedCols, ConstVar.animatedFrame, ConstVar.animatedSpriteWidth, ConstVar.animatedSpriteHeigth);
             mainChar.lockDisplay = true;
-            mainChar.setTilePos(16, 27, background);
+            mainChar.setTilePos(40, 27, background);
             mainChar.Action += Character_Action;
 
             alice = new Character(_game, _graphics, _content, "character/alice", new Vector2(ConstVar.animatedSpriteWidth / 2, ConstVar.animatedSpriteHeigth), new Vector2(0, 0), ConstVar.animatedCols, ConstVar.animatedFrame, ConstVar.animatedSpriteWidth, ConstVar.animatedSpriteHeigth);
@@ -74,7 +74,7 @@ namespace Gioco_generico.States
             ban = new Banner(_game, _graphics, _content, "button/button", new Vector2(ConstVar.displayDim.X / 2, ConstVar.displayDim.Y / 2), "Fonts/Font", "");
             gDebug = new gameDebug(_game, _graphics, _content);
 
-            //Objects 
+            //All Objects 
             allObjects = new List<Item>();
             //allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bananaDebug", new Vector2(0, 0), new Vector2(0, 0), 0.5, Item.Type.ORGANICO, true));
             //allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bananaDebug", new Vector2(0, 0), new Vector2(0, 0), 1, Item.Type.ORGANICO, true));
@@ -90,25 +90,28 @@ namespace Gioco_generico.States
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/pizza", new Vector2(0, 0), new Vector2(0, 0), 0.4f, Item.Type.ORGANICO, true));
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bottiglia-vetro", new Vector2(0, 0), new Vector2(0, 0), 0.3f, Item.Type.VETRO, true));
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/nucleare", new Vector2(0, 0), new Vector2(0, 0), 0.05f, Item.Type.CENTRORACCOLTA, true));
-            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/battery", new Vector2(0, 0), new Vector2(0, 0), 0.06f, Item.Type.BATTERIE, true));
             allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bottiglia", new Vector2(0, 0), new Vector2(0, 0), 0.07f, Item.Type.PLASTICA_MET, true));
+            /*allObjects.Add(new Item(_game, _graphics, _content, "oggetti/battery", new Vector2(0, 0), new Vector2(0, 0), 0.06f, Item.Type.BATTERIE, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/car-battery", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.BATTERIE, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/tv", new Vector2(0, 0), new Vector2(0, 0), 0.08, Item.Type.CENTRORACCOLTA, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/wooden-chair", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.CENTRORACCOLTA, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/microwave-oven", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.CENTRORACCOLTA, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/clothes", new Vector2(0, 0), new Vector2(0, 0), 0.05, Item.Type.ABITI, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lamp", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.CENTRORACCOLTA, true));
+            allObjects.Add(new Item(_game, _graphics, _content, "oggetti/jeans", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.ABITI, true));*/
 
-            //allObjects.Add(new Item(_game, _graphics, _content, "oggetti/car-battery", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.BATTERIE, true));
-            //allObjects.Add(new Item(_game, _graphics, _content, "oggetti/tv", new Vector2(0, 0), new Vector2(0, 0), 0.08, Item.Type.CENTRORACCOLTA, true));
-            //allObjects.Add(new Item(_game, _graphics, _content, "oggetti/wooden-chair", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.CENTRORACCOLTA, true));
-            //allObjects.Add(new Item(_game, _graphics, _content, "oggetti/microwave-oven", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.CENTRORACCOLTA, true));
-            //allObjects.Add(new Item(_game, _graphics, _content, "oggetti/clothes", new Vector2(0, 0), new Vector2(0, 0), 0.05, Item.Type.ABITI, true));
-            //allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lamp", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.CENTRORACCOLTA, true));
-            //allObjects.Add(new Item(_game, _graphics, _content, "oggetti/jeans", new Vector2(0, 0), new Vector2(0, 0), 0.1, Item.Type.ABITI, true));
+            //Object in game
             objects = new List<Item>();
 
             //Load effect
             coinSound = _content.Load<SoundEffect>("soundEffect/coin-dropped");
             effectOpenWindow = _content.Load<SoundEffect>("soundEffect/effectOpenWindow");
 
+
+            _currentInternalState = state1;
         }
 
-        private void Character_Action(object sender, CharEventArgs e)
+        void Character_Action(object sender, CharEventArgs e)
         {
             switch (e.a)
             {
@@ -123,8 +126,6 @@ namespace Gioco_generico.States
                     break;
             }
         }
-
-
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
@@ -185,10 +186,10 @@ namespace Gioco_generico.States
                 }
             }
             ConstVar.UI.Update(gameTime);
-            //_currentState(gameTime);
+            _currentInternalState(gameTime);
         }
 
-        public void keyboardMgnt(KeyboardState kbState, GameTime gameTime)
+        void keyboardMgnt(KeyboardState kbState, GameTime gameTime)
         {
             Keys[] KeyPressed = kbState.GetPressedKeys();
 
@@ -255,19 +256,20 @@ namespace Gioco_generico.States
             return false;
         }
 
-        /*
+        
 
-        public void changeState(state nextState)
+        void changeState(state nextState)
         {
-            _currentState = nextState;
+            _currentInternalState = nextState;
         }
 
-        public void state0(GameTime gameTime)
+        void state0(GameTime gameTime)
         {
-
+            if(!ConstVar.UI.narrator.Sleeping)
+                mainChar.move = false;
         }
-
-        public void state1(GameTime gameTime)
+        
+        void state1(GameTime gameTime)
         {
             alice.think(Character.thinkType.THINK);
             if(isAround(mainChar,alice))
@@ -275,12 +277,14 @@ namespace Gioco_generico.States
                 space_button_action = delegate ()
                     {
                         alice.think(Character.thinkType.NONE);
-                        changeState(state2);
+                        ConstVar.UI.narrator.phase1();
+                        //changeState(state2);
+                        changeState(state0);
                     };
             }
         }
-        
-        public void state2(GameTime gameTime)
+        /*
+        void state2(GameTime gameTime)
         {
             space_button_action = null;
             if (speechIntroAlice.Count() != 0 && !narrator.isSpeaking)
@@ -295,7 +299,7 @@ namespace Gioco_generico.States
             }
         }
         
-        public void state3(GameTime gameTime)
+        void state3(GameTime gameTime)
         {
             float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             timer -= elapsed;

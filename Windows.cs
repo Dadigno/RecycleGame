@@ -167,7 +167,7 @@ namespace Gioco_generico
             effectAnswerWrong = _content.Load<SoundEffect>("soundEffect/effectAnswerWrong");
             effectScrollArrow = _content.Load<SoundEffect>("soundEffect/effectScrollArrow");
 
-            ban = new Banner(_game, _graphics, _content, "button/button", new Vector2(ConstVar.displayDim.X / 2, ConstVar.displayDim.Y / 2), "Fonts/Font", "1");
+            ban = new Banner(_game, _graphics, _content, "Finestra/contornoNumeroSchede", new Vector2((float)(rect.X + rect.Width * 0.175), (float)(rect.Y + rect.Height * 0.95)), "Fonts/Font", "1");
             ban.isVisible = true;
         }
 
@@ -279,6 +279,7 @@ namespace Gioco_generico
             }
 
             ConstVar.UI.Update(gameTime);
+            ban.text = Convert.ToString(widget.Count);
         }
 
         //Gestione bottini frecce
@@ -322,7 +323,7 @@ namespace Gioco_generico
                     }
                     else
                     {
-                        _game.Score -= _game.GameLevel.POINT;
+                        _game.Score -= _game.GameLevel.POINT_ERROR;
                     }
                 }
             }

@@ -17,8 +17,9 @@ namespace Gioco_generico
         protected Color PenColour = Color.Black;
         protected Color colourTex = Color.White;
         private float SCROLL_VEL = 50;
-        private float BUBBLE_DELAY = 4000;
-        private float scrollingTime;
+
+		private float BUBBLE_DELAY = 4000;
+        private  float scrollingTime;
         private float bubbleTime;
         
         private Button continueButton;

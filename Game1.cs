@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Gioco_generico.States;
 using Microsoft.Xna.Framework.Audio;
+using Gioco_generico.Interaction;
 
 namespace Gioco_generico
 {
@@ -86,6 +87,7 @@ namespace Gioco_generico
             ConstVar.main = new MainState(this, graphics, Content, 1);
             ConstVar.chooseBucket = new ChooseBucket(this, graphics, Content, 2);
             ConstVar.UI = new UI(this, graphics, Content);
+            ConstVar.vocabulary = new Vocabulary(this, graphics, Content);
             _currentState = ConstVar.menu;
         }
 

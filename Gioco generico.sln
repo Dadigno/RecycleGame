@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.902
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gioco generico", "Gioco generico.csproj", "{888BA49C-34EE-4F11-8A42-00A656095B92}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recycle Game", "Recycle Game.csproj", "{888BA49C-34EE-4F11-8A42-00A656095B92}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BD9CEE0E-7989-4CF4-B507-DB2940488C2F}"
 EndProject

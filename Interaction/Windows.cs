@@ -125,7 +125,7 @@ namespace Gioco_generico
             puzzleSecco.Action += ButtonAction;
             var puzzleOrganico = new Button(_game, _graphics, _content, "Finestra/puzzleOrganico", new Vector2((float)(background.Width * scaleY * 0.561198) + (int)(background.Width * scaleX / 2), (float)(background.Height * scaleY * 0.555555) + (int)(background.Height * scaleX / 2)), Item.Type.ORGANICO, scaleY);
             puzzleOrganico.Action += ButtonAction;
-            var puzzleStradali = new Button(_game, _graphics, _content, "Finestra/puzzleStradali", new Vector2((float)(background.Width * scaleY * 0.71464) + (int)(background.Width * scaleX / 2), (float)(background.Height * scaleY * 0.555555) + (int)(background.Height * scaleX / 2)), Item.Type.STRADALI, scaleY);
+            var puzzleStradali = new Button(_game, _graphics, _content, "Finestra/puzzleOlioSpecifico", new Vector2((float)(background.Width * scaleY * 0.71464) + (int)(background.Width * scaleX / 2), (float)(background.Height * scaleY * 0.555555) + (int)(background.Height * scaleX / 2)), Item.Type.OLIOSPECIFICO, scaleY);
             puzzleStradali.Action += ButtonAction;
             var puzzleBatterie = new Button(_game, _graphics, _content, "Finestra/puzzleBatterie", new Vector2((float)(background.Width * scaleY * 0.869772) + (int)(background.Width * scaleX / 2), (float)(background.Height * scaleY * 0.555555) + (int)(background.Height * scaleX / 2)), Item.Type.BATTERIE, scaleY);
             puzzleBatterie.Action += ButtonAction;

@@ -14,7 +14,7 @@ namespace Gioco_generico
         List<Button> _buttons;
         public Narrator narrator;
         bool adviceEnable = false;
-        bool vocabularyEnable = false;
+        public bool vocabularyEnable = false;
         //Bar
         Bar ScoreBar;
         Bar InventoryBar;

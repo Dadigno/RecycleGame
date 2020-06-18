@@ -260,30 +260,32 @@ namespace Gioco_generico
                 }
             }
 
+            if (!ConstVar.UI.vocabularyEnable)
+            {
+                foreach (var button in arrows)
+                    button.update();
 
-            foreach (var button in arrows)
-            button.update();
-
-            if (_game.GameLevel.name == "Livello1")
-            {
-                foreach (var button in puzzle1)
-                    button.update();
-            }
-            else if (_game.GameLevel.name == "Livello2")
-            {
-                foreach (var button in puzzle1)
-                    button.update();
-                foreach (var button in puzzle2)
-                    button.update();
-            }
-            else if (_game.GameLevel.name == "Livello3")
-            {
-                foreach (var button in puzzle1)
-                    button.update();
-                foreach (var button in puzzle2)
-                    button.update();
-                foreach (var button in puzzle3)
-                    button.update();
+                if (_game.GameLevel.name == "Livello1")
+                {
+                    foreach (var button in puzzle1)
+                        button.update();
+                }
+                else if (_game.GameLevel.name == "Livello2")
+                {
+                    foreach (var button in puzzle1)
+                        button.update();
+                    foreach (var button in puzzle2)
+                        button.update();
+                }
+                else if (_game.GameLevel.name == "Livello3")
+                {
+                    foreach (var button in puzzle1)
+                        button.update();
+                    foreach (var button in puzzle2)
+                        button.update();
+                    foreach (var button in puzzle3)
+                        button.update();
+                }
             }
 
             ConstVar.UI.Update(gameTime);

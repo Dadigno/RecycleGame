@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Gioco_generico.States;
 using System.Runtime.CompilerServices;
+using Gioco_generico.Interaction;
 
 namespace Gioco_generico
 {
@@ -60,6 +61,8 @@ namespace Gioco_generico
         //User interface
         public static UI UI;
 
+        public static Vocabulary vocabulary;
+
         public class LEVEL
         {
             //livello di partenza del gioco
@@ -84,7 +87,6 @@ namespace Gioco_generico
         {
             public int numeroRipsosteCorrette;
             public int numeroRisposteSbagliate;
- 
 
             public Result (int nRC, int NRE)
             {
@@ -93,9 +95,16 @@ namespace Gioco_generico
             }
         }
 
+        public class Symbol
+        {
+            public Sprite symbol;
+            public string description;
+
+            public Symbol(Sprite s, string t)
+            {
+                description = t;
+                symbol = s;
+            }
+        }
     }
-
-    
-
-    
 }

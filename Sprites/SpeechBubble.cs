@@ -128,7 +128,6 @@ namespace Gioco_generico
                 {
                     return false;
                 }
-
             }
             return false;
         }
@@ -138,7 +137,7 @@ namespace Gioco_generico
         /// </summary>
         public new void StaticDraw(string text)
         {
-            Text = text;
+            Text = text + ' ';
             while (l.Count() > 0)
             {
                 temp += l[0];

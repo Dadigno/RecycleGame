@@ -71,7 +71,14 @@ namespace Gioco_generico
                 }
             }
         }
+        bool Intersects(Rectangle a, Rectangle b)
+        {
 
+            if (a.X < b.X + b.Width / 2 && a.X > b.X - b.Width / 2)
+                if (a.Y < b.Y + b.Height / 2 && a.Y > b.Y - b.Height / 2)
+                    return true;
+            return false;
+        }
     }
 
     public class ButtEventArgs : EventArgs

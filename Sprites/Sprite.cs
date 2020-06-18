@@ -8,7 +8,7 @@ namespace Gioco_generico
     public class Sprite : Component
     {
         protected Texture2D texture;
-        public Rectangle rect;
+        protected Rectangle rect;
         protected float dir;
         protected float rotation;
         protected Vector2 origin;

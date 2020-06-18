@@ -78,7 +78,7 @@ namespace Gioco_generico
         public void loadAdvices()
         {
             // Read the file and display it line by line.  
-            System.IO.StreamReader file = new System.IO.StreamReader(@"content/testi/advices.txt");
+            System.IO.StreamReader file = new System.IO.StreamReader(@"content/testi/advices2.txt");
             while ((line = file.ReadLine()) != null)
             {
                 ConstVar.advices.Add(line);

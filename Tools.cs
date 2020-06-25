@@ -14,14 +14,14 @@ namespace Gioco_generico
         public enum areas {WALKABLE, OBSTACLE, STREET}
         public struct layer
         {
-            public int[,] tileMap;
+            public long[,] tileMap;
             public int x_cols;
             public int y_rows;
             public int order;
             public int id;
             public string name;
 
-            public layer(int[,] tiles, string name, int order, int x_cols, int y_rows, int id)
+            public layer(long[,] tiles, string name, int order, int x_cols, int y_rows, int id)
             {
                 tileMap = tiles;
                 this.name = name;
@@ -47,14 +47,14 @@ namespace Gioco_generico
                 var x_cols = Convert.ToInt32(el.Attribute("width").Value);
                 var y_rows = Convert.ToInt32(el.Attribute("height").Value);
 
-                int[,] l = new int[y_rows, x_cols];
+                long[,] l = new long[y_rows, x_cols];
 
                 for (int i = 1; i < y_rows + 1; i++)
                 {
                     string[] line = lines[i].Split(',');
                     for (int j = 0; j < x_cols; j++)
                     {
-                        l[i - 1, j] = Convert.ToInt32(line[j]);
+                        l[i - 1, j] = Convert.ToInt64(line[j]);
                     }
                 }
 

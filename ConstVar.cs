@@ -74,7 +74,8 @@ namespace Gioco_generico
             public int POINT_ERROR;
             public int POINT;
             public LEVEL NEXT_LEVEL;
-            public LEVEL(int t, int e, int p, string s, int full_inv, LEVEL next = null)
+            public List<Item.Type> OBJ_TYPES;
+            public LEVEL(int t, int e, int p, string s, int full_inv, List<Item.Type> obj_types, LEVEL next = null)
             {
                 name = s;
                 POINT_TARGET = t;
@@ -82,6 +83,7 @@ namespace Gioco_generico
                 POINT = p;
                 NEXT_LEVEL = next;
                 FULL_INVENTORY = full_inv;
+                OBJ_TYPES = obj_types;
             }
         }
 

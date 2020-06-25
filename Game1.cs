@@ -2,8 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Gioco_generico.States;
-using Microsoft.Xna.Framework.Audio;
 using Gioco_generico.Interaction;
+using System.Collections.Generic;
 
 namespace Gioco_generico
 {
@@ -19,15 +19,14 @@ namespace Gioco_generico
         ConfigFile settingFile;
         private State _currentState;
         private State _nextState;
-        private SoundEffect surround;
-
+        
         //Ogni oggetto è 100 punti, ogni errore -50
         //LIVELLO 1 
         //LIVELLO 2 
         //LIVELLO 3 
-        static ConstVar.LEVEL LEVEL3 = new ConstVar.LEVEL(200000, 2000, 20000, "Livello3", 30);
-        static ConstVar.LEVEL LEVEL2 = new ConstVar.LEVEL(20000, 200, 2000, "Livello2", 20, LEVEL3);
-        static ConstVar.LEVEL LEVEL1 = new ConstVar.LEVEL(500, 20, 200, "Livello1", 10, LEVEL2);
+        static ConstVar.LEVEL LEVEL3 = new ConstVar.LEVEL(200000, 2000, 20000, "Livello3", 30, new List<Item.Type>() { Item.Type.ORGANICO, Item.Type.SECCO, Item.Type.VETRO, Item.Type.PLASTICA_MET, Item.Type.CARTA, Item.Type.ABITI, Item.Type.OLIOSPECIFICO, Item.Type.TONER, Item.Type.FARMACI, Item.Type.CENTRORACCOLTA });
+        static ConstVar.LEVEL LEVEL2 = new ConstVar.LEVEL(20000, 200, 2000, "Livello2", 20, new List<Item.Type>() { Item.Type.ORGANICO, Item.Type.SECCO, Item.Type.VETRO, Item.Type.PLASTICA_MET, Item.Type.CARTA, Item.Type.ABITI, Item.Type.OLIOSPECIFICO, Item.Type.TONER, Item.Type.FARMACI }, LEVEL3);
+        static ConstVar.LEVEL LEVEL1 = new ConstVar.LEVEL(500, 20, 200, "Livello1", 10, new List<Item.Type>() { Item.Type.ORGANICO, Item.Type.SECCO, Item.Type.VETRO, Item.Type.PLASTICA_MET, Item.Type.CARTA }, LEVEL2);
         
         public ConstVar.LEVEL GameLevel;
         private int _score;
@@ -75,11 +74,10 @@ namespace Gioco_generico
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            loadTMX("content/maps/mondo1.tmx", ConstVar.layers);
+            loadTMX("content/maps/mondo.tmx", ConstVar.layers);
             loadAdvices();
             loadNarratorText();
-            surround = Content.Load<SoundEffect>("soundEffect/surround");
-            //surround.Play();
+            
             GameLevel = LEVEL1;
             ConstVar.sb = spriteBatch;
             ConstVar.font = Content.Load<SpriteFont>("Fonts/font");
@@ -108,7 +106,8 @@ namespace Gioco_generico
             }
             KeyboardState kbState = Keyboard.GetState();
             _currentState.Update(gameTime, kbState);
-            
+
+
             HandleLevel();
             base.Update(gameTime);
         }

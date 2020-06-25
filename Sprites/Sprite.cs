@@ -14,7 +14,7 @@ namespace Gioco_generico
         protected Vector2 origin;
         protected Vector2 gamePos;
         protected Vector2 displayPos;
-        protected String nameTex;
+        public String nameTex;
         public float scale;
         protected Color colourTex = Color.White;
         public Sprite(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, Vector2 initGamePos, Vector2 initDisplayPos, float scale = 1) : base(_game, _graphics, _content)

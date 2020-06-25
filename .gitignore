@@ -4,5 +4,5 @@
 /bin
 /obj
 /Content/Content.mgcb
-/.vs
 *.sln
+.vs

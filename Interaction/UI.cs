@@ -31,6 +31,8 @@ namespace Gioco_generico
         Rectangle scissRect = new Rectangle((int)(posAd.X), (int)posAd.Y, (int)dimAd.X, (int)dimAd.Y);
         Random rnd = new Random();
 
+        private SoundEffect surround;
+        SoundEffectInstance instance;
 
         public UI(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content) :  base(_game, _graphics, _content)
         {
@@ -52,6 +54,10 @@ namespace Gioco_generico
             narrator = new Narrator(_game, _graphics, _content, "character/narrator", new Vector2(0, 0), new Vector2(ConstVar.displayDim.X * 0.08f, ConstVar.displayDim.Y * 0.85f));
 
             effectOpenWindow = _content.Load<SoundEffect>("soundEffect/effectOpenWindow");
+
+            surround = _content.Load<SoundEffect>("soundEffect/surround");
+            instance = surround.CreateInstance();
+            instance.Play();
 
         }
 
@@ -92,6 +98,11 @@ namespace Gioco_generico
 
             //Vocabulary
             ConstVar.vocabulary.Update();
+
+            if (instance.State != SoundState.Playing)
+            {
+                surround.Play();
+            }
         }
 
         private void Click_help(object sender, EventArgs e)

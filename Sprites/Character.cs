@@ -56,18 +56,27 @@ namespace Gioco_generico
             questionBubble.Update(gameTime);
             //speechBubble.Update(gameTime, getPos());
 
-            int[,] activeTile = (ConstVar.layers.Find(t => Equals(t.name, "active"))).tileMap;
+            long[,] activeTile = (ConstVar.layers.Find(t => Equals(t.name, "active"))).tileMap;
+            long[,] bidoni_stradali = (ConstVar.layers.Find(t => Equals(t.name, "bidoni_stradali"))).tileMap;
             if (activeTile != null)
             {
-                args = new CharEventArgs();
+                
                 if (activeTile[(int)getTilePos(background).Y, (int)getTilePos(background).X] != 0)
                 {
-                    args.a = activeTile[(int)getTilePos(background).Y, (int)getTilePos(background).X];
+                    args = new CharEventArgs();
+                    args.a = Convert.ToInt32(activeTile[(int)getTilePos(background).Y, (int)getTilePos(background).X]);
+                    Action?.Invoke(this, args);
                 }
-                Action?.Invoke(this, args);
+                else if (bidoni_stradali[(int)getTilePos(background).Y, (int)getTilePos(background).X] != 0)
+                {
+                    args = new CharEventArgs();
+                    args.a = Convert.ToInt32(activeTile[(int)getTilePos(background).Y, (int)getTilePos(background).X]);
+                    Action?.Invoke(this, args);
+                }
+               
             }
 
-            int[,] obstacleTile = (ConstVar.layers.Find(t => Equals(t.name, "obstacle"))).tileMap;
+            long[,] obstacleTile = (ConstVar.layers.Find(t => Equals(t.name, "obstacle"))).tileMap;
             if (move)
             {
                 switch (state)

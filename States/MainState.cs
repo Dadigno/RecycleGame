@@ -57,7 +57,7 @@ namespace Gioco_generico.States
         public MainState(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, int id) : base(_game, _graphics, _content, id)
         {
             //Carico la mappa
-            background = new Background(_game, _graphics, _content, "maps/background/mondo1");
+            background = new Background(_game, _graphics, _content, "maps/mondo");
 
             //Inizializzazione personaggi
             mainChar = new Character(_game, _graphics, _content, "character/bob", new Vector2(ConstVar.animatedSpriteWidth / 2, ConstVar.animatedSpriteHeigth), new Vector2(0, 0), ConstVar.animatedCols, ConstVar.animatedFrame, ConstVar.animatedSpriteWidth, ConstVar.animatedSpriteHeigth);
@@ -143,7 +143,7 @@ namespace Gioco_generico.States
         {
             switch (e.a)
             {
-                case 9775:
+                case 9761:
                     //premi space per aprire la finestra
                     ban.text = "Premi space per aprire la finestra";
                     ban.isVisible = true;
@@ -187,26 +187,49 @@ namespace Gioco_generico.States
             timerAnimated -= elapsed;
             if (timerAnimated < 0)
             {
+                timerAnimated = 500;
 
-                timerAnimated = 100;
-                Item obj = ConstVar.allObjects[rnd.Next(0, ConstVar.allObjects.Count())].Clone();
-
-                int[,] street = (ConstVar.layers.Find(t => Equals(t.name, "street"))).tileMap;
-                int[,] parco = (ConstVar.layers.Find(t => Equals(t.name, "parco"))).tileMap;
-                int x = rnd.Next(1, 77);
-                int y = rnd.Next(1, 78);
+                List<Item> temp = ConstVar.allObjects.FindAll(o => _game.GameLevel.OBJ_TYPES.Contains(o.type));
+                Item obj = temp[rnd.Next(0, temp.Count())].Clone();
+                //
+                
+                int x = rnd.Next(0, 79);
+                int y = rnd.Next(0, 79);
 
                 switch (obj.type)
                 {
                     case Item.Type.ORGANICO:
-                        if (parco[y, x] != 0 && !objects.Exists(b => b.getTilePos(background) == new Vector2(x, y)))
+                        if (ConstVar.layers.Find(t => Equals(t.name, "parco")).tileMap[y, x] != 0 && !objects.Exists(b => b.getTilePos(background) == new Vector2(x, y)))
+                        {
+                            obj.setTilePos(x, y, background);
+                            objects.Add(obj);
+                        }
+                        break;
+                    case Item.Type.PLASTICA_MET:
+                        if (ConstVar.layers.Find(t => Equals(t.name, "spiaggia")).tileMap[y, x] != 0 && !objects.Exists(b => b.getTilePos(background) == new Vector2(x, y)))
+                        {
+                            obj.setTilePos(x, y, background);
+                            objects.Add(obj);
+                        }
+                        break;
+                    case Item.Type.FARMACI:
+                        if (ConstVar.layers.Find(t => Equals(t.name, "farmacia")).tileMap[y, x] != 0 && !objects.Exists(b => b.getTilePos(background) == new Vector2(x, y)))
+                        {
+                            obj.setTilePos(x, y, background);
+                            objects.Add(obj);
+                        }
+                        break;
+                    case Item.Type.CENTRORACCOLTA:
+                        if (ConstVar.layers.Find(t => Equals(t.name, "spiaggia")).tileMap[y, x] != 0 && !objects.Exists(b => b.getTilePos(background) == new Vector2(x, y)) ||
+                            ConstVar.layers.Find(t => Equals(t.name, "case_moderne")).tileMap[y, x] != 0 && !objects.Exists(b => b.getTilePos(background) == new Vector2(x, y)))
+                            
                         {
                             obj.setTilePos(x, y, background);
                             objects.Add(obj);
                         }
                         break;
                     default:
-                        if (street[y, x] != 0 && !objects.Exists(b => b.getTilePos(background) == new Vector2(x, y)))
+                        if (ConstVar.layers.Find(t => Equals(t.name, "street")).tileMap[y, x] != 0 && !objects.Exists(b => b.getTilePos(background) == new Vector2(x, y)))
                         {
                             obj.setTilePos(x, y, background);
                             objects.Add(obj);

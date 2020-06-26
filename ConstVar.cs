@@ -51,7 +51,6 @@ namespace Gioco_generico
         //States
         public static MainState main;
         public static MenuState menu;
-        public static InsideState house;
         public static ChooseBucket chooseBucket;
 
         public static List<Game1.layer> layers = new List<Game1.layer>();

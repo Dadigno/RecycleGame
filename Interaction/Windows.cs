@@ -54,7 +54,8 @@ namespace Gioco_generico
 
         Banner ban;
 
-
+        //Bidoni attivi
+        public List<KeyValuePair<string, int>> activeBin;
 
         public Windows(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, Vector2 displayPos, string texture, double scale) : base(_game, _graphics, _content)
         { 

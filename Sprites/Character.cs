@@ -16,7 +16,7 @@ namespace Gioco_generico
         public event EventHandler<CharEventArgs> Action;        
         public int walkSpeed = 2;
         public bool collide;
-        public bool lockDisplay = true;
+        public bool isGamer = true;
         public bool isSpeaking;
         private bool isThinking;
 		private CharEventArgs args;
@@ -56,26 +56,32 @@ namespace Gioco_generico
             questionBubble.Update(gameTime);
             //speechBubble.Update(gameTime, getPos());
 
-            long[,] activeTile = (ConstVar.layers.Find(t => Equals(t.name, "active"))).tileMap;
-            long[,] bidoni_stradali = (ConstVar.layers.Find(t => Equals(t.name, "bidoni_stradali"))).tileMap;
-            if (activeTile != null)
+            if (isGamer)
             {
-                
-                if (activeTile[(int)getTilePos(background).Y, (int)getTilePos(background).X] != 0)
-                {
-                    args = new CharEventArgs();
-                    args.a = Convert.ToInt32(activeTile[(int)getTilePos(background).Y, (int)getTilePos(background).X]);
-                    Action?.Invoke(this, args);
-                }
-                else if (bidoni_stradali[(int)getTilePos(background).Y, (int)getTilePos(background).X] != 0)
-                {
-                    args = new CharEventArgs();
-                    args.a = Convert.ToInt32(activeTile[(int)getTilePos(background).Y, (int)getTilePos(background).X]);
-                    Action?.Invoke(this, args);
-                }
-               
-            }
+                long[,] activeTile = (ConstVar.layers.Find(t => Equals(t.name, "active"))).tileMap;
+                long[,] bidoni_stradali = (ConstVar.layers.Find(t => Equals(t.name, "bidoni_stradali"))).tileMap;
 
+
+                long x = (int)getTilePos(background).Y;
+                long y = (int)getTilePos(background).X;
+                if (activeTile != null)
+                {
+
+                    if (activeTile[x, y] != 0)
+                    {
+                        args = new CharEventArgs();
+                        args.a = Convert.ToInt32(activeTile[(int)getTilePos(background).Y, (int)getTilePos(background).X]);
+                        Action?.Invoke(this, args);
+                    }
+                    else if (bidoni_stradali[x, y] != 0)
+                    {
+                        args = new CharEventArgs();
+                        args.a = Convert.ToInt32(bidoni_stradali[(int)getTilePos(background).Y, (int)getTilePos(background).X]);
+                        Action?.Invoke(this, args);
+                    }
+
+                }
+            }
             long[,] obstacleTile = (ConstVar.layers.Find(t => Equals(t.name, "obstacle"))).tileMap;
             if (move)
             {
@@ -89,7 +95,7 @@ namespace Gioco_generico
                                 collide = false;
                                 isRunning = true;
                                 currentRow = 3;
-                                if (lockDisplay)
+                                if (isGamer)
                                 {
                                     if (rect.Y > ConstVar.gameArea.Y || (gamePos.Y < ConstVar.gameArea.Y && rect.Y > 0))
                                         stepPos(0, -walkSpeed);
@@ -121,7 +127,7 @@ namespace Gioco_generico
                                 collide = false;
                                 isRunning = true;
                                 currentRow = 0;
-                                if (lockDisplay)
+                                if (isGamer)
                                 {
                                     if (rect.Y < ConstVar.displayDim.Y - ConstVar.gameArea.Y || (gamePos.Y > background.getRect().Height - ConstVar.gameArea.Y && rect.Y < ConstVar.displayDim.Y))
                                         stepPos(0, walkSpeed);
@@ -153,7 +159,7 @@ namespace Gioco_generico
                                 collide = false;
                                 isRunning = true;
                                 currentRow = 1;
-                                if (lockDisplay)
+                                if (isGamer)
                                 {
                                     if (rect.X > ConstVar.gameArea.X || (gamePos.X < ConstVar.gameArea.X && rect.X > 0))
                                         stepPos(-walkSpeed, 0);
@@ -185,7 +191,7 @@ namespace Gioco_generico
                                 collide = false;
                                 isRunning = true;
                                 currentRow = 2;
-                                if (lockDisplay)
+                                if (isGamer)
                                 {
                                     if (rect.X < ConstVar.displayDim.X - ConstVar.gameArea.X ||
                                         (gamePos.X > background.getRect().Width - ConstVar.gameArea.X && rect.X < ConstVar.displayDim.X))
@@ -216,7 +222,7 @@ namespace Gioco_generico
                         break;
                 }
             }
-            if (!lockDisplay)
+            if (!isGamer)
             {
                 rect.X = background.getRect().X + (int)gamePos.X;
                 rect.Y = background.getRect().Y + (int)gamePos.Y;

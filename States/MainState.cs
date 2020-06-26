@@ -61,12 +61,12 @@ namespace Gioco_generico.States
 
             //Inizializzazione personaggi
             mainChar = new Character(_game, _graphics, _content, "character/bob", new Vector2(ConstVar.animatedSpriteWidth / 2, ConstVar.animatedSpriteHeigth), new Vector2(0, 0), ConstVar.animatedCols, ConstVar.animatedFrame, ConstVar.animatedSpriteWidth, ConstVar.animatedSpriteHeigth);
-            mainChar.lockDisplay = true;
+            mainChar.isGamer = true;
             mainChar.setTilePos(40, 27, background);
             mainChar.Action += Character_Action;
 
             alice = new Character(_game, _graphics, _content, "character/alice", new Vector2(ConstVar.animatedSpriteWidth / 2, ConstVar.animatedSpriteHeigth), new Vector2(0, 0), ConstVar.animatedCols, ConstVar.animatedFrame, ConstVar.animatedSpriteWidth, ConstVar.animatedSpriteHeigth);
-            alice.lockDisplay = false;
+            alice.isGamer = false;
             alice.setTilePos(47, 22, background);
 
 
@@ -141,17 +141,35 @@ namespace Gioco_generico.States
 
         void Character_Action(object sender, CharEventArgs e)
         {
-            switch (e.a)
+            /*
+             * 
+             * giallo = 9765
+             * grigio = 9764
+             * blue = 9761
+             * marrone = 9762
+             * rosso = 9766
+             * 
+             */
+            List<KeyValuePair<string, int>> bidoni_tilecode = new List<KeyValuePair<string, int>>(){
+                new KeyValuePair<string, int>("giallo", 9765),
+                new KeyValuePair<string, int>("grigio", 9764),
+                new KeyValuePair<string, int>("blue", 9761),
+                new KeyValuePair<string, int>("marrone", 9762),
+                new KeyValuePair<string, int>("rosso", 9766),
+                new KeyValuePair<string, int>("centro_raccola", 9761)
+             };
+            
+            if(bidoni_tilecode.Where(kvp => kvp.Value == e.a) != null)
             {
-                case 9761:
-                    //premi space per aprire la finestra
-                    ban.text = "Premi space per aprire la finestra";
-                    ban.isVisible = true;
-                    break;
-                default:
-                    space_button_action = null;
-                    ban.isVisible = false;
-                    break;
+
+                ban.text = "Premi space per gettare i rifiuti";
+                ban.isVisible = true;
+                ConstVar.chooseBucket.window.activeBin = bidoni_tilecode.Where(kvp => kvp.Value == e.a).ToList();
+            }
+            else
+            {
+                space_button_action = null;
+                ban.isVisible = false;
             }
         }
 
@@ -221,8 +239,7 @@ namespace Gioco_generico.States
                         break;
                     case Item.Type.CENTRORACCOLTA:
                         if (ConstVar.layers.Find(t => Equals(t.name, "spiaggia")).tileMap[y, x] != 0 && !objects.Exists(b => b.getTilePos(background) == new Vector2(x, y)) ||
-                            ConstVar.layers.Find(t => Equals(t.name, "case_moderne")).tileMap[y, x] != 0 && !objects.Exists(b => b.getTilePos(background) == new Vector2(x, y)))
-                            
+                            ConstVar.layers.Find(t => Equals(t.name, "case_moderne")).tileMap[y, x] != 0 && !objects.Exists(b => b.getTilePos(background) == new Vector2(x, y))) 
                         {
                             obj.setTilePos(x, y, background);
                             objects.Add(obj);

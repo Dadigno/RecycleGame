@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Gioco_generico
+namespace Recycle_game
 {
     public class UI : Component
     {
@@ -15,9 +15,10 @@ namespace Gioco_generico
         public Narrator narrator;
         bool adviceEnable = false;
         public bool vocabularyEnable = false;
+        public bool tutorialEnable = false;
         //Bar
-        Bar ScoreBar;
-        Bar InventoryBar;
+        public Bar ScoreBar;
+        public Bar InventoryBar;
 
         SoundEffect effectOpenWindow;
 
@@ -40,13 +41,15 @@ namespace Gioco_generico
             InventoryBar = new Bar(_game, _graphics, _content, "bars/genericBar", "Inventory", new Vector2(10, 50), Item.Type.NONE);
 
             //Bottoni
-            var helpButton = new Button(_game, _graphics, _content, "button/help-btn", new Vector2(ConstVar.displayDim.X * 0.98f, ConstVar.displayDim.Y * 0.05f), Item.Type.NONE, 0.2);
+            var helpButton = new Button(_game, _graphics, _content, "button/vocabulary_button", new Vector2(ConstVar.displayDim.X * 0.96f, ConstVar.displayDim.Y * 0.05f), Item.Type.NONE, 0.7f);
             helpButton.Action += Click_help;
-
+            
+            var tutorialButton = new Button(_game, _graphics, _content, "button/info_button", new Vector2(ConstVar.displayDim.X * 0.90f, ConstVar.displayDim.Y * 0.05f), Item.Type.NONE, 0.7f);
+            tutorialButton.Action += Click_tutorial;
             _buttons = new List<Button>()
               {
-                helpButton
-               // exitButton
+                helpButton,
+                tutorialButton
               };
 
             adviceEnable = true;
@@ -57,7 +60,7 @@ namespace Gioco_generico
 
             surround = _content.Load<SoundEffect>("soundEffect/surround");
             instance = surround.CreateInstance();
-            instance.Play();
+            //instance.Play();
 
         }
 
@@ -74,10 +77,20 @@ namespace Gioco_generico
             foreach (var button in _buttons)
                 button.Draw();
 
-            if (vocabularyEnable)
+            if (vocabularyEnable && !tutorialEnable)
             {
                 ConstVar.main.mainChar.move = false;
                 ConstVar.vocabulary.Draw();
+            }
+            else
+            {
+                ConstVar.main.mainChar.move = true;
+            }
+
+            if (tutorialEnable && !vocabularyEnable)
+            {
+                ConstVar.main.mainChar.move = false;
+                ConstVar.tutorial.Draw();
             }
             else
             {
@@ -91,23 +104,32 @@ namespace Gioco_generico
             foreach (var button in _buttons)
                 button.update();
 
-            ScoreBar.Update(_game.Score, _game.GameLevel.POINT_TARGET);
-            InventoryBar.Update(ConstVar.main.mainChar.Inventory.Count, _game.GameLevel.FULL_INVENTORY);
+            ScoreBar.Update(gameTime, _game.Score, _game.GameLevel.POINT_TARGET);
+            InventoryBar.Update(gameTime, ConstVar.main.mainChar.Inventory.Count, _game.GameLevel.FULL_INVENTORY);
             //Narratore
             narrator.Update(gameTime);
 
             //Vocabulary
-            ConstVar.vocabulary.Update();
+            if(vocabularyEnable)
+                ConstVar.vocabulary.Update();
+            //Tutorial
+            if(tutorialEnable)
+                ConstVar.tutorial.Update();
 
             if (instance.State != SoundState.Playing)
             {
-                surround.Play();
+                instance.Play();
             }
         }
 
         private void Click_help(object sender, EventArgs e)
         {
             vocabularyEnable = !vocabularyEnable;
+            
+        }
+        private void Click_tutorial(object sender, EventArgs e)
+        {
+            tutorialEnable = !tutorialEnable;
         }
         private void Click_exit(object sender, EventArgs e)
         {

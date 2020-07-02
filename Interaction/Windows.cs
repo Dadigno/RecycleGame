@@ -4,9 +4,10 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Audio;
-using Gioco_generico.Interaction;
+using Recycle_game.Interaction;
+using System.Linq.Expressions;
 
-namespace Gioco_generico
+namespace Recycle_game
 {
     public class Windows : Component
     {
@@ -265,6 +266,56 @@ namespace Gioco_generico
             {
                 foreach (var button in arrows)
                     button.update();
+
+                foreach (var p in puzzle1)
+                    p.Enable = false;
+
+                foreach (var p in puzzle2)
+                    p.Enable = false;
+
+                foreach (var p in puzzle3)
+                    p.Enable = false;
+
+                foreach (var t in activeBin)
+                {
+                    switch(t.Key)
+                    {
+                        case "giallo":
+                            puzzle1[0].Enable = true;
+                            break;
+                        case "marrone":
+                            puzzle1[3].Enable = true;
+                            break;
+                        case "rosso":
+                            puzzle2[0].Enable = true;
+                            break;
+                        case "grigio":
+                            puzzle1[2].Enable = true;
+                            break;
+                        case "blue":
+                            puzzle1[4].Enable = true;
+                            break;
+                        case "verde":
+                            puzzle1[1].Enable = true;
+                            break;
+                        case "toner":
+                            puzzle2[4].Enable = true;
+                            break;
+                        case "olio":
+                            puzzle2[2].Enable = true;
+                            break;
+                        case "vestiti":
+                            puzzle2[1].Enable = true;
+                            break;
+                        case "batterie":
+                            puzzle2[3].Enable = true;
+                            break;
+                        case "centro_raccolta":
+                            foreach (var p in puzzle3)
+                                p.Enable = true;
+                            break;
+                    }
+                }
 
                 if (_game.GameLevel.name == "Livello1")
                 {

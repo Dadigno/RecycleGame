@@ -10,7 +10,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gioco_generico.Interaction
+namespace Recycle_game.Interaction
 {
     public class Vocabulary : Component
     {
@@ -39,6 +39,8 @@ namespace Gioco_generico.Interaction
         //Simboli
         List<ConstVar.Symbol> simbols;
 
+        //Bidoni
+        List<Sprite> bidoni;
         //Scritte
         SpriteFont font;
         SpriteFont titlefont;
@@ -48,7 +50,7 @@ namespace Gioco_generico.Interaction
 
         //Draw page
         delegate void DrawPage();
-        DrawPage _DrawPage;
+        private DrawPage _DrawPage;
 
 
         /// <summary>
@@ -106,6 +108,18 @@ namespace Gioco_generico.Interaction
             simbols.Add(new ConstVar.Symbol(new Sprite(_game, _graphics, _content, "simboli/PAP_22", new Vector2(0, 0), new Vector2(0, 0), 0.70f), "Carta: carta di gionale sacchetti libri ecc, dal 23 al 39 altri tipi di carta."));
             simbols.Add(new ConstVar.Symbol(new Sprite(_game, _graphics, _content, "simboli/Vetro71", new Vector2(0, 0), new Vector2(0, 0), 0.70f), "Vetro di colore verde, altri tipi di vetro vanno dal 73 al 79"));
 
+            bidoni = new List<Sprite>();
+            bidoni.Add(new Sprite(_game, _graphics, _content, "Finestra/puzzleCarta", new Vector2(0, 0), new Vector2(0, 0), 0.45f));
+            bidoni.Add(new Sprite(_game, _graphics, _content, "Finestra/puzzleOrganico", new Vector2(0, 0), new Vector2(0, 0), 0.45f));
+            bidoni.Add(new Sprite(_game, _graphics, _content, "Finestra/puzzleSecco", new Vector2(0, 0), new Vector2(0, 0), 0.45f));
+            bidoni.Add(new Sprite(_game, _graphics, _content, "Finestra/puzzleVetro", new Vector2(0, 0), new Vector2(0, 0), 0.45f));
+            bidoni.Add(new Sprite(_game, _graphics, _content, "Finestra/puzzleOlioSpecifico", new Vector2(0, 0), new Vector2(0, 0), 0.45f));
+            bidoni.Add(new Sprite(_game, _graphics, _content, "Finestra/puzzleToner", new Vector2(0, 0), new Vector2(0, 0), 0.45f));
+            bidoni.Add(new Sprite(_game, _graphics, _content, "Finestra/puzzleFarmaci", new Vector2(0, 0), new Vector2(0, 0), 0.45f));
+            bidoni.Add(new Sprite(_game, _graphics, _content, "Finestra/puzzleAbiti", new Vector2(0, 0), new Vector2(0, 0), 0.45f));
+            bidoni.Add(new Sprite(_game, _graphics, _content, "Finestra/puzzleCentroRac", new Vector2(0, 0), new Vector2(0, 0), 0.45f));
+            bidoni.Add(new Sprite(_game, _graphics, _content, "Finestra/puzzleBatterie", new Vector2(0, 0), new Vector2(0, 0), 0.45f));
+            bidoni.Add(new Sprite(_game, _graphics, _content, "Finestra/puzzlePlastMetal", new Vector2(0, 0), new Vector2(0, 0), 0.45f));
 
             titlefont = _content.Load<SpriteFont>("Fonts/bigFont");
             font = _content.Load<SpriteFont>("Fonts/fontSimbol");
@@ -129,6 +143,11 @@ namespace Gioco_generico.Interaction
                 effectScrollPage.Play();
                 _DrawPage = DrawPage1;
             }
+            else if (_DrawPage == DrawPage4)
+            {
+                effectScrollPage.Play();
+                _DrawPage = DrawPage3;
+            }
         }
 
         private void NextPage(object sender, EventArgs e)
@@ -142,6 +161,11 @@ namespace Gioco_generico.Interaction
             {
                 effectScrollPage.Play();
                 _DrawPage = DrawPage3;
+            }
+            else if (_DrawPage == DrawPage3)
+            {
+                effectScrollPage.Play();
+                _DrawPage = DrawPage4;
             }
         }
 
@@ -197,12 +221,44 @@ namespace Gioco_generico.Interaction
 
         void DrawPage2()
         {
-            string title = "I bidoni della raccolta";
+            string title = "Tutti i bidoni della raccolta";
             ConstVar.sb.DrawString(titlefont, title, new Vector2(background.getPos().X - titlefont.MeasureString(title).X / 2, background.getPos().Y - background.getRect().Height * 0.43f), Color.Black);
             foreach (var button in arrows)
                 button.Draw();
+
+            int offset = 150;
+            foreach (var b in bidoni)
+            {
+                int i = bidoni.IndexOf(b);
+                int offsetx = offset * (i % 3);
+                int offsety = offset * (i / 3);
+                b.setPos((int)(background.getPos().X + offsetx - background.getRect().Width * 0.30f), (int)(background.getPos().Y + offsety - background.getRect().Height * 0.25f));
+                b.Draw(true);
+            }
+
         }
         void DrawPage3()
+        {
+            string title = "I rifiuti";
+            ConstVar.sb.DrawString(titlefont, title, new Vector2(background.getPos().X - titlefont.MeasureString(title).X / 2, background.getPos().Y - background.getRect().Height * 0.43f), Color.Black);
+            foreach (var button in arrows)
+                button.Draw();
+
+            int offset = 80;
+            foreach (var obj in ConstVar.allObjects)
+            {
+                int i = ConstVar.allObjects.IndexOf(obj);
+                if (i < 56)
+                {
+                    int offsetx = offset * (i % 7);
+                    int offsety = offset * (i / 7);
+                    obj.setPos((int)(background.getPos().X + offsetx - background.getRect().Width * 0.39f), (int)(background.getPos().Y + offsety - background.getRect().Height * 0.32f));
+                    obj.Draw(true);
+                }
+            }
+        }
+
+        void DrawPage4()
         {
             string title = "Riciclabolario";
             ConstVar.sb.DrawString(titlefont, title, new Vector2(background.getPos().X - titlefont.MeasureString(title).X / 2, background.getPos().Y - background.getRect().Height * 0.43f), Color.Black);
@@ -213,10 +269,14 @@ namespace Gioco_generico.Interaction
             foreach (var obj in ConstVar.allObjects)
             {
                 int i = ConstVar.allObjects.IndexOf(obj);
-                int offsetx = offset * (i % 7);
-                int offsety = offset * (i / 7);
-                obj.setPos((int)(background.getPos().X + offsetx - background.getRect().Width * 0.39f), (int)(background.getPos().Y + offsety - background.getRect().Height * 0.32f));
-                obj.Draw(true);
+                if (i > 55)
+                {
+                    int k = ConstVar.allObjects.Count() - i - 1;
+                    int offsetx = offset * (k % 7);
+                    int offsety = offset * (k / 7);
+                    obj.setPos((int)(background.getPos().X + offsetx - background.getRect().Width * 0.39f), (int)(background.getPos().Y + offsety - background.getRect().Height * 0.32f));
+                    obj.Draw(true);
+                }
             }
         }
 

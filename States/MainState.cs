@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
 using System.Net;
 
-namespace Gioco_generico.States
+namespace Recycle_game.States
 {
     public class MainState : State
     {
@@ -19,9 +19,6 @@ namespace Gioco_generico.States
         //Personaggi 
         public Character mainChar;
         Character alice;
-        //AiMngnt aiAlice;
-        //List<AiMngnt> AiStorm;
-        //List<Character> storm;
 
         //Oggetti
         List<Item> objects;
@@ -62,7 +59,7 @@ namespace Gioco_generico.States
             //Inizializzazione personaggi
             mainChar = new Character(_game, _graphics, _content, "character/bob", new Vector2(ConstVar.animatedSpriteWidth / 2, ConstVar.animatedSpriteHeigth), new Vector2(0, 0), ConstVar.animatedCols, ConstVar.animatedFrame, ConstVar.animatedSpriteWidth, ConstVar.animatedSpriteHeigth);
             mainChar.isGamer = true;
-            mainChar.setTilePos(40, 27, background);
+            mainChar.setTilePos(9, 28, background);
             mainChar.Action += Character_Action;
 
             alice = new Character(_game, _graphics, _content, "character/alice", new Vector2(ConstVar.animatedSpriteWidth / 2, ConstVar.animatedSpriteHeigth), new Vector2(0, 0), ConstVar.animatedCols, ConstVar.animatedFrame, ConstVar.animatedSpriteWidth, ConstVar.animatedSpriteHeigth);
@@ -77,18 +74,13 @@ namespace Gioco_generico.States
             //All Objects 
             //ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bananaDebug", new Vector2(0, 0), new Vector2(0, 0), 0.5, Item.Type.ORGANICO, true));
             //ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bananaDebug", new Vector2(0, 0), new Vector2(0, 0), 1, Item.Type.ORGANICO, true));
-            /*ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/banana", new Vector2(0, 0), new Vector2(0, 0), 0.4f, Item.Type.ORGANICO, true));
-            //ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/foglie", new Vector2(0, 0), new Vector2(0, 0), 0.2f, Item.Type.ORGANICO, true));
-            //ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/latta", new Vector2(0, 0), new Vector2(0, 0), 0.3f, Item.Type.PLASTICA_MET, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/banana", new Vector2(0, 0), new Vector2(0, 0), 0.4f, Item.Type.ORGANICO, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lattina", new Vector2(0, 0), new Vector2(0, 0), 0.3f, Item.Type.PLASTICA_MET, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/mela", new Vector2(0, 0), new Vector2(0, 0), 0.2f, Item.Type.ORGANICO, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/giornale", new Vector2(0, 0), new Vector2(0, 0), 0.3f, Item.Type.CARTA, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/accendino", new Vector2(0, 0), new Vector2(0, 0), 0.2f, Item.Type.SECCO, true));
-            //ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bomboletta", new Vector2(0, 0), new Vector2(0, 0), 0.3f, Item.Type.PLASTICA_MET, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/scatola-cartone", new Vector2(0, 0), new Vector2(0, 0), 0.25f, Item.Type.CARTA, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/pizza", new Vector2(0, 0), new Vector2(0, 0), 0.4f, Item.Type.ORGANICO, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bottiglia-vetro", new Vector2(0, 0), new Vector2(0, 0), 0.3f, Item.Type.VETRO, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/nucleare", new Vector2(0, 0), new Vector2(0, 0), 0.05f, Item.Type.CENTRORACCOLTA, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bottiglia", new Vector2(0, 0), new Vector2(0, 0), 0.07f, Item.Type.PLASTICA_MET, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/battery", new Vector2(0, 0), new Vector2(0, 0), 0.06f, Item.Type.BATTERIE, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/car-battery", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.BATTERIE, true));
@@ -98,9 +90,9 @@ namespace Gioco_generico.States
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/clothes", new Vector2(0, 0), new Vector2(0, 0), 0.05f, Item.Type.ABITI, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lamp", new Vector2(0, 0), new Vector2(0, 0), 0.2f, Item.Type.CENTRORACCOLTA, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/jeans", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.ABITI, true));
-        	ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/plastic-sack", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.PLASTICA_MET, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/plastic-sack", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.PLASTICA_MET, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/chemical-containers", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.PLASTICA_MET, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bucket", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.PLASTICA_MET, true));          
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bucket", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.PLASTICA_MET, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/asciugamani", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.ABITI, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/batteriaHgO", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.BATTERIE, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/batteriaLithium", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.BATTERIE, true));
@@ -126,9 +118,7 @@ namespace Gioco_generico.States
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/toner3", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.TONER, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/vetroMarrone", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.VETRO, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/vetroTrasparente", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.VETRO, true));
-
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/mattonciniLego", new Vector2(0, 0), new Vector2(0, 0), 0.25f, Item.Type.PLASTICA_MET, true));*/
-            
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/mattonciniLego", new Vector2(0, 0), new Vector2(0, 0), 0.25f, Item.Type.PLASTICA_MET, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/toner4", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.TONER, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/toner5", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.TONER, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/asciugacapelli", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.CENTRORACCOLTA, true));
@@ -162,28 +152,27 @@ namespace Gioco_generico.States
             coinSound = _content.Load<SoundEffect>("soundEffect/coin-dropped");
             effectOpenWindow = _content.Load<SoundEffect>("soundEffect/effectOpenWindow");
 
+            //for (int i = 0; i<10; i++) { 
+            //mainChar.collect(ConstVar.allObjects[i]); }
 
-            _currentInternalState = state1;
+
+            _currentInternalState = state0;
         }
 
         void Character_Action(object sender, CharEventArgs e)
         {
-            /*
-             * 
-             * giallo = 9765
-             * grigio = 9764
-             * blue = 9761
-             * marrone = 9762
-             * rosso = 9766
-             * 
-             */
             List<KeyValuePair<string, int>> bidoni_tilecode = new List<KeyValuePair<string, int>>(){
                 new KeyValuePair<string, int>("giallo", 9765),
                 new KeyValuePair<string, int>("grigio", 9764),
-                new KeyValuePair<string, int>("blue", 9761),
+                new KeyValuePair<string, int>("blue", 9846),
                 new KeyValuePair<string, int>("marrone", 9762),
                 new KeyValuePair<string, int>("rosso", 9766),
-                new KeyValuePair<string, int>("centro_raccola", 9761)
+                new KeyValuePair<string, int>("verde", 9763),
+                new KeyValuePair<string, int>("centro_raccolta", 9761),
+                new KeyValuePair<string, int>("vestiti", 9833),
+                new KeyValuePair<string, int>("olio", 13510),
+                new KeyValuePair<string, int>("toner", 13526),
+                new KeyValuePair<string, int>("batterie", 9850)
              };
             
             if(bidoni_tilecode.Where(kvp => kvp.Value == e.a) != null)
@@ -209,10 +198,10 @@ namespace Gioco_generico.States
             foreach (Item obj in objects)
                 obj.Draw();
 
-            alice.Draw();
+            //alice.Draw();
             mainChar.Draw();
             ban.Draw();
-            gDebug.Draw();
+            //gDebug.Draw();
             ConstVar.UI.Draw();
             spriteBatch.End();
         }
@@ -222,9 +211,8 @@ namespace Gioco_generico.States
             keyboardMgnt(kbState, gameTime);
             background.update(mainChar);
             ban.update(gameTime);
-            gDebug.Update(mainChar);
+            //gDebug.Update(mainChar);
             mainChar.update(gameTime, background);
-            alice.update(gameTime, background);
 
 
             // Spawn spazzatura
@@ -232,7 +220,7 @@ namespace Gioco_generico.States
             timerAnimated -= elapsed;
             if (timerAnimated < 0)
             {
-                timerAnimated = 500;
+                timerAnimated = 100;
 
                 List<Item> temp = ConstVar.allObjects.FindAll(o => _game.GameLevel.OBJ_TYPES.Contains(o.type));
                 Item obj = temp[rnd.Next(0, temp.Count())].Clone();
@@ -292,6 +280,11 @@ namespace Gioco_generico.States
                         coinSound.Play();
                         mainChar.collect(objects[i - 1]);
                         objects.RemoveAt(i - 1);
+                    }
+                    else
+                    {
+                        //Lampeggia
+                        ConstVar.UI.InventoryBar.Blink();
                     }
                 }
             }
@@ -366,7 +359,6 @@ namespace Gioco_generico.States
             return false;
         }
 
-        
 
         void changeState(state nextState)
         {
@@ -388,7 +380,6 @@ namespace Gioco_generico.States
                     {
                         alice.think(Character.thinkType.NONE);
                         ConstVar.UI.narrator.phase1();
-                        //changeState(state2);
                         changeState(state0);
                     };
             }

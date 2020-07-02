@@ -111,7 +111,6 @@ namespace Recycle_game.States
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/riviste", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.CARTA, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/scatolaPolistirolo", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.PLASTICA_MET, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/scatoleAlimentari", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.CARTA, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/tagliereLegno", new Vector2(0, 0), new Vector2(0, 0), 0.2f, Item.Type.CENTRORACCOLTA, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/tappoSughero", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.SECCO, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/toner1", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.TONER, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/toner2", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.TONER, true));
@@ -119,32 +118,44 @@ namespace Recycle_game.States
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/vetroMarrone", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.VETRO, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/vetroTrasparente", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.VETRO, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/mattonciniLego", new Vector2(0, 0), new Vector2(0, 0), 0.25f, Item.Type.PLASTICA_MET, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/toner4", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.TONER, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/toner5", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.TONER, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/asciugacapelli", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.CENTRORACCOLTA, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/toner4", new Vector2(0, 0), new Vector2(0, 0), 0.15f, Item.Type.TONER, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/toner5", new Vector2(0, 0), new Vector2(0, 0), 0.15f, Item.Type.TONER, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/asciugacapelli", new Vector2(0, 0), new Vector2(0, 0), 0.10f, Item.Type.CENTRORACCOLTA, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bilanciaCucina", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.CENTRORACCOLTA, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bombolettaSpray", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.PLASTICA_MET, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/borsa", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.ABITI, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/cappello", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.ABITI, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/caricabatterie", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.CENTRORACCOLTA, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/cartonePizzaSporca", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.SECCO, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/borsa", new Vector2(0, 0), new Vector2(0, 0), 0.10f, Item.Type.ABITI, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/cappello", new Vector2(0, 0), new Vector2(0, 0), 0.10f, Item.Type.ABITI, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/caricabatterie", new Vector2(0, 0), new Vector2(0, 0), 0.10f, Item.Type.CENTRORACCOLTA, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/cartonePizzaSporca", new Vector2(0, 0), new Vector2(0, 0), 0.15f, Item.Type.SECCO, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/cassa", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.CENTRORACCOLTA, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/cellulare", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.CENTRORACCOLTA, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/chewing-gum", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.SECCO, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/coperta", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.ABITI, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/frullatore", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.CENTRORACCOLTA, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/insalata", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.ORGANICO, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lampadinaLED", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.CENTRORACCOLTA, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lettoreMP3", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.CENTRORACCOLTA, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/liscaPesce", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.ORGANICO, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/mascheraMare", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.SECCO, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/chewing-gum", new Vector2(0, 0), new Vector2(0, 0), 0.15f, Item.Type.SECCO, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/coperta", new Vector2(0, 0), new Vector2(0, 0), 0.15f, Item.Type.ABITI, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/frullatore", new Vector2(0, 0), new Vector2(0, 0), 0.10f, Item.Type.CENTRORACCOLTA, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/insalata", new Vector2(0, 0), new Vector2(0, 0), 0.10f, Item.Type.ORGANICO, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lampadinaLED", new Vector2(0, 0), new Vector2(0, 0), 0.10f, Item.Type.CENTRORACCOLTA, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lettoreMP3", new Vector2(0, 0), new Vector2(0, 0), 0.10f, Item.Type.CENTRORACCOLTA, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/liscaPesce", new Vector2(0, 0), new Vector2(0, 0), 0.15f, Item.Type.ORGANICO, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/mascheraMare", new Vector2(0, 0), new Vector2(0, 0), 0.15f, Item.Type.SECCO, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/matita", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.SECCO, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/pannolino", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.SECCO, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/scarpe", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.ABITI, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/scontrino", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.SECCO, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lavatrice", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.CENTRORACCOLTA, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/scontrino", new Vector2(0, 0), new Vector2(0, 0), 0.10f, Item.Type.SECCO, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lavatrice", new Vector2(0, 0), new Vector2(0, 0), 0.15f, Item.Type.CENTRORACCOLTA, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/sigaretta", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.SECCO, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/uovo", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.ORGANICO, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/armadio", new Vector2(0, 0), new Vector2(0, 0), 0.2f, Item.Type.CENTRORACCOLTA, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/poltrona", new Vector2(0, 0), new Vector2(0, 0), 0.2f, Item.Type.CENTRORACCOLTA, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/ringhiera", new Vector2(0, 0), new Vector2(0, 0), 0.2f, Item.Type.CENTRORACCOLTA, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/cellulareRotto", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.CENTRORACCOLTA, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bicchiere", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.VETRO, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bottigliaBirra", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.VETRO, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/carote", new Vector2(0, 0), new Vector2(0, 0), 0.15f, Item.Type.ORGANICO, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lattinaBibita", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.PLASTICA_MET, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/pomata", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.FARMACI, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/tazzinaCaffeVetro", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.VETRO, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/termometro", new Vector2(0, 0), new Vector2(0, 0), 0.2f, Item.Type.FARMACI, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/zucca", new Vector2(0, 0), new Vector2(0, 0), 0.15f, Item.Type.ORGANICO, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bloccoNote", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.ORGANICO, true));
 
             objects = new List<Item>();
 
@@ -162,9 +173,9 @@ namespace Recycle_game.States
         void Character_Action(object sender, CharEventArgs e)
         {
             List<KeyValuePair<string, int>> bidoni_tilecode = new List<KeyValuePair<string, int>>(){
-                new KeyValuePair<string, int>("giallo", 9765),
+                new KeyValuePair<string, int>("blue", 9765),
                 new KeyValuePair<string, int>("grigio", 9764),
-                new KeyValuePair<string, int>("blue", 9846),
+                new KeyValuePair<string, int>("giallo", 9846),
                 new KeyValuePair<string, int>("marrone", 9762),
                 new KeyValuePair<string, int>("rosso", 9766),
                 new KeyValuePair<string, int>("verde", 9763),

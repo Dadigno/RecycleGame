@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Gioco_generico
+namespace Recycle_game
 {
     public class Bar : Component
     {
@@ -15,20 +15,30 @@ namespace Gioco_generico
         TextBox title;
         Texture2D barTex;
         Texture2D infillTex;
-        Texture2D avatarTex;
-        
+
+        Texture2D infillTex1;
+        Texture2D infillTex2;
+
         protected Rectangle rectBar;
         protected Rectangle rectInfill;
         protected Rectangle rectAvatar;
         protected Vector2 displayPos;
         double scale = 0.2;
         //private double avatarScale = 0.2;
-
+        //Blink
+        public bool blink = false;
+        static float BLINK_TIME = 250;
+        float timer = 0;
+        int blinkCounter = 0;
+        bool isBlinking = false;
 
         public Bar(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, String titlebar, Vector2 displayPos, Item.Type type) : base(_game, _graphics, _content)
         {
             this.displayPos = displayPos;
             infillTex = _content.Load<Texture2D>("bars/infill");
+            infillTex1 = _content.Load<Texture2D>("bars/infillGreen");
+            infillTex2 = _content.Load<Texture2D>("bars/infillRed");
+
             barTex = _content.Load<Texture2D>("bars/genericBar");
             double barWidth = barTex.Width * (scale * ConstVar.displayDim.X / barTex.Width);
             double barHeight = barWidth * barTex.Height / barTex.Width;
@@ -59,12 +69,19 @@ namespace Gioco_generico
         public void Draw()
         {
             ConstVar.sb.Draw(barTex, rectBar, null, Color.White, 0, new Vector2(0, 0), new SpriteEffects(), 0);
-            ConstVar.sb.Draw(infillTex, new Rectangle(rectInfill.X, rectInfill.Y , (int)(rectInfill.Width * Value), rectInfill.Height), Color.White);
+            //ConstVar.sb.Draw(infillTex, new Rectangle(rectInfill.X, rectInfill.Y , (int)(rectInfill.Width * Value), rectInfill.Height), Color.White);
+            if(!blink)
+                ConstVar.sb.Draw(infillTex1, new Rectangle(rectInfill.X, rectInfill.Y, (int)(rectInfill.Width * Value), rectInfill.Height), Color.White);
+            else
+                ConstVar.sb.Draw(infillTex2, new Rectangle(rectInfill.X, rectInfill.Y, (int)(rectInfill.Width * Value), rectInfill.Height), Color.White);
+
             counter.Draw();
             title.Draw();
             //ConstVar.sb.Draw(avatarTex, rectAvatar, Color.White);
+
+            
         }
-        public void Update(int v, int target)
+        public void Update(GameTime gameTime, int v, int target)
         {
             //Target = _game.GameLevel.POINT_TARGET;
             Target = target;
@@ -76,6 +93,36 @@ namespace Gioco_generico
             else
             {
                 Value = v / Target;
+            }
+
+            if (isBlinking)
+            {
+                float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                timer -= elapsed;
+                if (timer < 0)
+                {
+                    timer = BLINK_TIME;
+                    if (blinkCounter < 4)
+                    {
+                        blink = !blink;
+                        blinkCounter++;
+                    }
+                    else
+                    {
+                        blinkCounter = 0;
+                        blink = false;
+                        isBlinking = false;
+                    }
+                }
+            }
+        }
+
+        public void Blink()
+        {
+            if (!isBlinking)
+            {
+                blink = true;
+                isBlinking = true;
             }
         }
 

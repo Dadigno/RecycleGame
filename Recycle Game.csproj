@@ -52,7 +52,6 @@
     <Compile Include="Sprites\Item.cs" />
     <Compile Include="Sprites\SpeechBubble.cs" />
     <Compile Include="States\ChooseBucket.cs" />
-    <Compile Include="States\InsideState.cs" />
     <Compile Include="Sprites\AnimatedSprite.cs" />
     <Compile Include="Sprites\Background.cs" />
     <Compile Include="Interaction\Banner.cs" />
@@ -71,6 +70,8 @@
     <Compile Include="Tools.cs" />
     <Compile Include="Interaction\UI.cs" />
     <Compile Include="Interaction\Windows.cs" />
+    <Compile Include="Tutorial.cs" />
+    <Compile Include="States\TutorialState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

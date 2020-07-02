@@ -1,11 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Gioco_generico.States;
-using Gioco_generico.Interaction;
+using Recycle_game.States;
+using Recycle_game.Interaction;
 using System.Collections.Generic;
+using Recycle_game;
 
-namespace Gioco_generico
+namespace Recycle_game
 {
     /// <summary>
     /// This is the main type for your game.
@@ -84,8 +85,11 @@ namespace Gioco_generico
             ConstVar.menu = new MenuState(this, graphics, Content, 0);
             ConstVar.main = new MainState(this, graphics, Content, 1);
             ConstVar.chooseBucket = new ChooseBucket(this, graphics, Content, 2);
+            ConstVar.tutorialState = new TutorialState(this, graphics, Content, 3);
+
             ConstVar.UI = new UI(this, graphics, Content);
             ConstVar.vocabulary = new Vocabulary(this, graphics, Content);
+            ConstVar.tutorial = new Tutorial(this, graphics, Content);
             _currentState = ConstVar.menu;
         }
 

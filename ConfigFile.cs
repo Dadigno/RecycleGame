@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Gioco_generico
+namespace Recycle_game
 {
     class ConfigFile
     {

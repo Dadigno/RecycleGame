@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Input;
 
-namespace Gioco_generico
+namespace Recycle_game
 {
     public class Component
     {

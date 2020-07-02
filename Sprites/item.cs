@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Gioco_generico
+namespace Recycle_game
 {
    //Ogni item rappresenta un oggetto da differenziare
 

@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Audio;
 
-namespace Gioco_generico
+namespace Recycle_game
 {
     public class SpeechBubble : Sprite
     {
@@ -99,7 +99,7 @@ namespace Gioco_generico
                         {
                             if (l[0] != ' ' && l[1] != ' ')
                             {
-                                temp += '-';
+                                temp += "            ";
                             }
                             if(l[1] == ' ')
                             {
@@ -135,7 +135,7 @@ namespace Gioco_generico
         /// <summary>
         /// Mostra la nuvoletta ma senza lo scorrimento del testo
         /// </summary>
-        public new void StaticDraw(string text)
+        public void StaticDraw(string text)
         {
             Text = text + ' ';
             while (l.Count() > 0)
@@ -146,7 +146,7 @@ namespace Gioco_generico
                 {
                     if (l[0] != ' ' && l[1] != ' ')
                     {
-                        temp += '-';
+                        temp += "           ";
                     }
                     if (l[1] == ' ')
                     {

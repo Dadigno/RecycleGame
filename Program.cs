@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Gioco_generico
+namespace Recycle_game
 {
 #if WINDOWS || LINUX
     /// <summary>

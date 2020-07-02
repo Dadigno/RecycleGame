@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace Gioco_generico
+namespace Recycle_game
 {
     public partial class Game1
     {

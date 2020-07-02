@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Gioco_generico.States;
+using Recycle_game.States;
 using System.Runtime.CompilerServices;
-using Gioco_generico.Interaction;
+using Recycle_game.Interaction;
 
-namespace Gioco_generico
+namespace Recycle_game
 {
     public static class ConstVar
     {
@@ -52,7 +52,7 @@ namespace Gioco_generico
         public static MainState main;
         public static MenuState menu;
         public static ChooseBucket chooseBucket;
-
+        public static TutorialState tutorialState;
         public static List<Game1.layer> layers = new List<Game1.layer>();
         public static List<Game1.layer> layersInside = new List<Game1.layer>();
         public static List<string> advices = new List<string>();
@@ -62,8 +62,8 @@ namespace Gioco_generico
         public static UI UI;
 
         public static Vocabulary vocabulary;
+        public static Tutorial tutorial;
 
-        
         public class LEVEL
         {
             //livello di partenza del gioco

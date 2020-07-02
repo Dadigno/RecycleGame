@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 
-namespace Gioco_generico
+namespace Recycle_game
 {
     public class Narrator : Sprite
     {

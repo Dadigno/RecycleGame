@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
-namespace Gioco_generico
+namespace Recycle_game
 {
     public class Character : AnimatedSprite
     {

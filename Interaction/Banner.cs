@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using System.Reflection;
 
-namespace Gioco_generico
+namespace Recycle_game
 {
     public class Banner : Component
     {

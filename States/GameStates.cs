@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Gioco_generico.States
+namespace Recycle_game.States
 {
     public class GameStates : State
     {

@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Audio;
 
 
-namespace Gioco_generico.States
+namespace Recycle_game.States
 {
     public class ChooseBucket : State
     {

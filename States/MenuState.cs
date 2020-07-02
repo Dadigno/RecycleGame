@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
 
-namespace Gioco_generico.States
+namespace Recycle_game.States
 {
     public class MenuState : State
     {
@@ -35,32 +35,30 @@ namespace Gioco_generico.States
             var newGameButton = new Button(_game, _graphics, _content, "button/play_button", new Vector2(position.X, position.Y));
             newGameButton.Action += PlayGameButton_Click;
 
-            //var loadGameButton = new Button(_game, _graphics, _content, "", new Vector2(position.X, position.Y + 50));
-            //loadGameButton.Click += InfoGameButton_Click;
+            var loadGameButton = new Button(_game, _graphics, _content, "button/load_button", new Vector2(position.X, position.Y + 100));
+            loadGameButton.Action += LoadGameButton_Click;
 
-            var quitGameButton = new Button(_game, _graphics, _content, "button/exit_button", new Vector2(position.X, position.Y + 100));
+            var quitGameButton = new Button(_game, _graphics, _content, "button/exit_button", new Vector2(position.X, position.Y + 200));
             quitGameButton.Action += QuitGameButton_Click;
 
             _buttons = new List<Button>()
               {
                 newGameButton,
-                //loadGameButton,
+                loadGameButton,
                 quitGameButton,
               };
 
             effectScrollArrow = _content.Load<SoundEffect>("soundEffect/effectScrollArrow");
 
+            _buttons[1].Enable = false;
         }
 
 
-        private void InfoGameButton_Click(object sender, EventArgs e)
-        {
-            
-        }
+        
 
         private void PlayGameButton_Click(object sender, EventArgs e)
         {
-            _game.ChangeState(ConstVar.main);
+            _game.ChangeState(ConstVar.tutorialState);
             effectScrollArrow.Play();
         }
 
@@ -68,6 +66,12 @@ namespace Gioco_generico.States
         {
             effectScrollArrow.Play();
             _game.Exit();
+        }
+
+        private void LoadGameButton_Click(object sender, EventArgs e)
+        {
+            _game.ChangeState(ConstVar.main);
+            effectScrollArrow.Play();
         }
 
 

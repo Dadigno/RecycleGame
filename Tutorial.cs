@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace Recycle_game
 {
@@ -50,7 +51,7 @@ namespace Recycle_game
             effectScrollPage = _content.Load<SoundEffect>("soundEffect/turnPage");
 
             titlefont = _content.Load<SpriteFont>("Fonts/bigFont");
-            font = _content.Load<SpriteFont>("Fonts/fontSimbol");
+            font = _content.Load<SpriteFont>("Fonts/fontTutorial");
             _DrawPage = DrawPage1;
 
         }
@@ -95,6 +96,17 @@ namespace Recycle_game
                 effectScrollPage.Play();
                 _DrawPage = DrawPage4;
             }
+            else if (_DrawPage == DrawPage6)
+            {
+                effectScrollPage.Play();
+                _DrawPage = DrawPage5;
+            }
+            else if (_DrawPage == DrawPage7)
+            {
+                effectScrollPage.Play();
+                _DrawPage = DrawPage6;
+            }
+
         }
 
         private void NextPage(object sender, EventArgs e)
@@ -120,8 +132,19 @@ namespace Recycle_game
             {
                 effectScrollPage.Play();
                 _DrawPage = DrawPage5;
+            }
+            else if (_DrawPage == DrawPage5)
+            {
+                effectScrollPage.Play();
+                _DrawPage = DrawPage6;
+            }
+            else if (_DrawPage == DrawPage6)
+            {
+                effectScrollPage.Play();
+                _DrawPage = DrawPage7;
                 arrows[1].Enable = false;
             }
+
         }
 
         void DrawPage1()
@@ -129,49 +152,84 @@ namespace Recycle_game
             foreach (var button in arrows)
                 button.Draw();
 
-            string title = "Title 1";
+            string title = "The Recycle Game";
             ConstVar.sb.DrawString(titlefont, title, new Vector2(background.getPos().X - titlefont.MeasureString(title).X / 2, background.getPos().Y - background.getRect().Height * 0.43f), Color.Black);
 
             StaticDraw(page1);
         }
+
         void DrawPage2()
         {
             foreach (var button in arrows)
                 button.Draw();
 
-            string title = "Title 2";
+            string title = "The Recycle Game";
             ConstVar.sb.DrawString(titlefont, title, new Vector2(background.getPos().X - titlefont.MeasureString(title).X / 2, background.getPos().Y - background.getRect().Height * 0.43f), Color.Black);
 
             StaticDraw(page2);
+            Sprite img = new Sprite(_game, _graphics, _content, "immagini/img1", new Vector2(0, 0), new Vector2(background.getRect().X, background.getRect().Y));
+            img.Draw(true);
         }
+
         void DrawPage3()
         {
             foreach (var button in arrows)
                 button.Draw();
 
-            string title = "Title 3";
+            string title = "The Recycle Game";
             ConstVar.sb.DrawString(titlefont, title, new Vector2(background.getPos().X - titlefont.MeasureString(title).X / 2, background.getPos().Y - background.getRect().Height * 0.43f), Color.Black);
-
-            StaticDraw(page3);
+            Sprite img = new Sprite(_game, _graphics, _content, "immagini/img2", new Vector2(0, 0), new Vector2(background.getRect().X, background.getRect().Y));
+            img.Draw(true);
+            //StaticDraw(page3);
         }
+
         void DrawPage4()
         {
             foreach (var button in arrows)
                 button.Draw();
 
-            string title = "Title 4";
+            string title = "The Recycle Game";
             ConstVar.sb.DrawString(titlefont, title, new Vector2(background.getPos().X - titlefont.MeasureString(title).X / 2, background.getPos().Y - background.getRect().Height * 0.43f), Color.Black);
+            Sprite img = new Sprite(_game, _graphics, _content, "immagini/img3", new Vector2(0, 0), new Vector2(background.getRect().X, background.getRect().Y));
+            img.Draw(true);
             StaticDraw(page4);
         }
+
         void DrawPage5()
+        {
+            foreach (var button in arrows)
+                button.Draw();
+
+            string title = "Tutorial";
+            ConstVar.sb.DrawString(titlefont, title, new Vector2(background.getPos().X - titlefont.MeasureString(title).X / 2, background.getPos().Y - background.getRect().Height * 0.43f), Color.Black);
+            Sprite img = new Sprite(_game, _graphics, _content, "immagini/tutorial1", new Vector2(0, 0), new Vector2(background.getRect().X, background.getRect().Y));
+            img.Draw(true);
+            //StaticDraw(page4);
+        }
+
+        void DrawPage6()
+        {
+            foreach (var button in arrows)
+                button.Draw();
+
+            string title = "Tutorial";
+            ConstVar.sb.DrawString(titlefont, title, new Vector2(background.getPos().X - titlefont.MeasureString(title).X / 2, background.getPos().Y - background.getRect().Height * 0.43f), Color.Black);
+            Sprite img = new Sprite(_game, _graphics, _content, "immagini/tutorial2", new Vector2(0, 0), new Vector2(background.getRect().X, background.getRect().Y));
+            img.Draw(true);
+            //StaticDraw(page4);
+        }
+
+        void DrawPage7()
         {
             foreach (var button in arrows)
                 button.Draw();
             start.Draw();
 
-            string title = "Title 5";
+            string title = "Tutorial";
             ConstVar.sb.DrawString(titlefont, title, new Vector2(background.getPos().X - titlefont.MeasureString(title).X / 2, background.getPos().Y - background.getRect().Height * 0.43f), Color.Black);
-            StaticDraw(page5);
+            Sprite img = new Sprite(_game, _graphics, _content, "immagini/tutorial3", new Vector2(0, 0), new Vector2(background.getRect().X, background.getRect().Y));
+            img.Draw(true);
+            //StaticDraw(page6);
         }
 
         public void StaticDraw(string text)
@@ -203,11 +261,10 @@ namespace Recycle_game
             ConstVar.sb.DrawString(font, temp, new Vector2(background.getRect().X - background.getRect().Width * 0.45f, background.getRect().Y - background.getRect().Width * 0.45f), Color.Black);
         }
 
-        string page1 = "";
-        string page2 = "";
-        string page3 = "";
-        string page4 = "";
-        string page5 = "";
+        string page1 = "Perche' riciclare?\nLa raccolta differenziata e' alla base del riciclaggio delle materie prime che troviamo nei rifiuti. Il fine ultimo e' dunque la separazione dei rifiuti in modo tale da reindirizzare ciascun tipo di rifiuto differenziato verso il rispettivo piu' adatto trattamento di smaltimento e recupero. Si tratta del miglior modo per smaltire i rifiuti, traendone il massimo profitto per il nostro pianeta e la collettivita'. I benefici della raccolta differenziata sono:\n - riduzione drastica delle emissioni inquinanti\n - uso efficiente delle risorse, evitando cioe' sprechi ed eventuali contaminazioni\n - minor impatto economico: in genere i materiali che portano a maggiori benefici economici sono principalmente plastica, alluminio, terre rare, carta, acciaio, rame, rifiuti organici, legno, sughero e metalli. Il vetro per dare una resa economica migliore dovrebbe essere suddiviso per colore, motivo per cui e' ";// spesso spedito verso centri esteri.\n - benefici per la salute: si riducono le discariche, migliorando anche l’impatto che hanno sulla nostra salute, dato che le sostanze tossiche vengono raccolte a parte e non disperse.";
+        string page2 = "Fino ad ora la raccolta differenziata non e' stata abbastanza. Il nostro pianeta e' ancora pieno di rifiuti:";
+
+        string page4 = "IMPARIAMO INSIEME A FARE LA DIFFERENZIATA!!!";
 
 
         private void NewGame(object sender, EventArgs e)

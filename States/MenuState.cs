@@ -32,11 +32,11 @@ namespace Recycle_game.States
             
             position.X = rect.X + 340;
             position.Y = rect.Y + 330;
-            var newGameButton = new Button(_game, _graphics, _content, "button/play_button", new Vector2(position.X, position.Y));
+            var newGameButton = new Button(_game, _graphics, _content, "button/newgame_button", new Vector2(position.X, position.Y));
             newGameButton.Action += PlayGameButton_Click;
 
-            var loadGameButton = new Button(_game, _graphics, _content, "button/load_button", new Vector2(position.X, position.Y + 100));
-            loadGameButton.Action += LoadGameButton_Click;
+            var continueGameButton = new Button(_game, _graphics, _content, "button/continue_button", new Vector2(position.X, position.Y + 100));
+            continueGameButton.Action += ContinueGameButton_Click;
 
             var quitGameButton = new Button(_game, _graphics, _content, "button/exit_button", new Vector2(position.X, position.Y + 200));
             quitGameButton.Action += QuitGameButton_Click;
@@ -44,7 +44,7 @@ namespace Recycle_game.States
             _buttons = new List<Button>()
               {
                 newGameButton,
-                loadGameButton,
+                continueGameButton,
                 quitGameButton,
               };
 
@@ -59,6 +59,8 @@ namespace Recycle_game.States
         private void PlayGameButton_Click(object sender, EventArgs e)
         {
             _game.ChangeState(ConstVar.tutorialState);
+            _buttons[1].Enable = true;
+            _buttons[0].Enable = false;
             effectScrollArrow.Play();
         }
 
@@ -68,7 +70,7 @@ namespace Recycle_game.States
             _game.Exit();
         }
 
-        private void LoadGameButton_Click(object sender, EventArgs e)
+        private void ContinueGameButton_Click(object sender, EventArgs e)
         {
             _game.ChangeState(ConstVar.main);
             effectScrollArrow.Play();

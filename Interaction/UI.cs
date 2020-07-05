@@ -35,10 +35,14 @@ namespace Recycle_game
         private SoundEffect surround;
         SoundEffectInstance instance;
 
+        Sprite img_lv1;
+        Sprite img_lv2;
+        Sprite img_lv3;
+
         public UI(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content) :  base(_game, _graphics, _content)
         {
-            ScoreBar = new Bar(_game, _graphics, _content, "bars/genericBar", "Score", new Vector2(10, 10), Item.Type.NONE);
-            InventoryBar = new Bar(_game, _graphics, _content, "bars/genericBar", "Inventory", new Vector2(10, 50), Item.Type.NONE);
+            ScoreBar = new Bar(_game, _graphics, _content, "bars/genericBar", "Score", new Vector2(150, 10), Item.Type.NONE);
+            InventoryBar = new Bar(_game, _graphics, _content, "bars/genericBar", "Inventory", new Vector2(150, 50), Item.Type.NONE);
 
             //Bottoni
             var helpButton = new Button(_game, _graphics, _content, "button/vocabulary_button", new Vector2(ConstVar.displayDim.X * 0.96f, ConstVar.displayDim.Y * 0.05f), Item.Type.NONE, 0.7f);
@@ -46,6 +50,7 @@ namespace Recycle_game
             
             var tutorialButton = new Button(_game, _graphics, _content, "button/info_button", new Vector2(ConstVar.displayDim.X * 0.90f, ConstVar.displayDim.Y * 0.05f), Item.Type.NONE, 0.7f);
             tutorialButton.Action += Click_tutorial;
+
             _buttons = new List<Button>()
               {
                 helpButton,
@@ -60,7 +65,14 @@ namespace Recycle_game
 
             surround = _content.Load<SoundEffect>("soundEffect/surround");
             instance = surround.CreateInstance();
-            //instance.Play();
+            instance.Volume = 0.1f;
+            instance.Play();
+
+            img_lv1 = new Sprite(_game, _graphics, _content, "immagini/lv1", new Vector2(0, 0), new Vector2(80,80), 0.35f);
+            img_lv2 = new Sprite(_game, _graphics, _content, "immagini/lv2", new Vector2(0, 0), new Vector2(80,80), 0.35f);
+            img_lv3 = new Sprite(_game, _graphics, _content, "immagini/lv3", new Vector2(0, 0), new Vector2(80,80), 0.35f);
+
+
 
         }
 
@@ -69,6 +81,22 @@ namespace Recycle_game
             ScoreBar.Draw();
             InventoryBar.Draw();
             narrator.Draw();
+
+            if(_game.GameLevel.name == "Livello1")
+            {
+                img_lv1.Draw(true);
+            }
+            else if(_game.GameLevel.name == "Livello2")
+            {
+                img_lv2.Draw(true);
+            }
+            else if (_game.GameLevel.name == "Livello3")
+            {
+                img_lv3.Draw(true);
+            }
+
+
+
             if (adviceEnable)
             {
                 DrawAdviceBar();
@@ -96,6 +124,8 @@ namespace Recycle_game
             {
                 ConstVar.main.mainChar.move = true;
             }
+
+
         } 
         
         public void Update(GameTime gameTime)
@@ -124,12 +154,14 @@ namespace Recycle_game
 
         private void Click_help(object sender, EventArgs e)
         {
-            vocabularyEnable = !vocabularyEnable;
+            if(!tutorialEnable)
+                vocabularyEnable = !vocabularyEnable;
             
         }
         private void Click_tutorial(object sender, EventArgs e)
         {
-            tutorialEnable = !tutorialEnable;
+            if(!vocabularyEnable)
+                tutorialEnable = !tutorialEnable;
         }
         private void Click_exit(object sender, EventArgs e)
         {
@@ -153,8 +185,10 @@ namespace Recycle_game
                 turn = false;
             }
             else
-            { 
-                ConstVar.sb.DrawString(font, text, new Vector2(posAd.X + dimAd.X - counter, posAd.Y), Color.Black);
+            {
+                Texture2D ban = _content.Load<Texture2D>("button/button");
+                ConstVar.sb.Draw(ban, currentRect, Color.White * 0.7f);
+                ConstVar.sb.DrawString(font, text, new Vector2(posAd.X + dimAd.X - counter, posAd.Y + currentRect.Height * 0.009f), Color.Black);
                 if (counter < font.MeasureString(text).X + dimAd.X)
                 {
                     counter += 1f;

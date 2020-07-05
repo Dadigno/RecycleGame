@@ -73,14 +73,16 @@ namespace Recycle_game
             public int POINT_ERROR;
             public int POINT;
             public LEVEL NEXT_LEVEL;
+            public LEVEL PREV_LEVEL;
             public List<Item.Type> OBJ_TYPES;
-            public LEVEL(int t, int e, int p, string s, int full_inv, List<Item.Type> obj_types, LEVEL next = null)
+            public LEVEL(int target, int err, int corr, string s, int full_inv, List<Item.Type> obj_types, LEVEL next = null, LEVEL prev = null)
             {
                 name = s;
-                POINT_TARGET = t;
-                POINT_ERROR = e;
-                POINT = p;
+                POINT_TARGET = target;
+                POINT_ERROR = err;
+                POINT = corr;
                 NEXT_LEVEL = next;
+                PREV_LEVEL = prev;
                 FULL_INVENTORY = full_inv;
                 OBJ_TYPES = obj_types;
             }

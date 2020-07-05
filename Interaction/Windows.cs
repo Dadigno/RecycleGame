@@ -369,7 +369,9 @@ namespace Recycle_game
                 {
                     answer = Answer.CORRECT;
                     effectAnswerCorrect.Play();
-                    _game.Score += _game.GameLevel.POINT;
+
+                    //_game.Score += _game.GameLevel.POINT;
+                    addPoint();
                     widget.RemoveAt(indexCard);
                     if (indexCard == widget.Count && widget.Count != 0)
                     {
@@ -386,12 +388,29 @@ namespace Recycle_game
                     }
                     else
                     {
-                        _game.Score -= _game.GameLevel.POINT_ERROR;
+                        //_game.Score -= _game.GameLevel.POINT_ERROR;
+                        removePoint();
                     }
                 }
             }
         }
 
+        private void addPoint()
+        {
+            foreach (var t in _game.LEVELS)
+            {
+                if (t.OBJ_TYPES.Contains(widget[indexCard].type))
+                    _game.Score += t.POINT;
+            }
+        }
+        private void removePoint()
+        {
+            foreach(var t in _game.LEVELS)
+            {
+                if (t.OBJ_TYPES.Contains(widget[indexCard].type))
+                    _game.Score -= t.POINT_ERROR;
+            }
+        }
 
         //Dichiarazione di 3 Draw per ciascun livello
         private void Draw1()

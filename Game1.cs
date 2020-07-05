@@ -20,15 +20,12 @@ namespace Recycle_game
         ConfigFile settingFile;
         private State _currentState;
         private State _nextState;
-        
-        //Ogni oggetto è 100 punti, ogni errore -50
-        //LIVELLO 1 
-        //LIVELLO 2 
-        //LIVELLO 3 
-        static ConstVar.LEVEL LEVEL3 = new ConstVar.LEVEL(200000, 2000, 20000, "Livello3", 30, new List<Item.Type>() { Item.Type.ORGANICO, Item.Type.SECCO, Item.Type.VETRO, Item.Type.PLASTICA_MET, Item.Type.CARTA, Item.Type.ABITI, Item.Type.OLIOSPECIFICO, Item.Type.TONER, Item.Type.FARMACI, Item.Type.CENTRORACCOLTA });
-        static ConstVar.LEVEL LEVEL2 = new ConstVar.LEVEL(20000, 200, 2000, "Livello2", 20, new List<Item.Type>() { Item.Type.ORGANICO, Item.Type.SECCO, Item.Type.VETRO, Item.Type.PLASTICA_MET, Item.Type.CARTA, Item.Type.ABITI, Item.Type.OLIOSPECIFICO, Item.Type.TONER, Item.Type.FARMACI }, LEVEL3);
-        static ConstVar.LEVEL LEVEL1 = new ConstVar.LEVEL(500, 20, 200, "Livello1", 10, new List<Item.Type>() { Item.Type.ORGANICO, Item.Type.SECCO, Item.Type.VETRO, Item.Type.PLASTICA_MET, Item.Type.CARTA }, LEVEL2);
-        
+
+        ConstVar.LEVEL LEVEL1;
+        ConstVar.LEVEL LEVEL2;
+        ConstVar.LEVEL LEVEL3;
+
+        public List<ConstVar.LEVEL> LEVELS;
         public ConstVar.LEVEL GameLevel;
         private int _score;
         public int Score
@@ -65,7 +62,16 @@ namespace Recycle_game
             graphics.IsFullScreen = false;
             IsMouseVisible = true;
             graphics.ApplyChanges();
-            
+
+            LEVEL3 = new ConstVar.LEVEL(200000, 2000, 20000, "Livello3", 30, new List<Item.Type>() { Item.Type.CENTRORACCOLTA }, null, LEVEL2);
+            LEVEL2 = new ConstVar.LEVEL(20000, 200, 2000, "Livello2", 20, new List<Item.Type>() { Item.Type.ABITI, Item.Type.OLIOSPECIFICO, Item.Type.TONER, Item.Type.FARMACI }, LEVEL3, LEVEL1);
+            LEVEL1 = new ConstVar.LEVEL(2000, 20, 200, "Livello1", 10, new List<Item.Type>() { Item.Type.ORGANICO, Item.Type.SECCO, Item.Type.VETRO, Item.Type.PLASTICA_MET, Item.Type.CARTA }, LEVEL2);
+
+            LEVELS = new List<ConstVar.LEVEL>();
+            LEVELS.Add(LEVEL1);
+            LEVELS.Add(LEVEL2);
+            LEVELS.Add(LEVEL3);
+
             base.Initialize();
 
         }

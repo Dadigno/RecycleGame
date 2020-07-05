@@ -46,7 +46,7 @@ namespace Recycle_game.States
         public action space_button_action;
 
         //Timer
-        private static float TIMER = 2000;
+        private static float TIMER = 5000;
         private float timer = TIMER;
         protected float timerAnimated = 0;
 
@@ -232,10 +232,16 @@ namespace Recycle_game.States
             if (timerAnimated < 0)
             {
                 timerAnimated = 100;
+                List<Item> temp = new List<Item>();
+                var lev_t = _game.GameLevel;
+                do
+                {
+                    ConstVar.allObjects.ForEach(o => { if (lev_t.OBJ_TYPES.Contains(o.type)) { temp.Add(o); } });
+                    lev_t = lev_t.PREV_LEVEL;
+                }
+                while (lev_t != null);
 
-                List<Item> temp = ConstVar.allObjects.FindAll(o => _game.GameLevel.OBJ_TYPES.Contains(o.type));
                 Item obj = temp[rnd.Next(0, temp.Count())].Clone();
-                //
                 
                 int x = rnd.Next(0, 79);
                 int y = rnd.Next(0, 79);
@@ -395,45 +401,6 @@ namespace Recycle_game.States
                     };
             }
         }
-        /*
-        void state2(GameTime gameTime)
-        {
-            space_button_action = null;
-            if (speechIntroAlice.Count() != 0 && !narrator.isSpeaking)
-            {
-                narrator.speak(speechIntroAlice[0]);
-                speechIntroAlice.RemoveAt(0);
-            }
-            if (speechIntroAlice.Count() == 0 && !narrator.isSpeaking)
-            {
-                mainChar.think(Character.thinkType.ESCLAMATIVE);
-                changeState(state3);
-            }
-        }
-        
-        void state3(GameTime gameTime)
-        {
-            float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            timer -= elapsed;
-            if (timer < 0)
-            {
-                timer = TIMER;
-                mainChar.think(Character.thinkType.NONE);
-                alice.think(Character.thinkType.NONE);
-                changeState(state0);
-            }
-        }
-
-        List<string> speechIntroAlice = new List<string>() {
-            "Hey ciao giovane \navventuriero!\nBenvenuto in citta'!",
-            "Con questo gioco imparerai\na fare la raccolta\n differenziata . . .",
-            "Fai quello che ti dico e\nnon rompere i coglioni\n. . . :)"
-        };
-        List<string> speechBob = new List<string>() {
-            "Bene e tu?",
-            "Cosa dai dicendo?\n Stupido omino con i bordi\n pixelati!!",
-            "Stupido sprite che\nnon sei altro!!!"
-        };*/
     }
 }
 

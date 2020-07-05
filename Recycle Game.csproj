@@ -44,7 +44,6 @@
     <Compile Include="AiMngnt.cs" />
     <Compile Include="Component.cs" />
     <Compile Include="ConfigFile.cs" />
-    <Compile Include="GameController.cs" />
     <Compile Include="gameDebug.cs" />
     <Compile Include="Interaction\Bar.cs" />
     <Compile Include="Interaction\Narrator.cs" />

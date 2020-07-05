@@ -154,8 +154,8 @@ namespace Recycle_game
 
             string title = "The Recycle Game";
             ConstVar.sb.DrawString(titlefont, title, new Vector2(background.getPos().X - titlefont.MeasureString(title).X / 2, background.getPos().Y - background.getRect().Height * 0.43f), Color.Black);
-
-            StaticDraw(page1);
+            Sprite img = new Sprite(_game, _graphics, _content, "immagini/tutorial0", new Vector2(0, 0), new Vector2(background.getRect().X, background.getRect().Y));
+            img.Draw(true);
         }
 
         void DrawPage2()
@@ -167,7 +167,7 @@ namespace Recycle_game
             ConstVar.sb.DrawString(titlefont, title, new Vector2(background.getPos().X - titlefont.MeasureString(title).X / 2, background.getPos().Y - background.getRect().Height * 0.43f), Color.Black);
 
             StaticDraw(page2);
-            Sprite img = new Sprite(_game, _graphics, _content, "immagini/img1", new Vector2(0, 0), new Vector2(background.getRect().X, background.getRect().Y));
+            Sprite img = new Sprite(_game, _graphics, _content, "immagini/img1", new Vector2(0, 0), new Vector2(background.getRect().X, background.getRect().Y + background.getRect().Height * 0.05f), 1.2f);
             img.Draw(true);
         }
 
@@ -180,7 +180,6 @@ namespace Recycle_game
             ConstVar.sb.DrawString(titlefont, title, new Vector2(background.getPos().X - titlefont.MeasureString(title).X / 2, background.getPos().Y - background.getRect().Height * 0.43f), Color.Black);
             Sprite img = new Sprite(_game, _graphics, _content, "immagini/img2", new Vector2(0, 0), new Vector2(background.getRect().X, background.getRect().Y));
             img.Draw(true);
-            //StaticDraw(page3);
         }
 
         void DrawPage4()
@@ -192,7 +191,6 @@ namespace Recycle_game
             ConstVar.sb.DrawString(titlefont, title, new Vector2(background.getPos().X - titlefont.MeasureString(title).X / 2, background.getPos().Y - background.getRect().Height * 0.43f), Color.Black);
             Sprite img = new Sprite(_game, _graphics, _content, "immagini/img3", new Vector2(0, 0), new Vector2(background.getRect().X, background.getRect().Y));
             img.Draw(true);
-            StaticDraw(page4);
         }
 
         void DrawPage5()
@@ -204,7 +202,6 @@ namespace Recycle_game
             ConstVar.sb.DrawString(titlefont, title, new Vector2(background.getPos().X - titlefont.MeasureString(title).X / 2, background.getPos().Y - background.getRect().Height * 0.43f), Color.Black);
             Sprite img = new Sprite(_game, _graphics, _content, "immagini/tutorial1", new Vector2(0, 0), new Vector2(background.getRect().X, background.getRect().Y));
             img.Draw(true);
-            //StaticDraw(page4);
         }
 
         void DrawPage6()
@@ -216,7 +213,6 @@ namespace Recycle_game
             ConstVar.sb.DrawString(titlefont, title, new Vector2(background.getPos().X - titlefont.MeasureString(title).X / 2, background.getPos().Y - background.getRect().Height * 0.43f), Color.Black);
             Sprite img = new Sprite(_game, _graphics, _content, "immagini/tutorial2", new Vector2(0, 0), new Vector2(background.getRect().X, background.getRect().Y));
             img.Draw(true);
-            //StaticDraw(page4);
         }
 
         void DrawPage7()
@@ -229,7 +225,6 @@ namespace Recycle_game
             ConstVar.sb.DrawString(titlefont, title, new Vector2(background.getPos().X - titlefont.MeasureString(title).X / 2, background.getPos().Y - background.getRect().Height * 0.43f), Color.Black);
             Sprite img = new Sprite(_game, _graphics, _content, "immagini/tutorial3", new Vector2(0, 0), new Vector2(background.getRect().X, background.getRect().Y));
             img.Draw(true);
-            //StaticDraw(page6);
         }
 
         public void StaticDraw(string text)
@@ -261,10 +256,8 @@ namespace Recycle_game
             ConstVar.sb.DrawString(font, temp, new Vector2(background.getRect().X - background.getRect().Width * 0.45f, background.getRect().Y - background.getRect().Width * 0.45f), Color.Black);
         }
 
-        string page1 = "Perche' riciclare?\nLa raccolta differenziata e' alla base del riciclaggio delle materie prime che troviamo nei rifiuti. Il fine ultimo e' dunque la separazione dei rifiuti in modo tale da reindirizzare ciascun tipo di rifiuto differenziato verso il rispettivo piu' adatto trattamento di smaltimento e recupero. Si tratta del miglior modo per smaltire i rifiuti, traendone il massimo profitto per il nostro pianeta e la collettivita'. I benefici della raccolta differenziata sono:\n - riduzione drastica delle emissioni inquinanti\n - uso efficiente delle risorse, evitando cioe' sprechi ed eventuali contaminazioni\n - minor impatto economico: in genere i materiali che portano a maggiori benefici economici sono principalmente plastica, alluminio, terre rare, carta, acciaio, rame, rifiuti organici, legno, sughero e metalli. Il vetro per dare una resa economica migliore dovrebbe essere suddiviso per colore, motivo per cui e' ";// spesso spedito verso centri esteri.\n - benefici per la salute: si riducono le discariche, migliorando anche l’impatto che hanno sulla nostra salute, dato che le sostanze tossiche vengono raccolte a parte e non disperse.";
         string page2 = "Fino ad ora la raccolta differenziata non e' stata abbastanza. Il nostro pianeta e' ancora pieno di rifiuti:";
 
-        string page4 = "IMPARIAMO INSIEME A FARE LA DIFFERENZIATA!!!";
 
 
         private void NewGame(object sender, EventArgs e)

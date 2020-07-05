@@ -155,7 +155,7 @@ namespace Recycle_game.States
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/tazzinaCaffeVetro", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.VETRO, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/termometro", new Vector2(0, 0), new Vector2(0, 0), 0.2f, Item.Type.FARMACI, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/zucca", new Vector2(0, 0), new Vector2(0, 0), 0.15f, Item.Type.ORGANICO, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bloccoNote", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.ORGANICO, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/bloccoNote", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.CARTA, true));
 
             objects = new List<Item>();
 

@@ -14,7 +14,6 @@ namespace Recycle_game
         TextBox counter;
         TextBox title;
         Texture2D barTex;
-        Texture2D infillTex;
 
         Texture2D infillTex1;
         Texture2D infillTex2;
@@ -35,7 +34,6 @@ namespace Recycle_game
         public Bar(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, String titlebar, Vector2 displayPos, Item.Type type) : base(_game, _graphics, _content)
         {
             this.displayPos = displayPos;
-            infillTex = _content.Load<Texture2D>("bars/infill");
             infillTex1 = _content.Load<Texture2D>("bars/infillGreen");
             infillTex2 = _content.Load<Texture2D>("bars/infillRed");
 
@@ -44,17 +42,14 @@ namespace Recycle_game
             double barHeight = barWidth * barTex.Height / barTex.Width;
             rectBar = new Rectangle((int)displayPos.X, (int)displayPos.Y, (int)(barWidth), (int)barHeight);
 
-            double infillWidth = infillTex.Width * (0.93 * barWidth) / infillTex.Width;
-            double infillHeight = infillTex.Height * (0.8 * barHeight) / infillTex.Height;
+            double infillWidth = infillTex1.Width * (0.93 * barWidth) / infillTex1.Width;
+            double infillHeight = infillTex1.Height * (0.8 * barHeight) / infillTex1.Height;
 
             rectInfill = new Rectangle(rectBar.X + (int)(0.03 * barWidth), rectBar.Y + (int)(0.12 * barHeight), (int)(infillWidth), (int)(infillHeight));
             counter = new TextBox(_game, _graphics, _content, new Vector2(0, 0), new Vector2(rectInfill.X + rectInfill.Width / 2, rectInfill.Y), _content.Load<SpriteFont>("Fonts/barFont"), "0", Color.White);
             title = new TextBox(_game, _graphics, _content, new Vector2(0, 0), new Vector2(rectBar.X + (int)(rectBar.Width * 0.05), rectInfill.Y), _content.Load<SpriteFont>("Fonts/barFont"), titlebar, Color.White);
             
             Type = type;
-            //avatarTex = _content.Load<Texture2D>("oggetti/plastic-bottle");
-            //double avatarHeight = (int)(avatarTex.Height * ((rectBar.Width * avatarScale) / avatarTex.Width));
-            //rectAvatar = new Rectangle(rectBar.X, rectBar.Y - (int)avatarHeight / 2 + rectBar.Height / 2 , (int)(rectBar.Width * avatarScale), (int)avatarHeight);
         }
 
         public double Value   // property
@@ -69,7 +64,6 @@ namespace Recycle_game
         public void Draw()
         {
             ConstVar.sb.Draw(barTex, rectBar, null, Color.White, 0, new Vector2(0, 0), new SpriteEffects(), 0);
-            //ConstVar.sb.Draw(infillTex, new Rectangle(rectInfill.X, rectInfill.Y , (int)(rectInfill.Width * Value), rectInfill.Height), Color.White);
             if(!blink)
                 ConstVar.sb.Draw(infillTex1, new Rectangle(rectInfill.X, rectInfill.Y, (int)(rectInfill.Width * Value), rectInfill.Height), Color.White);
             else
@@ -77,13 +71,10 @@ namespace Recycle_game
 
             counter.Draw();
             title.Draw();
-            //ConstVar.sb.Draw(avatarTex, rectAvatar, Color.White);
-
-            
         }
+
         public void Update(GameTime gameTime, int v, int target)
         {
-            //Target = _game.GameLevel.POINT_TARGET;
             Target = target;
             counter.update(v.ToString() + " / " + Target.ToString());
             if (v > Target)

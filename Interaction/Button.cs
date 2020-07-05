@@ -42,8 +42,10 @@ namespace Recycle_game
         public new void Draw()
         {
             colourTex = Color.White;
-            if (_isPressed || !Enable)
+            if (_isPressed)
                 colourTex = Color.Gray;
+            if (!Enable)
+                colourTex = Color.White * 0.2f;
             ConstVar.sb.Draw(texture, rect, null, colourTex, 0, origin, new SpriteEffects(), 0);
         }
 

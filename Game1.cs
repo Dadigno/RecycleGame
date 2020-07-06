@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using Recycle_game.States;
 using Recycle_game.Interaction;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Audio;
 using Recycle_game;
 
 namespace Recycle_game
@@ -20,6 +21,10 @@ namespace Recycle_game
         ConfigFile settingFile;
         private State _currentState;
         private State _nextState;
+        private SoundEffect effectLevelUp;
+        private SoundEffect effectMissionCompleted;
+        private bool varStopEffect;
+
 
         ConstVar.LEVEL LEVEL1;
         ConstVar.LEVEL LEVEL2;
@@ -71,6 +76,7 @@ namespace Recycle_game
             LEVELS.Add(LEVEL1);
             LEVELS.Add(LEVEL2);
             LEVELS.Add(LEVEL3);
+            varStopEffect = true;
 
             base.Initialize();
 
@@ -97,6 +103,8 @@ namespace Recycle_game
             ConstVar.vocabulary = new Vocabulary(this, graphics, Content);
             ConstVar.tutorial = new Tutorial(this, graphics, Content);
             _currentState = ConstVar.menu;
+            effectLevelUp = Content.Load<SoundEffect>("soundEffect/effectLevelUp");
+            effectMissionCompleted = Content.Load<SoundEffect>("soundEffect/effectMissionCompleted");
         }
 
      
@@ -119,6 +127,11 @@ namespace Recycle_game
 
 
             HandleLevel();
+            if (Score >= 200000 & varStopEffect == true)
+            {
+                effectMissionCompleted.Play();
+                varStopEffect = false;
+            }
             base.Update(gameTime);
         }
 
@@ -134,7 +147,10 @@ namespace Recycle_game
         void HandleLevel()
         {
             if (Score >= GameLevel.POINT_TARGET && GameLevel.NEXT_LEVEL != null)
+            {
                 GameLevel = GameLevel.NEXT_LEVEL;
+                effectLevelUp.Play();
+            }
         }
     }
 }

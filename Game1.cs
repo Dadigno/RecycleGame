@@ -17,7 +17,6 @@ namespace Recycle_game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        ConfigFile settingFile;
         private State _currentState;
         private State _nextState;
 
@@ -54,7 +53,6 @@ namespace Recycle_game
 
         protected override void Initialize()
         {
-            settingFile = new ConfigFile("Settings.ini");
 
             graphics.PreferredBackBufferWidth = (int)ConstVar.displayDim.X;
             graphics.PreferredBackBufferHeight = (int)ConstVar.displayDim.Y;

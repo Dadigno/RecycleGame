@@ -167,7 +167,6 @@ namespace Recycle_game.States
             //mainChar.collect(ConstVar.allObjects[i]); }
 
 
-            _currentInternalState = state0;
         }
 
         void Character_Action(object sender, CharEventArgs e)
@@ -209,7 +208,6 @@ namespace Recycle_game.States
             foreach (Item obj in objects)
                 obj.Draw();
 
-            //alice.Draw();
             mainChar.Draw();
             ban.Draw();
             //gDebug.Draw();
@@ -361,45 +359,6 @@ namespace Recycle_game.States
             }
 
             OldKeyPressed = KeyPressed;
-        }
-
-        public bool isAround(Character a, Character b)  //mi dice se a è attorno a b
-        {
-            Vector2 a_tile = a.getTilePos(background);
-            Vector2 b_tile = b.getTilePos(background);
-            if (b_tile + new Vector2(-1, -1) == a_tile || b_tile + new Vector2(0, -1) == a_tile || b_tile + new Vector2(1, -1) == a_tile)
-                return true;
-            if (b_tile + new Vector2(-1, 0) == a_tile || b_tile + new Vector2(0, 0) == a_tile || b_tile + new Vector2(1, 0) == a_tile)
-                return true;
-            if (b_tile + new Vector2(0, -1) == a_tile || b_tile + new Vector2(0, 1) == a_tile || b_tile + new Vector2(1, 1) == a_tile)
-                return true;
-            return false;
-        }
-
-
-        void changeState(state nextState)
-        {
-            _currentInternalState = nextState;
-        }
-
-        void state0(GameTime gameTime)
-        {
-            if(!ConstVar.UI.narrator.Sleeping)
-                mainChar.move = false;
-        }
-        
-        void state1(GameTime gameTime)
-        {
-            alice.think(Character.thinkType.THINK);
-            if(isAround(mainChar,alice))
-            {
-                space_button_action = delegate ()
-                    {
-                        alice.think(Character.thinkType.NONE);
-                        ConstVar.UI.narrator.phase1();
-                        changeState(state0);
-                    };
-            }
         }
     }
 }

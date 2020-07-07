@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Recycle_game.Sprite" Collapsed="true">
+    <Position X="8.5" Y="5.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>CAAgAACAACAQggAAEICAIAACAABIAgAAQgAAAQABAAA=</HashCode>
+      <FileName>Sprites\Sprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Recycle_game.SpeechBubble" Collapsed="true">
+    <Position X="8.25" Y="7" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>BgYAAAAAQCAIAoAAAAAAAABjAAhACACIBgAACAAAAAA=</HashCode>
+      <FileName>Sprites\SpeechBubble.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Recycle_game.Character" Collapsed="true">
+    <Position X="9.75" Y="8" Width="1.25" />
+    <NestedTypes>
+      <Enum Name="Recycle_game.Character.walk" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Sprites\Character.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Recycle_game.Character.thinkType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Sprites\Character.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>IAQAAAACAAQAQgCCAAQEBAAAAAAEAAAGACAAIkAEACQ=</HashCode>
+      <FileName>Sprites\Character.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Recycle_game.AnimatedSprite" Collapsed="true">
+    <Position X="9.75" Y="7" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAQAQAAgBAAAgAAABAAAAAAAAAAIAAAEAAAAA=</HashCode>
+      <FileName>Sprites\AnimatedSprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Recycle_game.Component" Collapsed="true">
+    <Position X="10" Y="4" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAQ=</HashCode>
+      <FileName>Component.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Recycle_game.States.State" Collapsed="true">
+    <Position X="13" Y="5.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Recycle_game.States.MainState" Collapsed="true">
+    <Position X="11.25" Y="7" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>gAQECBAAQQAAAgABAAAAAABAASAAQBEAAAABAAAEIAA=</HashCode>
+      <FileName>States\MainState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Recycle_game.States.MenuState" Collapsed="true">
+    <Position X="13.25" Y="7" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAEAgAAABAAIAgCAAAhAAAAAAAAAAACIAA=</HashCode>
+      <FileName>States\MenuState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Recycle_game.States.ChooseBucket" Collapsed="true">
+    <Position X="14.25" Y="8" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>gAQAAAAAAAAAAgAAAAAAAAAAAAAAQAAIAAAAIAAAAAA=</HashCode>
+      <FileName>States\ChooseBucket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Recycle_game.States.TutorialState" Collapsed="true">
+    <Position X="12.25" Y="8" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>States\TutorialState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Recycle_game.Item" Collapsed="true">
+    <Position X="7.25" Y="8" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAAAAAAAgAAAIAAAABAFEABAAAAIAAAAAAAAhA=</HashCode>
+      <FileName>Sprites\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Recycle_game.TextBox" Collapsed="true">
+    <Position X="6.25" Y="7" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAgAAAAAAAACAAAAAAACIAAAAAAAEAAA=</HashCode>
+      <FileName>Interaction\TextBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Recycle_game.Tutorial" Collapsed="true">
+    <Position X="11.5" Y="5.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAACAAAgAgBAAAAABABAAAACAAIIAAgAAKIAA=</HashCode>
+      <FileName>Interaction\Tutorial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Recycle_game.UI" Collapsed="true">
+    <Position X="10" Y="5.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAQWAAAEAgABAgIAQAEAAEABEABBAJEIAAAAAABCdAA=</HashCode>
+      <FileName>Interaction\UI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Recycle_game.Windows" Collapsed="true">
+    <Position X="7" Y="5.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>hAcyCBAAAAAAIhBAAAAAJAFGAEAAEAECBEAAAKCIMII=</HashCode>
+      <FileName>Interaction\Windows.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

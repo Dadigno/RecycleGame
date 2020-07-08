@@ -88,7 +88,7 @@ namespace Recycle_game.States
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/wooden-chair", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.CENTRORACCOLTA, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/microwave-oven", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.CENTRORACCOLTA, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/clothes", new Vector2(0, 0), new Vector2(0, 0), 0.05f, Item.Type.ABITI, true));
-            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lamp", new Vector2(0, 0), new Vector2(0, 0), 0.2f, Item.Type.CENTRORACCOLTA, true));
+            ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/lamp", new Vector2(0, 0), new Vector2(0, 0), 0.2f, Item.Type.SECCO, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/jeans", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.ABITI, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/plastic-sack", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.PLASTICA_MET, true));
             ConstVar.allObjects.Add(new Item(_game, _graphics, _content, "oggetti/chemical-containers", new Vector2(0, 0), new Vector2(0, 0), 0.1f, Item.Type.PLASTICA_MET, true));

@@ -131,7 +131,7 @@ namespace Recycle_game
             puzzleStradali.Action += ButtonAction;
             var puzzleBatterie = new Button(_game, _graphics, _content, "Finestra/puzzleBatterie", new Vector2((float)(background.Width * scaleY * 0.869772) + (int)(background.Width * scaleX / 2), (float)(background.Height * scaleY * 0.555555) + (int)(background.Height * scaleX / 2)), Item.Type.BATTERIE, scaleY);
             puzzleBatterie.Action += ButtonAction;
-            var puzzlePlastMetal = new Button(_game, _graphics, _content, "Finestra/puzzlePlastMetal", new Vector2((float)(background.Width * scaleY * 0.483073) + (int)(background.Width * scaleX / 2), (float)(background.Height * scaleY * 0.78905) + (int)(background.Height * scaleX / 2)), Item.Type.PLASTICA_MET, scaleY);
+            var puzzlePlastMetal = new Button(_game, _graphics, _content, "Finestra/puzzlePlastMetal", new Vector2((float)(background.Width * scaleY * 0.40625/*0.483073*/) + (int)(background.Width * scaleX / 2), (float)(background.Height * scaleY * 0.78905) + (int)(background.Height * scaleX / 2)), Item.Type.PLASTICA_MET, scaleY);
             puzzlePlastMetal.Action += ButtonAction;
             var puzzleToner = new Button(_game, _graphics, _content, "Finestra/puzzleToner&Cartucce", new Vector2((float)(background.Width * scaleY * 0.71464) + (int)(background.Width * scaleX / 2), (float)(background.Height * scaleY * 0.78905) + (int)(background.Height * scaleX / 2)), Item.Type.TONER, scaleY);
             puzzleToner.Action += ButtonAction;
@@ -342,7 +342,7 @@ namespace Recycle_game
 
             ConstVar.UI.Update(gameTime);
 
-            ban.text = Convert.ToString(indexCard);
+            ban.text = Convert.ToString(indexCard+1);
         }
 
         //Gestione bottini frecce

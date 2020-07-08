@@ -304,7 +304,6 @@ namespace Recycle_game.States
                 }
             }
             ConstVar.UI.Update(gameTime);
-            _currentInternalState(gameTime);
         }
 
         void keyboardMgnt(KeyboardState kbState, GameTime gameTime)

@@ -125,7 +125,7 @@ namespace Recycle_game
 
 
             HandleLevel();
-            if (Score >= 200000 & varStopEffect == true)
+            if (Score >= LEVEL3.POINT & varStopEffect == true)
             {
                 effectMissionCompleted.Play();
                 varStopEffect = false;

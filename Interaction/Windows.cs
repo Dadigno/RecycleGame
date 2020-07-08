@@ -199,10 +199,16 @@ namespace Recycle_game
                 }
 
                 //diegna contorno verde o rosso
-                if(blinkError)
+                if (blinkError)
+                {
                     ConstVar.sb.Draw(contornoRosso, rect, null, Color.White, 0, new Vector2(0, 0), new SpriteEffects(), 0);
-                if(blinkCorrect)
+                    blinkCorrect = false;
+                }
+                if (blinkCorrect)
+                {
                     ConstVar.sb.Draw(contornoVerde, rect, null, Color.White, 0, new Vector2(0, 0), new SpriteEffects(), 0);
+                    blinkError = false;
+                }
 
                 //disegna frecce
                 foreach (var button1 in arrows)

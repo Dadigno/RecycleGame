@@ -4,11 +4,11 @@ Un videogioco di Alessandro Maggi e Davide Orengo
 
 Esame di *Computer graphics arch.- games and simulation*
 
-Obiettivi
+**Obiettivi**
 
 Creare un gioco, in particolare un serious game (gioco non solo di intrattenimento ma anche educativo), con lo scopo di sensibilizzare e insegnare come si effettua la raccolta differenziata creando quindi un’esperienza formativa, efficace e piacevole per il giocatore.
 
-Introduzione
+**Introduzione**
 
 Lo sviluppo del progetto è stato eseguito utilizzando il framework Monogame e Visual Studio sfruttando le conoscenze apprese nel corso di COMPUTER GRAPHICS ARCH.- GAMES AND SIMULATION e approfondendo i concetti necessari per la realizzazione.
 

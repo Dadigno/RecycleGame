@@ -31,6 +31,10 @@ namespace Recycle_game
         int blinkCounter = 0;
         bool isBlinking = false;
 
+        //Finish Game
+        public string infinite = "";
+
+
         public Bar(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content, String nameTex, String titlebar, Vector2 displayPos, Item.Type type) : base(_game, _graphics, _content)
         {
             this.displayPos = displayPos;
@@ -76,33 +80,40 @@ namespace Recycle_game
         public void Update(GameTime gameTime, int v, int target)
         {
             Target = target;
-            counter.update(v.ToString() + " / " + Target.ToString());
-            if (v > Target)
+            if (infinite != "")
             {
-                Value = 1;
+                counter.update(infinite);
             }
             else
             {
-                Value = v / Target;
-            }
-
-            if (isBlinking)
-            {
-                float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-                timer -= elapsed;
-                if (timer < 0)
+                counter.update(v.ToString() + " / " + Target.ToString());
+                if (v > Target)
                 {
-                    timer = BLINK_TIME;
-                    if (blinkCounter < 4)
+                    Value = 1;
+                }
+                else
+                {
+                    Value = v / Target;
+                }
+
+                if (isBlinking)
+                {
+                    float elapsed = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                    timer -= elapsed;
+                    if (timer < 0)
                     {
-                        blink = !blink;
-                        blinkCounter++;
-                    }
-                    else
-                    {
-                        blinkCounter = 0;
-                        blink = false;
-                        isBlinking = false;
+                        timer = BLINK_TIME;
+                        if (blinkCounter < 4)
+                        {
+                            blink = !blink;
+                            blinkCounter++;
+                        }
+                        else
+                        {
+                            blinkCounter = 0;
+                            blink = false;
+                            isBlinking = false;
+                        }
                     }
                 }
             }
@@ -115,6 +126,11 @@ namespace Recycle_game
                 blink = true;
                 isBlinking = true;
             }
+        }
+
+        public void finish()
+        {
+
         }
 
 

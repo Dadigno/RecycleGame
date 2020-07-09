@@ -175,11 +175,6 @@ namespace Recycle_game
             ban = new Banner(_game, _graphics, _content, "Finestra/contornoNumeroSchede", new Vector2((float)(rect.X + rect.Width * 0.175), (float)(rect.Y + rect.Height * 0.95)), "Fonts/Font", "1");
             ban.isVisible = true;
 
-            
-
-
-
-
         }
 
         public void Draw()

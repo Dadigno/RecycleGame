@@ -1,6 +1,6 @@
-Recycle Game
+**Recycle Game**
 
-Un video gioco di Alessandro Maggi e Davide Orengo
+Un videogioco di Alessandro Maggi e Davide Orengo
 
 Esame di *Computer graphics arch.- games and simulation*
 
@@ -34,14 +34,14 @@ La struttura di un gioco creato con Monogame è essenzialmente basata su tre cla
 
 -   *Game*: cuore del videogioco che nonché entry point del programma. Contiene le interfacce dei metodi indispensabili per il funzionamento del gioco chiamati dalla classe base:
 
-    -   *Inizialize() *: contiene l’inizializzazione di base del comparto grafico e di input;
+    -   *Inizialize()*: contiene l’inizializzazione di base del comparto grafico e di input;
     -   *LoadConten()*: carica i contenuti multimediali
     -   *Update()*: metodo chiamato prima del render di ogni frame. Prende in input un oggetto GameTime utilizzato per ottenere molte informazioni sullo stato temporale del gioco
     -   *Draw()*: esegue il render a schermo di tutti gli elementi del gioco. Come Update() prende in input un oggetto GameTime
 -   *Graphics.SpriteBatch*: consente il render di tutti gli oggetti di tipo Texture2D
 -   *Content.ContentManage*r: consente di gestire tutte le risorse multimediali del gioco. A questo scopo il framework mette a disposizione lo strumento *Content Pipeline *che per mezzo di una interfaccia grafica permette una gestione facilitata dei contenuti.
 
-La struttura di Recycle Game
+**La struttura di Recycle Game**
 
 Recycle Game è stato creato utilizzando molte classi diverse fra loro e spesso si è fatto uso di Ereditarietà e Polimorfismo al fine di gestire numerosi oggetti grafici con comportamenti molteplici e interazioni differenti. Di seguito è riportato il diagramma delle classi più significative del videogioco:
 
@@ -49,16 +49,16 @@ Recycle Game è stato creato utilizzando molte classi diverse fra loro e spesso 
 
 ***Component***: è la classe base del videogioco, contiene i riferimenti base che ogni componente deve avere ovvero ContentManager, GraphicsDeviceManager, Game. Da questa classe derivano la quasi totalità delle altre classi.
 
-***State:**** il funzionamento del gioco è basato su una logica a macchina a stati la quale è implementata all’interno della classe *Game1*, quest’ultima derivata direttamente da *Game.* Ogni stato è un eredita dalla classe *State* i metodi Draw() e Update() i quali ricoprono la stessa funzione degli omonimi metodi contenuti nella classe Game1. La classe Game1 contiene due proprietà *\_currentState *e *\_nextState *che fanno riferimento allo stato precedente e quello successivo. La prima viene modifica nel metodo Update() di Game1 ogni qualvolta la variabile *\_nextState *contiene uno stato nuovo del gioco. La variabile dello stato successivo viene modificata all’interno degli stessi stati ogni volta che ce n’è bisogno. In un altro paragrafo di questa relazione verranno illustrati i singoli stati.
+***State:*** il funzionamento del gioco è basato su una logica a macchina a stati la quale è implementata all’interno della classe *Game1*, quest’ultima derivata direttamente da *Game*. Ogni stato è un eredita dalla classe *State* i metodi Draw() e Update() i quali ricoprono la stessa funzione degli omonimi metodi contenuti nella classe Game1. La classe Game1 contiene due proprietà *_currentState* e *_nextState* che fanno riferimento allo stato precedente e quello successivo. La prima viene modifica nel metodo Update() di Game1 ogni qualvolta la variabile *_nextState* contiene uno stato nuovo del gioco. La variabile dello stato successivo viene modificata all’interno degli stessi stati ogni volta che ce n’è bisogno. In un altro paragrafo di questa relazione verranno illustrati i singoli stati.
 
 ***Game1***: devira da *Game* e per questo è la classe entry-point del gioco. Contiene le inizializzazioni del gioco, la gestione degli stati e dei livelli. Al suo interno vengono implementati i metodi Update() e Draw() del framework MonoGame.
 
 ***Sprite***: un oggetto di questa classe rappresenta un singolo sprite le cui proprietà sono molteplici fra le quali le più importanti sono:
-    -   *texture:* la texture dello sprite
-    -   *rect:* il rettangolo in cui è contenuto lo sprite
-    -   *gamePos:* posizione dello sprite rispetto alla mappa del gioco
-    -   *displayPos:* posizione dello sprite rispetto allo schermo
-    -   *scale:* misura dello scalamento della texture
+    -   *texture*: la texture dello sprite
+    -   *rect*: il rettangolo in cui è contenuto lo sprite
+    -   *gamePos*: posizione dello sprite rispetto alla mappa del gioco
+    -   *displayPos*: posizione dello sprite rispetto allo schermo
+    -   *scale*: misura dello scalamento della texture
 
 La classe sprite contiene tutti i metodi necessari per gestire il movimento e la posizione di ogni singolo elemento:
 
@@ -68,7 +68,7 @@ La classe sprite contiene tutti i metodi necessari per gestire il movimento e la
 
 Possiede poi dei rispettivi metodi get\#\#\#() che servono per ottenere i valori. Da questa classe derivano 5 altre classi. La classe *sprite *contiene una funziona Draw() basilare che spesso viene rimpiazzata da una Draw() più specifica nelle classi derivate.
 
-***Animated Sprite***:conferisce ad ogni singolo sprite una animazione data dal susseguirsi di frame i quali sono raggruppati in una unica texture. La tecnica di animazione si basa sul mostrare solo una porzione della texture nella quale è presente il frame che si vuole visualizzare.
+***Animated Sprite***: conferisce ad ogni singolo sprite una animazione data dal susseguirsi di frame i quali sono raggruppati in una unica texture. La tecnica di animazione si basa sul mostrare solo una porzione della texture nella quale è presente il frame che si vuole visualizzare.
 
 ***Character***: derivata da *Sprite*, questa classe consente di creare un personaggio capace di muoversi nel gioco e interagire con gli ostacoli presenti nella mappa. Ogni oggetto Character può essere manipolato da tastiera con i comandi WASD grazie al metodo *keyboardMgnt* presente all’interno del *MainState*
 
@@ -78,7 +78,7 @@ Possiede poi dei rispettivi metodi get\#\#\#() che servono per ottenere i valori
 
 ***Vocabulary***: questa classe crea una finestra sotto forma di taccuino al centro dello schermo che mostra in sequenza i simboli del riciclo con le loro descrizioni, tutti i bidoni e tutti gli oggetti presenti all’interno del gioco. Per passare da una pagina all’altra si utilizzano le frecce poste alla base del taccuino. La gestione di quale pagine mostrare viene fatta tramite l’uso dei delegati: il delegato che viene chiamato all’interno della Draw() viene modificato all’interno di Update() inserendo il metodo che mostrerà la pagina corretta.
 
-<span id="anchor"></span>***Windows***: crea una finestra interattiva che permette di interagire con i rifiuti che si sono raccolti e il bidone disponibile.
+***Windows***: crea una finestra interattiva che permette di interagire con i rifiuti che si sono raccolti e il bidone disponibile.
 
 Per costruire la finestra è stata scritta la classe *Windows* che comprende i metodi Draw() e Update() e altri per poter gestirne l’interazione con il giocatore.
 
@@ -101,7 +101,7 @@ Aperta la finestra sarà possibile premere con il mouse solo il quadratino rifer
 
 **Gli stati del gioco**
 
-Come già anticipato il RecycleGame è strutturato come una macchina a stati i quali sono tutti oggetti della classe State e ognuno implementa una propria Draw() e Update(). Lo stato iniziale viene impostato all’interno della classe Game1 nel metodo *LoadContent *e nei metodi Draw e Update di Game1 vengono chiamati i corrispettivi all’interno del *\_currentState*.
+Come già anticipato il RecycleGame è strutturato come una macchina a stati i quali sono tutti oggetti della classe State e ognuno implementa una propria Draw() e Update(). Lo stato iniziale viene impostato all’interno della classe Game1 nel metodo *LoadContent* e nei metodi Draw e Update di Game1 vengono chiamati i corrispettivi all’interno del *_currentState*.
 
 ***Gestione degli input***
 
@@ -147,4 +147,4 @@ Lo sviluppo di questo gioco è stato molto importante per la comprensione e la p
 
 Il lavoro di gruppo non sarebbe stato possibile se non avessimo usato il sistema di controllo versione (VCS) Git. In corso d’opera abbiamo fatto diversi cambiamenti e grazie a sempre nuove idee abbiamo migliorato il gioco passo dopo passo.
 
-Recycle Game può essere ancora migliorato e ampliato. Abbiamo pensato che sarebbe interessante implementare un sistema di salvataggio dello stato del gioco in modo da recuperare una partita interrotta. Inoltre, con lo scopo di ampliare le prospettive del gioco, potrebbe essere utile aggiungere nuove mappe, nuovi oggetti e la possibilità del giocatore di usare degli *strumenti *che permettano una raccolta differenziata più efficiente.
+Recycle Game può essere ancora migliorato e ampliato. Abbiamo pensato che sarebbe interessante implementare un sistema di salvataggio dello stato del gioco in modo da recuperare una partita interrotta. Inoltre, con lo scopo di ampliare le prospettive del gioco, potrebbe essere utile aggiungere nuove mappe, nuovi oggetti e la possibilità del giocatore di usare degli *strumenti* che permettano una raccolta differenziata più efficiente.

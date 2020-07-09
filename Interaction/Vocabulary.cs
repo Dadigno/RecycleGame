@@ -42,7 +42,6 @@ namespace Recycle_game.Interaction
         //Bidoni
         List<Sprite> bidoni;
         //Scritte
-        SpriteFont font;
         SpriteFont titlefont;
 
         //Sound effect
@@ -122,7 +121,6 @@ namespace Recycle_game.Interaction
             bidoni.Add(new Sprite(_game, _graphics, _content, "Finestra/puzzlePlastMetal", new Vector2(0, 0), new Vector2(0, 0), 0.45f));
 
             titlefont = _content.Load<SpriteFont>("Fonts/bigFont");
-            font = _content.Load<SpriteFont>("Fonts/fontSimbol");
             _DrawPage = DrawPage1;
         }
         /// <summary>

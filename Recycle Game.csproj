@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Component.cs" />
+    <Compile Include="Interaction\FinishGame.cs" />
     <Compile Include="Tools\gameDebug.cs" />
     <Compile Include="Interaction\Bar.cs" />
     <Compile Include="Interaction\Narrator.cs" />

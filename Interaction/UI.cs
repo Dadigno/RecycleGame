@@ -20,6 +20,9 @@ namespace Recycle_game
         public Bar ScoreBar;
         public Bar InventoryBar;
 
+        private SoundEffect effectMissionCompleted;
+        private bool varStopEffect = true;
+
         SoundEffect effectOpenWindow;
 
         //Advice bar
@@ -38,6 +41,8 @@ namespace Recycle_game
         Sprite img_lv1;
         Sprite img_lv2;
         Sprite img_lv3;
+
+        FinishGame finishGame;
 
         public UI(Game1 _game, GraphicsDeviceManager _graphics, ContentManager _content) :  base(_game, _graphics, _content)
         {
@@ -73,6 +78,8 @@ namespace Recycle_game
             img_lv3 = new Sprite(_game, _graphics, _content, "immagini/lv3", new Vector2(0, 0), new Vector2(80,80), 0.35f);
 
 
+            effectMissionCompleted = _content.Load<SoundEffect>("soundEffect/effectMissionCompleted");
+            finishGame = new FinishGame(_game, _graphics, _content);
 
         }
 
@@ -125,6 +132,8 @@ namespace Recycle_game
                 ConstVar.main.mainChar.move = true;
             }
 
+            finishGame.Draw();
+
 
         } 
         
@@ -150,6 +159,16 @@ namespace Recycle_game
             {
                 instance.Play();
             }
+
+            if (_game.Score >= _game.LEVEL3.POINT_TARGET & varStopEffect == true)
+            {
+                effectMissionCompleted.Play();
+                varStopEffect = false;
+                finishGame.visible = true;
+                ScoreBar.infinite = "oo / oo";
+            }
+            finishGame.Update();
+
         }
 
         private void Click_help(object sender, EventArgs e)

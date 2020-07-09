@@ -20,18 +20,19 @@ namespace Recycle_game
         SpriteBatch spriteBatch;
         private State _currentState;
         private State _nextState;
-        private SoundEffect effectLevelUp;
-        private SoundEffect effectMissionCompleted;
-        private bool varStopEffect;
+        
 
-
+        
         ConstVar.LEVEL LEVEL1;
         ConstVar.LEVEL LEVEL2;
-        ConstVar.LEVEL LEVEL3;
+        public ConstVar.LEVEL LEVEL3;
 
         public List<ConstVar.LEVEL> LEVELS;
         public ConstVar.LEVEL GameLevel;
         private int _score;
+
+        private SoundEffect effectLevelUp;
+
         public int Score
         {
             get => _score;
@@ -67,14 +68,14 @@ namespace Recycle_game
             graphics.ApplyChanges();
 
             LEVEL3 = new ConstVar.LEVEL(200000, 2000, 20000, "Livello3", 30, new List<Item.Type>() { Item.Type.CENTRORACCOLTA }, null, LEVEL2);
-            LEVEL2 = new ConstVar.LEVEL(20000, 200, 2000, "Livello2", 20, new List<Item.Type>() { Item.Type.ABITI, Item.Type.OLIOSPECIFICO, Item.Type.TONER, Item.Type.FARMACI }, LEVEL3, LEVEL1);
+            LEVEL2 = new ConstVar.LEVEL(20000, 200, 2000, "Livello2", 20, new List<Item.Type>() { Item.Type.ABITI, Item.Type.OLIOSPECIFICO, Item.Type.TONER, Item.Type.FARMACI, Item.Type.BATTERIE }, LEVEL3, LEVEL1);
             LEVEL1 = new ConstVar.LEVEL(2000, 20, 200, "Livello1", 10, new List<Item.Type>() { Item.Type.ORGANICO, Item.Type.SECCO, Item.Type.VETRO, Item.Type.PLASTICA_MET, Item.Type.CARTA }, LEVEL2);
 
             LEVELS = new List<ConstVar.LEVEL>();
             LEVELS.Add(LEVEL1);
             LEVELS.Add(LEVEL2);
             LEVELS.Add(LEVEL3);
-            varStopEffect = true;
+            
 
             base.Initialize();
 
@@ -88,7 +89,9 @@ namespace Recycle_game
             loadTMX("content/maps/mondo.tmx", ConstVar.layers);
             loadAdvices();
             loadNarratorText();
-            
+            effectLevelUp = Content.Load<SoundEffect>("soundEffect/effectLevelUp");
+
+
             GameLevel = LEVEL1;
             ConstVar.sb = spriteBatch;
             ConstVar.font = Content.Load<SpriteFont>("Fonts/font");
@@ -101,8 +104,7 @@ namespace Recycle_game
             ConstVar.vocabulary = new Vocabulary(this, graphics, Content);
             ConstVar.tutorial = new Tutorial(this, graphics, Content);
             _currentState = ConstVar.menu;
-            effectLevelUp = Content.Load<SoundEffect>("soundEffect/effectLevelUp");
-            effectMissionCompleted = Content.Load<SoundEffect>("soundEffect/effectMissionCompleted");
+            
         }
 
      
@@ -125,11 +127,7 @@ namespace Recycle_game
 
 
             HandleLevel();
-            if (Score >= LEVEL3.POINT & varStopEffect == true)
-            {
-                effectMissionCompleted.Play();
-                varStopEffect = false;
-            }
+            
             base.Update(gameTime);
         }
 
@@ -137,7 +135,6 @@ namespace Recycle_game
         {
             //GraphicsDevice.Clear(Color.CornflowerBlue);
             _currentState.Draw(gameTime, spriteBatch);
-            
             base.Draw(gameTime);
         }
 

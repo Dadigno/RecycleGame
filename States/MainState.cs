@@ -241,8 +241,8 @@ namespace Recycle_game.States
 
                 Item obj = temp[rnd.Next(0, temp.Count())].Clone();
                 
-                int x = rnd.Next(0, 79);
-                int y = rnd.Next(0, 79);
+                int x = rnd.Next(1, 78);
+                int y = rnd.Next(1, 78);
 
                 switch (obj.type)
                 {

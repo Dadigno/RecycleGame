@@ -44,6 +44,7 @@ La struttura di un gioco creato con Monogame è essenzialmente basata su tre cla
 <b><h2>La struttura di Recycle Game</b></h2>
 
 Recycle Game è stato creato utilizzando molte classi diverse fra loro e spesso si è fatto uso di Ereditarietà e Polimorfismo al fine di gestire numerosi oggetti grafici con comportamenti molteplici e interazioni differenti. Di seguito è riportato il diagramma delle classi più significative del videogioco:
+
 ![Class Diagram](media/diagrammaClassi.png)
 
 <b><h2>Le Classi principali</b></h2>
@@ -130,7 +131,7 @@ All’interno di questo stato vengono gestite tutte le interazioni fra il person
 
 ***TutorialState e ChooseBucket***: sono due stati semplici e molto simili, si occupano di mostrare a schermo gli oggetti delle classi Tutorial e Windows rispettivamente.
 
-Tiled e le matrici di tile
+<b><h2>Tiled e le matrici di tile</b></h2>
 
 Tiled è un software gratuito e open source che è utilizzato per creare mappe 2D per videogiochi mediante la tecnica dei tile. Un tile è una porzione quadrata di schermo con una dimensione in genere di 16x16px o 32x32px come in RecycleGame. Ogni tile viene riempito con una texture fino a comporre una griglia la quale rappresenta la mappa del gioco, detta TileMap. Tiled permette la progettazione della mappa mediante layer di tile sovrapposti. L’unico layer visualizzato però sarà quello più in alto degli altri. Le TileMap vengono salvate in un file .tmx che contiene tutti i layer in codifica xml contenente sotto forma di array bidimensionali, righe e colonne della tilemap. Ogni elemento degli array è un numero che rappresenta una precisa texture di 32x32px.
 

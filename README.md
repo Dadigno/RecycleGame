@@ -1,4 +1,4 @@
-**Recycle Game**
+<b><h1>Recycle Game<h1></b>
 
 Un videogioco di Alessandro Maggi e Davide Orengo
 

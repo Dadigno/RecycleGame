@@ -44,6 +44,7 @@ La struttura di un gioco creato con Monogame è essenzialmente basata su tre cla
 **La struttura di Recycle Game**
 
 Recycle Game è stato creato utilizzando molte classi diverse fra loro e spesso si è fatto uso di Ereditarietà e Polimorfismo al fine di gestire numerosi oggetti grafici con comportamenti molteplici e interazioni differenti. Di seguito è riportato il diagramma delle classi più significative del videogioco:
+![Class Diagram](media/diagrammaClassi.png)
 
 **Le Classi principali**
 
@@ -74,7 +75,11 @@ Possiede poi dei rispettivi metodi get\#\#\#() che servono per ottenere i valori
 
 ***Item***: questa classe consente di gestire i singoli oggetti del gioco che rappresentano i rifiuti come *Sprite*. Ogni *Item* possiede una proprietà *type* che conferisce il tipo di rifiuti a partire da un elenco enumerativo. Inoltre, grazie ad una lookup table della funzione seno ogni *item *è capace di muoversi su e giù conferendo un effetto animato utile per individuare la presenza di un item all’interno della mappa.
 
+![Class Diagram](media/floating.png)
+
 ***SpeechBubble***: crea una nuvoletta contenente un qualsiasi testo che viene visualizzata ogni volta che viene attivata mediante una variabile enable. Questa classe viene utilizzata all’interno della finestra in cui si trovano tutti i simboli della raccolta differenziata. Ogni volta che la freccia del mouse passa sopra ad un simbolo si attiva una speechBubble che ne contiene la descrizione. La speechBubble può inoltre essere utilizzata con un Character per dare l’idea che stia parlando.
+
+![](media/speech-ex.png)
 
 ***Vocabulary***: questa classe crea una finestra sotto forma di taccuino al centro dello schermo che mostra in sequenza i simboli del riciclo con le loro descrizioni, tutti i bidoni e tutti gli oggetti presenti all’interno del gioco. Per passare da una pagina all’altra si utilizzano le frecce poste alla base del taccuino. La gestione di quale pagine mostrare viene fatta tramite l’uso dei delegati: il delegato che viene chiamato all’interno della Draw() viene modificato all’interno di Update() inserendo il metodo che mostrerà la pagina corretta.
 
@@ -98,6 +103,8 @@ La classe presenta due texture di contorno una verde e una rossa che verranno mo
 Per visualizzare la finestra il giocatore deve posizionarsi davanti a un bidone e premere “spazio” sulla tastiera così verrà modificata la variabile di abilitazione, ciò verrà effettuato utilizzando i tile di cui si parlerà in seguito. Per uscire dall finestra bisogna premere il tasto Esc che modifica a sua volta l’abilitazione.
 
 Aperta la finestra sarà possibile premere con il mouse solo il quadratino riferito a quel bidone specifico per depositare il rifiuto visualizzato, invece gli altri quadratini appariranno scoloriti e quindi non sarà possibile utilizzarli.
+
+![Class Diagram](media/window-ex.png)
 
 **Gli stati del gioco**
 
@@ -133,11 +140,15 @@ In RecycleGame è stato implementato un metodo per leggere il file .tmx della ti
 
 Per fare un esempio, nella figura di sinistra vi è un pezzo della mappa visibile nel gioco, nella figura di destra invece la stessa mappa ma con il layer contenente gli ostacoli che è stato reso visibile.
 
+![Class Diagram](media/mask-ex.png)
+
 Il Character quando si sposta all’interno della mappa analizza tutti i tile con cui entra a contatto. Grazie ai layer nascosti è possibile capire se si trova davanti ad un ostacolo oppure no.
 
 Con la stessa tecnica è stata resa possibile l’interazione diversa con altri elementi sparsi nel gioco: è presente un layer che contiene tile diversi uno per ogni bidone presente sulla mappa e in questo modo è possibile fare interagire il personaggio in maniera diversa in base al tile in cui si trova.
 
 Di seguito a sinistra la mappa visibile nel gioco mentre a destra è visibile il layer che contiene i tile con cui il personaggio interagisce.
+
+![Class Diagram](media/ostacoli-ex.png)
 
 Altri layer nascosti sono stati creati per identificare delle zone particolari della mappa in cui far apparire solo un certo tipo di rifiuti, come ad esempio i rifiuti plastici che appaiono solo nella spiaggia.
 

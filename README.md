@@ -4,11 +4,11 @@ Un videogioco di Alessandro Maggi e Davide Orengo
 
 Esame di *Computer graphics arch.- games and simulation*
 
-**Obiettivi**
+<b><h2>Obiettivi</h2></b>
 
 Creare un gioco, in particolare un serious game (gioco non solo di intrattenimento ma anche educativo), con lo scopo di sensibilizzare e insegnare come si effettua la raccolta differenziata creando quindi un’esperienza formativa, efficace e piacevole per il giocatore.
 
-**Introduzione**
+<b><h2>Introduzione</h2></b>
 
 Lo sviluppo del progetto è stato eseguito utilizzando il framework Monogame e Visual Studio sfruttando le conoscenze apprese nel corso di COMPUTER GRAPHICS ARCH.- GAMES AND SIMULATION e approfondendo i concetti necessari per la realizzazione.
 
@@ -26,7 +26,7 @@ Il gioco è diviso per livelli e ogni livello è rappresentato da un diverso ran
 
 L’interazione tra rifiuti e bidoni avviene attraverso una finestra del gioco che permette di scegliere tra i rifiuti raccolti quali buttare nel bidone corrispondente.
 
-**MonoGame framework**
+<b><h2>MonoGame framework</b></h2>
 
 Recycle Game è stato creato utilizzando MonoGame un framework open-source per videogiochi multipiattaforma: permette di effettuare il porting dei videogiochi per molte piattaforme fra cui Windows, Linux, iOS e android. MonoGame consente lo sviluppo di videogiochi per mezzo del linguaggio di programma zione ad oggetti C\# offrendo numerose classi che contengono indispensabili strumenti.
 
@@ -41,12 +41,12 @@ La struttura di un gioco creato con Monogame è essenzialmente basata su tre cla
 -   *Graphics.SpriteBatch*: consente il render di tutti gli oggetti di tipo Texture2D
 -   *Content.ContentManage*r: consente di gestire tutte le risorse multimediali del gioco. A questo scopo il framework mette a disposizione lo strumento *Content Pipeline *che per mezzo di una interfaccia grafica permette una gestione facilitata dei contenuti.
 
-**La struttura di Recycle Game**
+<b><h2>La struttura di Recycle Game</b></h2>
 
 Recycle Game è stato creato utilizzando molte classi diverse fra loro e spesso si è fatto uso di Ereditarietà e Polimorfismo al fine di gestire numerosi oggetti grafici con comportamenti molteplici e interazioni differenti. Di seguito è riportato il diagramma delle classi più significative del videogioco:
 ![Class Diagram](media/diagrammaClassi.png)
 
-**Le Classi principali**
+<b><h2>Le Classi principali</b></h2>
 
 ***Component***: è la classe base del videogioco, contiene i riferimenti base che ogni componente deve avere ovvero ContentManager, GraphicsDeviceManager, Game. Da questa classe derivano la quasi totalità delle altre classi.
 
@@ -106,7 +106,7 @@ Aperta la finestra sarà possibile premere con il mouse solo il quadratino rifer
 
 ![Class Diagram](media/window-ex.png)
 
-**Gli stati del gioco**
+<b><h2>Gli stati del gioco</b></h2>
 
 Come già anticipato il RecycleGame è strutturato come una macchina a stati i quali sono tutti oggetti della classe State e ognuno implementa una propria Draw() e Update(). Lo stato iniziale viene impostato all’interno della classe Game1 nel metodo *LoadContent* e nei metodi Draw e Update di Game1 vengono chiamati i corrispettivi all’interno del *_currentState*.
 
@@ -152,7 +152,7 @@ Di seguito a sinistra la mappa visibile nel gioco mentre a destra è visibile il
 
 Altri layer nascosti sono stati creati per identificare delle zone particolari della mappa in cui far apparire solo un certo tipo di rifiuti, come ad esempio i rifiuti plastici che appaiono solo nella spiaggia.
 
-Conclusioni e sviluppi futuri
+<b><h2>Conclusioni e sviluppi futuri</b></h2>
 
 Lo sviluppo di questo gioco è stato molto importante per la comprensione e la pratica della creazione di giochi 2D utilizzando il linguaggio C\# e Monogame. L’uso della programmazione ad oggetti ci ha permesso di affinare le nostre capacità da programmatore utilizzando tecniche quali polimorfismo ed ereditarietà.
 

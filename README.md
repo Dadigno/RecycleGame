@@ -1,94 +1,93 @@
 <b><h1>Recycle Game</h1></b>
 
-Un videogioco di Alessandro Maggi e Davide Orengo
+A video game by Alessandro Maggi and Davide Orengo
 
-Esame di *Computer graphics arch.- games and simulation*
+*Computer graphics arch exam - games and simulation*
 
-<b><h2>Obiettivi</h2></b>
+<b><h2>Targets</h2></b>
 
-Creare un gioco, in particolare un serious game (gioco non solo di intrattenimento ma anche educativo), con lo scopo di sensibilizzare e insegnare come si effettua la raccolta differenziata creando quindi un’esperienza formativa, efficace e piacevole per il giocatore.
+Create a game, in particular a serious game (game not only of entertainment but also educational), with the aim of sensitizing and teaching how separate waste, thus creating an educational, effective and pleasant experience for the player.
 
-<b><h2>Introduzione</h2></b>
+<b><h2>Introduction</h2></b>
 
-Lo sviluppo del progetto è stato eseguito utilizzando il framework Monogame e Visual Studio sfruttando le conoscenze apprese nel corso di COMPUTER GRAPHICS ARCH.- GAMES AND SIMULATION e approfondendo i concetti necessari per la realizzazione.
+The development of the project was carried out using the Monogame framework and Visual Studio taking advantage of the knowledge learned during the COMPUTER GRAPHICS ARCH.- GAMES AND SIMULATION course and deepening the concepts necessary for the realization.
 
-Il nome del gioco è “RecycleGame” in quanto l’argomento trattato è la raccolta differenziata.
+The name of the game is "RecycleGame" as the topic is recycling.
 
-È stata scelto questo tema perché lo smaltimento dei rifiuti è un problema sempre più sentito sia dai cittadini che dalle amministrazioni, a causa dell’incredibile quantità di immondizia che la società moderna produce, di conseguenza una delle soluzioni principali è la raccolta differenziata che grazie alla collettività può portare notevoli vantaggi.
+This theme was chosen because waste disposal is an increasingly felt problem both by citizens and administrations, due to the incredible amount of garbage that modern society produces, consequently one of the main solutions is the recycling which thanks to the collectivity can bring significant benefits.
 
-Il gioco è rivolto in particolare ai più piccoli ma anche a chiunque voglia apprendere le basi della raccolta differenziata in modo tale da applicare lo stesso approccio nel mondo reale. Il gioco indica al giocatore se sta svolgendo correttamente il riciclo dei rifiuti fornendo vari strumenti che indicano il progresso del gioco ed inoltre permette di consultare un libretto informativo per avere più dettagli sul riciclaggio europeo.
+The game is aimed especially at children but also to anyone who wants to learn the basics of waste separation in such a way to apply the same approach in the real world. The game indicates to the player if he is correctly recycling the waste by providing various tools that indicate the progress of the game and also allows you to consult an information booklet for more details on European recycling.
 
-Il giocatore può esplorare i dintorni esterni di una cittadina utilizzando il suo personaggio e può raccogliere i diversi rifiuti che trova in giro e in qualunque momento può dirigersi verso un bidone della spazzatura per depositare i rifiuti di una specifica tipologia.
 
-Il gioco presenta un punteggio che rappresenta l’esperienza del giocatore e cambia dipendentemente dalle scelte giuste o sbagliate nella differenziazione dei rifiuti. Quindi se l’azione di depositare un rifiuto in un bidone specifico è sbagliata verranno tolti dei punti invece se è corretta verranno aggiunti.
+The player can explore the external surroundings of a town using his character and can collect various waste that he finds and at any time he can go to a bin to deposit the waste of a specific type.
 
-Il gioco è diviso per livelli e ogni livello è rappresentato da un diverso range di punteggio, il primo livello fornisce al giocatore un numero limitato di tipologie di rifiuti e i corrispettivi bidoni, di conseguenza i livelli successivi sbloccheranno nuove tipologie di rifiuti e bidoni con cui interagire.
+The game features a score that represents the player's experience and changes depending on the right or wrong choices in waste sorting. So if the action of depositing a waste in a specific bin is wrong, points will be removed instead if it is correct they will be added.
 
-L’interazione tra rifiuti e bidoni avviene attraverso una finestra del gioco che permette di scegliere tra i rifiuti raccolti quali buttare nel bidone corrispondente.
+The game is divided into levels and each level is represented by a different score range, the first level provides the player with a limited number of types of waste and the corresponding bins, consequently the subsequent levels will unlock new types of waste and bins to interact with.
+
+The interaction between waste and bins takes place through a game window that allows you to choose between the collected waste and which to throw in the corresponding bin.
 
 <b><h2>MonoGame framework</b></h2>
 
-Recycle Game è stato creato utilizzando MonoGame un framework open-source per videogiochi multipiattaforma: permette di effettuare il porting dei videogiochi per molte piattaforme fra cui Windows, Linux, iOS e android. MonoGame consente lo sviluppo di videogiochi per mezzo del linguaggio di programma zione ad oggetti C\# offrendo numerose classi che contengono indispensabili strumenti.
+Recycle Game was created using MonoGame, an open-source framework for cross-platform videogames: it allows videogames porting to many platforms including Windows, Linux, iOS and android. MonoGame allows the development of videogames by means of the C# object programming language by offering numerous classes that contain indispensable tools.
 
-La struttura di un gioco creato con Monogame è essenzialmente basata su tre classi:
+The structure of a game created with Monogame is essentially based on three classes:
 
--   *Game*: cuore del videogioco che nonché entry point del programma. Contiene le interfacce dei metodi indispensabili per il funzionamento del gioco chiamati dalla classe base:
+-   *Game*: the heart of the videogame which is also the entry point of the program. It contains the interfaces of the essential methods for the game and called by the base class:
 
-    -   *Inizialize()*: contiene l’inizializzazione di base del comparto grafico e di input;
-    -   *LoadConten()*: carica i contenuti multimediali
-    -   *Update()*: metodo chiamato prima del render di ogni frame. Prende in input un oggetto GameTime utilizzato per ottenere molte informazioni sullo stato temporale del gioco
-    -   *Draw()*: esegue il render a schermo di tutti gli elementi del gioco. Come Update() prende in input un oggetto GameTime
--   *Graphics.SpriteBatch*: consente il render di tutti gli oggetti di tipo Texture2D
--   *Content.ContentManage*r: consente di gestire tutte le risorse multimediali del gioco. A questo scopo il framework mette a disposizione lo strumento *Content Pipeline *che per mezzo di una interfaccia grafica permette una gestione facilitata dei contenuti.
+    -   *Inizialize()*: contains the basic initialization of the graphics and input sector;
+    -   *LoadConten()*: upload multimedia content 
+    -   *Update()*: method called before rendering of each frame. It takes as input a GameTime object used to get a lot of information about the game's time status
+    -   *Draw()*: renders all the elements of the game on the screen. As Update(), it takes a GameTime object as argument
+-   *Graphics.SpriteBatch*: allows the rendering of all Texture2D objects 
+-   *Content.ContentManage*r: allows to manage all the multimedia resources of the game. For this purpose, the framework provides the Content Pipeline tool which, by means of a graphic interface, allows an easier management of the contents.
 
-<b><h2>La struttura di Recycle Game</b></h2>
+<b><h2>The structure of Recycle Game</b></h2>
 
-Recycle Game è stato creato utilizzando molte classi diverse fra loro e spesso si è fatto uso di Ereditarietà e Polimorfismo al fine di gestire numerosi oggetti grafici con comportamenti molteplici e interazioni differenti. Di seguito è riportato il diagramma delle classi più significative del videogioco:
+Recycle Game was created using many different classes and often Inheritance and Polymorphism were used in order to manage numerous graphic objects with multiple behaviors and different interactions. Below is the diagram of the most significant classes of the videogame:
 
 ![Class Diagram](media/diagrammaClassi.png)
 
-<b><h2>Le Classi principali</b></h2>
+<b><h2>The main classes</b></h2>
 
-***Component***: è la classe base del videogioco, contiene i riferimenti base che ogni componente deve avere ovvero ContentManager, GraphicsDeviceManager, Game. Da questa classe derivano la quasi totalità delle altre classi.
+***Component***: is the base class of the video game, contains the basic references that each component must have, namely ContentManager, GraphicsDeviceManager, Game. Almost all other classes derive from this class.
 
-***State:*** il funzionamento del gioco è basato su una logica a macchina a stati la quale è implementata all’interno della classe *Game1*, quest’ultima derivata direttamente da *Game*. Ogni stato è un eredita dalla classe *State* i metodi Draw() e Update() i quali ricoprono la stessa funzione degli omonimi metodi contenuti nella classe Game1. La classe Game1 contiene due proprietà *_currentState* e *_nextState* che fanno riferimento allo stato precedente e quello successivo. La prima viene modifica nel metodo Update() di Game1 ogni qualvolta la variabile *_nextState* contiene uno stato nuovo del gioco. La variabile dello stato successivo viene modificata all’interno degli stessi stati ogni volta che ce n’è bisogno. In un altro paragrafo di questa relazione verranno illustrati i singoli stati.
+***State:*** game operation is based on state machine logic which is implemented within the Game1 class, the latter derived directly from Game. Each state inherit from the State class, Draw() and Update() methods which perform the same function as the homonymous methods contained in the Game1 class. The Game1 class contains two properties _currentState and _nextState which refer to the previous and next states. The first is changed in Game1's Update() method whenever the _nextState variable contains a new state of the game. The next state variable is changed within the same states whenever it is needed. In another paragraph of this report the individual states will be discussed.
 
-***Game1***: devira da *Game* e per questo è la classe entry-point del gioco. Contiene le inizializzazioni del gioco, la gestione degli stati e dei livelli. Al suo interno vengono implementati i metodi Update() e Draw() del framework MonoGame.
+***Game1***: derived from Game and so it is the entry-point class of the game. Contains game initializations, the state and level management. The Update() and Draw() methods of the MonoGame framework are implemented within it.
 
-***Sprite***: un oggetto di questa classe rappresenta un singolo sprite le cui proprietà sono molteplici fra le quali le più importanti sono:
-    -   *texture*: la texture dello sprite
-    -   *rect*: il rettangolo in cui è contenuto lo sprite
-    -   *gamePos*: posizione dello sprite rispetto alla mappa del gioco
-    -   *displayPos*: posizione dello sprite rispetto allo schermo
-    -   *scale*: misura dello scalamento della texture
+***Sprite***: an object of this class represents a single sprite whose properties are multiple among which the most important are:
+    -   *texture*: the texture of the sprite
+    -   *rect*: the rectangle in which the sprite is contained
+    -   *gamePos*: position of the sprite in relation to the game map
+    -   *displayPos*: position of the sprite relative to the screen
+    -   *scale*: measure of texture scaling
+    
+The sprite class contains all the methods necessary to manage the movement and position of each single element:
 
-La classe sprite contiene tutti i metodi necessari per gestire il movimento e la posizione di ogni singolo elemento:
+-   setPos(), setGamePos(): change the position absolutely
+-   stepPos(), stepGamePos(): change the position of a certain amount
+-   setTilePos(): changes the position with reference to the tile map
 
--   setPos(), setGamePos(): modifica la posizione in modo assoluto
--   stepPos(), stepGamePos(): modifica la posizione di una certa quantità
--   setTilePos(): modifica la posizione con riferimento alla mappa dei tile
+It also has its respective get\#\#\#() methods that are used to get the values. Five other classes derive from this class. The sprite class contains a basic Draw() function which is often replaced by a more specific Draw() in derived classes.
 
-Possiede poi dei rispettivi metodi get\#\#\#() che servono per ottenere i valori. Da questa classe derivano 5 altre classi. La classe *sprite *contiene una funziona Draw() basilare che spesso viene rimpiazzata da una Draw() più specifica nelle classi derivate.
+***Animated Sprite***: award to each individual sprite an animation given by the succession of frames which are grouped in a single texture. The animation technique is based on showing only a portion of the texture in which the frame you want to view is present.
 
-***Animated Sprite***: conferisce ad ogni singolo sprite una animazione data dal susseguirsi di frame i quali sono raggruppati in una unica texture. La tecnica di animazione si basa sul mostrare solo una porzione della texture nella quale è presente il frame che si vuole visualizzare.
+***Character***: derived from sprites, this class allows to create a character capable of moving in the game and interacting with the obstacles on the map. Each Character object can be manipulated from the keyboard with WASD commands thanks to the method keyboardMgnt present inside the MainState 
 
-***Character***: derivata da *Sprite*, questa classe consente di creare un personaggio capace di muoversi nel gioco e interagire con gli ostacoli presenti nella mappa. Ogni oggetto Character può essere manipolato da tastiera con i comandi WASD grazie al metodo *keyboardMgnt* presente all’interno del *MainState*
-
-***Item***: questa classe consente di gestire i singoli oggetti del gioco che rappresentano i rifiuti come *Sprite*. Ogni *Item* possiede una proprietà *type* che conferisce il tipo di rifiuti a partire da un elenco enumerativo. Inoltre, grazie ad una lookup table della funzione seno ogni *item *è capace di muoversi su e giù conferendo un effetto animato utile per individuare la presenza di un item all’interno della mappa.
+***Item***: this class allows to manage the individual objects in the game that represent waste like Sprite. Each Item has a type property that confers the type of waste starting from an enumerative list. Furthermore, thanks to a lookup table of the sine function, each item is able to move up and down giving an animated effect useful for identifying the presence of an item within the map.
 
 ![Class Diagram](media/floating.png)
 
-***SpeechBubble***: crea una nuvoletta contenente un qualsiasi testo che viene visualizzata ogni volta che viene attivata mediante una variabile enable. Questa classe viene utilizzata all’interno della finestra in cui si trovano tutti i simboli della raccolta differenziata. Ogni volta che la freccia del mouse passa sopra ad un simbolo si attiva una speechBubble che ne contiene la descrizione. La speechBubble può inoltre essere utilizzata con un Character per dare l’idea che stia parlando.
+***SpeechBubble***: creates a speech bubble containing any text that is displayed each time it is activated using an enable variable. This class is used inside the window where all the symbols of the recycling are located. Each time the mouse arrow passes over a symbol, a speechBubble is activated which contains its description. The speechBubble can also be used with a Character to give the idea that it is speaking.
 
 ![](media/speech-ex.png)
 
-***Vocabulary***: questa classe crea una finestra sotto forma di taccuino al centro dello schermo che mostra in sequenza i simboli del riciclo con le loro descrizioni, tutti i bidoni e tutti gli oggetti presenti all’interno del gioco. Per passare da una pagina all’altra si utilizzano le frecce poste alla base del taccuino. La gestione di quale pagine mostrare viene fatta tramite l’uso dei delegati: il delegato che viene chiamato all’interno della Draw() viene modificato all’interno di Update() inserendo il metodo che mostrerà la pagina corretta.
+***Vocabulary***: this class creates a window in the form of a notebook in the center of the screen which shows in sequence the recycling symbols with their descriptions, all the bins and all the objects present in the game. To move from one page to another, use the arrows located at the base of the notebook. The management of which pages to show is done through the use of delegates: the delegate that is called within the Draw() is modified within Update() by inserting a method that will show the correct page.
 
-***Windows***: crea una finestra interattiva che permette di interagire con i rifiuti che si sono raccolti e il bidone disponibile.
-
-Per costruire la finestra è stata scritta la classe *Windows* che comprende i metodi Draw() e Update() e altri per poter gestirne l’interazione con il giocatore.
-
-La finestra presenta una texture di backgroud su cui vengono posizionati vari elementi, a sinistra:
+***Windows***: creates an interactive window that allows to interact with the waste that has been collected and the available bin.
+To build the window, the Windows class was written which includes the Draw() and Update() methods and others in order to manage its interaction with the player. 
+The window has a background texture on which various elements are positioned, on the left:
 
 -   una texture “card” che comprende l’immagine del rifiuto e i simboli specifici per quel tipo di riciclaggio;
 

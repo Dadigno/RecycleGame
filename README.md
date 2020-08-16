@@ -89,73 +89,72 @@ It also has its respective get\#\#\#() methods that are used to get the values. 
 To build the window, the Windows class was written which includes the Draw() and Update() methods and others in order to manage its interaction with the player. 
 The window has a background texture on which various elements are positioned, on the left:
 
--   una texture “card” che comprende l’immagine del rifiuto e i simboli specifici per quel tipo di riciclaggio;
+-   a "card" texture that includes the image of the waste and the specific symbols for that type of recycling;
 
-NOTA: quando non è presente nessun rifiuto compare una card di default con scritto “nessun rifiuto”.
+NOTE: when there is no item, a default card appears with the words "no item".
 
--   un numerino rappresentato dalla classe *Banner* che mostra il numero della “card” che si sta visualizzando (la sequenza delle card seguono l’ordine di raccolta)
--   una freccia destra e una freccia sinistra entrambe rappresentate dalla classe *Button* che, quando una viene cliccata, permette di passare da una card a un’altra così si possono raggiungere i rifiuti da depositare nel bidone disponibile
+-   a number, represented by the Banner class, shows the number of the "card" which is viewed (the sequence of cards follow the order of collection)
+-   a right arrow and a left arrow both represented by the Button class which, when one is clicked, allows to switch from one card to another so you can reach the waste to be deposited in the available bin.
 
-A destra è presente un “puzzle” composto da quadratini con ciascuno il nome di una tipologia di rifiuto, ciascun quadratino è rappresentato dalla classe *Button* poi è presente anche una texture di un riquadro con la scritta “prossimamente” che cambia rispetto al livello in cui si trova lo stato del gioco. Il riquadro indica che nel livello successivo saranno disponibili nuovi quadratini per nuove tipologie di rifiuto.
+On the right there is a "puzzle" composed of squares with each the name of a type of waste, each square is represented by the Button class then there is also a texture of a box with the word "coming soon" which changes with respect to the level where the state of the game is found. The box indicates that in the next level new squares will be available for new types of waste.
 
-La classe presenta due texture di contorno una verde e una rossa che verranno mostrate lampeggiando al posto del contorno bianco quando il giocatore depositerà un rifiuto, se la risposta è corretta appare quella verde al contrario quello rossa.
+The class has two outline textures, one green and one red, which will be shown by flashing instead of the white outline when the player deposits a waste, if the answer is correct, the green one appears instead of the red one.
 
-Per visualizzare la finestra il giocatore deve posizionarsi davanti a un bidone e premere “spazio” sulla tastiera così verrà modificata la variabile di abilitazione, ciò verrà effettuato utilizzando i tile di cui si parlerà in seguito. Per uscire dall finestra bisogna premere il tasto Esc che modifica a sua volta l’abilitazione.
+To view the window, the player must position himself in front of a bin and press "space" on the keyboard so the enabling variable will be changed, this will be done using the tiles which will be discussed later. To exit the window, press the Esc key which in turn changes the enable.
 
-Aperta la finestra sarà possibile premere con il mouse solo il quadratino riferito a quel bidone specifico per depositare il rifiuto visualizzato, invece gli altri quadratini appariranno scoloriti e quindi non sarà possibile utilizzarli.
+Once the window is open it will be possible to press with the mouse only the square referring to that specific bin to deposit the displayed waste, instead the other squares will appear discolored and therefore it will not be possible to use them.
 
 ![Class Diagram](media/window-ex.png)
 
-<b><h2>Gli stati del gioco</b></h2>
+<b><h2>The states of the game</b></h2>
 
-Come già anticipato il RecycleGame è strutturato come una macchina a stati i quali sono tutti oggetti della classe State e ognuno implementa una propria Draw() e Update(). Lo stato iniziale viene impostato all’interno della classe Game1 nel metodo *LoadContent* e nei metodi Draw e Update di Game1 vengono chiamati i corrispettivi all’interno del *_currentState*.
+As already mentioned, the RecycleGame is structured as a state machine which are all objects of the State class and each one implements its own Draw() and Update() methods. The initial state is set inside the Game1 class in the LoadContent method and in the Draw and Update methods of Game1 the counterparts are called inside the _currentState.
 
-***Gestione degli input***
+***Input management***
 
-Ogni stato si occupa, autonomamente di gestire gli input da tastiera per mezzo dell’oggetto KeyBoardState che viene passato come parametro al metodo Update all’interno di Game1. Ogni stato, se è necessario, implementa un metodo chiamato keyboardMgnt() che ha lo scopo di analizzare l’oggetto KeyBoardState e compiere le azioni necessarie per far funzionare il gioco.
+Each state independently takes care of managing keyboard inputs using the KeyBoardState object which is passed as a parameter to the Update method within Game1. Each state, if necessary, implements a method called keyboardMgnt() which has the purpose of analyzing the KeyBoardState object and carrying out the necessary actions to make the game work.
 
-***MenuState***: è il primo stato del gioco e ha lo scopo di mostrare il menù che comprende tre bottoni:
+***MenuState***:  is the first state of the game and aims to show the menu which includes three buttons:
 
--   *New Game*: porta lo stato in MainState ovvero fa partire il gioco
--   *Load Game*: è un bottone disattivato, ma in futuro avrà lo scopo di caricare uno stato del gioco che è stato salvato in precedenza
--   *Exit*: chiama la il metodo Exit() della classe Game che chiude il gioco
+-   *New Game*: brings the status to MainState namely starts the game 
+-   *Load Game*:  is disabled button, but in the future it will aim to load a state of the game that has been saved previously
+-   *Exit*:  call Exit() method of the Game class that closes the game
 
-***MainState***: è lo stato principale di tutto il video gioco. All’interno di esso si generano:
+***MainState***: it is the main state of any videogame. Within it are generated:
 
--   il personaggio principale comandato dall’utente tramite la tastiera
--   tutti gli oggetti del gioco che devono essere differenziati
--   la mappa del gioco
+-   the main character controlled by the user via the keyboard
+-   all objects in the game that have to be differentiated
+-   the game map
 
-All’interno di questo stato vengono gestite tutte le interazioni fra il personaggio e gli oggetti tramite il gestore degli eventi. La funzione Draw() mostra a schermo i personaggi, la UI e tutti gli oggetti presenti sulla mappa. Il metodo Update() oltre che occuparsi di aggiornare la posizione della mappa e del personaggio, posizione casualmente all’interno del gioco gli oggetti in determinate zone definite nella matrice dei Tile. In seguito, verrà dedicato un paragrafo alla spiegazione di come vengono gestite le suddette matrici.
+Within this state all interactions between the character and objects are managed through the event manager. The Draw() function shows the characters, the UI and all the current objects on the map. The Update() method not only deals with updating the position of the map and the character, it also positions objects randomly within the game in certain areas defined in the Tile matrix. Subsequently a paragraph will be dedicated to the explanation of how the above-mentioned matrices are managed.
 
-***TutorialState e ChooseBucket***: sono due stati semplici e molto simili, si occupano di mostrare a schermo gli oggetti delle classi Tutorial e Windows rispettivamente.
+***TutorialState e ChooseBucket***: they are two simple and very similar states, they deal with showing the objects of the Tutorial and Windows classes on the screen respectively. 
 
-<b><h2>Tiled e le matrici di tile</b></h2>
+<b><h2>Tiled and the tile matrices</b></h2>
 
-Tiled è un software gratuito e open source che è utilizzato per creare mappe 2D per videogiochi mediante la tecnica dei tile. Un tile è una porzione quadrata di schermo con una dimensione in genere di 16x16px o 32x32px come in RecycleGame. Ogni tile viene riempito con una texture fino a comporre una griglia la quale rappresenta la mappa del gioco, detta TileMap. Tiled permette la progettazione della mappa mediante layer di tile sovrapposti. L’unico layer visualizzato però sarà quello più in alto degli altri. Le TileMap vengono salvate in un file .tmx che contiene tutti i layer in codifica xml contenente sotto forma di array bidimensionali, righe e colonne della tilemap. Ogni elemento degli array è un numero che rappresenta una precisa texture di 32x32px.
+Tiled is a free and open source software that is used to create 2D video game maps using the tile technique. A tile is a square portion of a screen with a size typically 16x16px or 32x32px as in RecycleGame. Each tile is filled with a texture to compose a grid which represents the game map, called TileMap. Tiled allows the design of the map through overlapping tile layers. The only layer displayed, however, will be the one higher than the others. The TileMaps are saved in a .tmx file that contains all the layers in XML encoding containing in the form of two-dimensional arrays, rows and columns of the tilemap. Each element of the arrays is a number representing a precise 32x32px texture.
 
-Per utilizzare una mappa creata con Tiled in monogame è sufficiente esportare la mappa creata in formato .png o .jpg e poi importare quest’ultima nel LoadContent. Nell’immagine esportata però saranno visibili solo i tile dei layer che sono stati resi visibili.
+To use a map created with Tiled in monogame, simply export the map created in .png or .jpg format and then import the latter into the LoadContent. In the exported image, however, will be visible only the tile of layers that have been made visible.
 
-In RecycleGame è stato implementato un metodo per leggere il file .tmx della tilemap e codificare tutti i layer in liste bidimensionali. In questo modo sapendo che la mappa è una griglia di 32x32px è possibile in runtime associare ogni singolo pezzetto della mappa a tutti i tile in quel punto per ogni layer. Così si possono creare dei layer nascosti che hanno lo scopo di indentificare delle zone della mappa particolari, come ad esempio gli ostacoli.
+In RecycleGame a method has been implemented to read the tilemap .tmx file and encode all the layers in two-dimensional lists. In this way, knowing that the map is a 32x32px grid, it is possible runtime to associate every single piece of the map to all the tiles for each layer. So you can create hidden layers that have the purpose of identifying particular areas of the map, such as obstacles.
 
-Per fare un esempio, nella figura di sinistra vi è un pezzo della mappa visibile nel gioco, nella figura di destra invece la stessa mappa ma con il layer contenente gli ostacoli che è stato reso visibile.
+To give an example, in the left figure there is a piece of the map visible in the game, in the right figure instead the same map but with the layer containing the obstacles that has been made visible.
 
 ![Class Diagram](media/mask-ex.png)
+When the Character moves within the map, he analyzes all the tiles he comes into contact with. Thanks to the hidden layers it is possible to understand if it is in front of an obstacle or not.
 
-Il Character quando si sposta all’interno della mappa analizza tutti i tile con cui entra a contatto. Grazie ai layer nascosti è possibile capire se si trova davanti ad un ostacolo oppure no.
+With the same technique, different interaction with other elements scattered throughout the game has been made possible: there is a layer that contains different tiles one for each bin on the map and in this way it is possible to make interacting the character differently based on the tile in which it is located. 
 
-Con la stessa tecnica è stata resa possibile l’interazione diversa con altri elementi sparsi nel gioco: è presente un layer che contiene tile diversi uno per ogni bidone presente sulla mappa e in questo modo è possibile fare interagire il personaggio in maniera diversa in base al tile in cui si trova.
-
-Di seguito a sinistra la mappa visibile nel gioco mentre a destra è visibile il layer che contiene i tile con cui il personaggio interagisce.
+The map visible in the game is shown on the left while the layer containing the tiles with which the character interacts is visible on the right.
 
 ![Class Diagram](media/ostacoli-ex.png)
 
-Altri layer nascosti sono stati creati per identificare delle zone particolari della mappa in cui far apparire solo un certo tipo di rifiuti, come ad esempio i rifiuti plastici che appaiono solo nella spiaggia.
+Other hidden layers have been created to identify particular areas of the map in which only a certain type of waste appears, such as plastic waste that appears only on the beach. 
 
-<b><h2>Conclusioni e sviluppi futuri</b></h2>
+<b><h2>Conclusions and future developments</b></h2>
 
-Lo sviluppo di questo gioco è stato molto importante per la comprensione e la pratica della creazione di giochi 2D utilizzando il linguaggio C\# e Monogame. L’uso della programmazione ad oggetti ci ha permesso di affinare le nostre capacità da programmatore utilizzando tecniche quali polimorfismo ed ereditarietà.
+The development of this game has been very important for the understanding and practice of creating 2D games using the C\# language and Monogame. The object-oriented programming has allowed us to improve our skills as a programmer using techniques such as polymorphism and inheritance.
 
-Il lavoro di gruppo non sarebbe stato possibile se non avessimo usato il sistema di controllo versione (VCS) Git. In corso d’opera abbiamo fatto diversi cambiamenti e grazie a sempre nuove idee abbiamo migliorato il gioco passo dopo passo.
+Teamwork would not have been possible if we had not used the Git version control system (VCS). During the project we have made several changes and thanks to ever new ideas we have improved the game step by step.
 
-Recycle Game può essere ancora migliorato e ampliato. Abbiamo pensato che sarebbe interessante implementare un sistema di salvataggio dello stato del gioco in modo da recuperare una partita interrotta. Inoltre, con lo scopo di ampliare le prospettive del gioco, potrebbe essere utile aggiungere nuove mappe, nuovi oggetti e la possibilità del giocatore di usare degli *strumenti* che permettano una raccolta differenziata più efficiente.
+Recycle Game can still be improved and expanded. We thought it would be interesting to implement a rescue system of game state to recover an interrupted game. Also, in order to broaden the perspectives of game, it may be useful to add new maps, new objects and the player's ability to use tools that allow more efficient recycling.
